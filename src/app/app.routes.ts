@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { Header } from './shared/components/header/header';
 import { AppLayout } from './app-layout/app-layout';
 import { Dashboard } from './dashboard/dashboard';
+import { CourseModules } from './dashboard/course-modules/course-modules';
 
 export const routes: Routes = [
   {
@@ -26,6 +27,9 @@ export const routes: Routes = [
   {
     path: '',
     component: AppLayout,
-    children: [{ path: 'dashboard', component: Dashboard }],
+    children: [
+      { path: 'dashboard', component: Dashboard },
+      { path: 'modules', component: CourseModules },
+    ],
   },
 ];

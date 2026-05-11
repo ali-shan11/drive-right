@@ -11,7 +11,7 @@
   </div>
 
   <!--Dashboard banner-->
-  <!--Slider Wrappper-->
+  <!--Slider Wrapper-->
   <div class="[background:var(--color-card-wrapper)] rounded-2xl! p-3! my-2!">
     <div class="flex flex-row gap-3 overflow-x-auto">
       <div
@@ -19,13 +19,11 @@
         class="relative rounded-xl isolate min-w-52 w-55 min-h-42.5 h-44 overflow-hidden shrink-0 flex flex-col justify-between"
         [ngStyle]="{ background: card.bgGradient }"
       >
-        <!-- scale-[1.01] (slightly overflows image to cover subpixel gaps on edges) -->
         <img
           [src]="card.cardImage"
           alt=""
           class="absolute inset-0 w-full h-full object-cover pointer-events-none scale-[1.01]"
         />
-
         <div class="relative z-10 flex flex-col justify-between h-full p-3!">
           <h3 class="font-semibold text-base text-(--color-text) line-clamp-3 w-3/4">
             {{ card.title }}
@@ -42,10 +40,10 @@
 
   <!--Progress Track-->
   <div class="track-progress flex flex-col justify-between gap-2!">
-    <!--heading-->
+    <!--Heading-->
     <div class="progress flex flex-row justify-between items-center py-3!">
       <h2 class="font-semibold text-start text-2xl text-(--color-text)">
-        Here’s your progress track
+        Here's your progress track
       </h2>
       <div class="streak flex flex-row items-center gap-1!">
         <span class="font-normal text-start text-base text-(--color-primary)"
@@ -57,7 +55,7 @@
 
     <!--Progress bar-->
     <div class="progressbar w-full rounded-xl p-3! [background:var(--color-card-wrapper)]">
-      <!--Heading-->
+      <!--Bar Heading-->
       <div class="bar-heading flex flex-row justify-between text-(--color-text) mb-2!">
         <span class="font-normal text-start text-base text-(--color-text)"
           >{{ runningCourses() }} Courses</span
@@ -66,25 +64,23 @@
           >{{ progress() }}% of <span class="text-(--color-primary)">{{ total() }}</span></span
         >
       </div>
-
-      <!--bar-->
+      <!--Bar Fill-->
       <div class="bar w-full h-2 bg-white/20 rounded-full overflow-hidden">
         <div
           class="h-full rounded-full transition-all duration-500 ease-out bg-(--color-primary)"
-          [ngStyle]="{
-            width: (progress() / total()) * 100 + '%',
-          }"
+          [ngStyle]="{ width: (progress() / total()) * 100 + '%' }"
         ></div>
       </div>
     </div>
 
-    <!--Course Progress-->
     <div
-      class="course-progress-wrapper w-full flex flex-row justify-between items-center gap-4! py-4!"
+      class="course-progress-wrapper w-full flex flex-row justify-between items-stretch gap-4! py-4!"
     >
-      <!--Explore & Modules-->
-      <div class="explore-modules w-1/2 flex flex-col justify-between items-center gap-2!">
-        <!--Explore-->
+
+      <!--Left Column — Explore & Modules-->
+      <div class="explore-modules w-1/2 flex flex-col justify-between items-center gap-4!">
+
+        <!--Explore -->
         <div
           class="explore w-full flex flex-row justify-between items-center px-4! py-2! [background:var(--color-nav-bg)] rounded-full"
         >
@@ -101,9 +97,8 @@
           </div>
         </div>
 
-        <!--Modules-->
         <div
-          class="modules w-full flex flex-col justify-between items-center gap-3! p-3! [background:var(--color-card-wrapper)] gradient-border gradient-border--light rounded-lg!"
+          class="modules flex-1 w-full flex flex-col justify-between items-center gap-3! p-3! [background:var(--color-card-wrapper)] gradient-border gradient-border--light rounded-lg!"
         >
           <div
             *ngFor="let module of modules"
@@ -126,10 +121,26 @@
                 </p>
               </div>
 
-              <!-- Progress ring -->
-              <div class="shrink-0 relative flex items-center justify-center w-12 h-12">
-                <span class="relative text-[10px] font-semibold text-[#E6C84A] leading-none">
-                  {{ module.progress }}%
+              <!-- Progress -->
+              <div class="shrink-0 self-start relative w-13 h-13">
+                <round-progress
+                  [current]="module.currentProgress"
+                  [max]="100"
+                  [color]="'var(--color-primary)'"
+                  [background]="'rgba(255,255,255,0.15)'"
+                  [radius]="22"
+                  [stroke]="4"
+                  [semicircle]="false"
+                  [rounded]="true"
+                  [clockwise]="true"
+                  [duration]="800"
+                  [animation]="'easeInOutQuart'"
+                  class="block w-full h-full"
+                />
+                <span
+                  class="absolute inset-0 flex items-center justify-center text-[10px] font-medium text-white leading-none"
+                >
+                  {{ module.currentProgress }}%
                 </span>
               </div>
             </div>
@@ -144,9 +155,10 @@
         </div>
       </div>
 
-      <!--Performance & Assessment-->
-      <div class="performance-assessment w-1/2 flex flex-col justify-between items-center gap-2!">
-        <!--Performance-->
+      <!--Right Column — Performance & Assessment-->
+      <div class="performance-assessment w-1/2 flex flex-col justify-between items-center gap-4!">
+
+        <!--Performance -->
         <div
           class="performance w-full flex flex-row justify-between items-center px-4! py-2! [background:var(--color-nav-bg)] rounded-full"
         >
@@ -159,11 +171,29 @@
           <div class="link"></div>
         </div>
 
-        <!--Assessment-->
         <div
-          class="assessment w-full flex flex-col justify-between items-center gap-3! p-3! [background:var(--color-card-wrapper)]"
-        ></div>
+          class="assessment flex-1 w-full flex flex-col justify-center items-center gap-3! p-3! [background:var(--color-card-wrapper)] rounded-lg! gradient-border border-dashed! gradient-border--light"
+        >
+          <!-- Empty state -->
+          <div class="image">
+            <img src="images/dashboard/no-assessment.svg" alt="no-assessment" />
+          </div>
+          <!--Empty state title & subtitle-->
+          <div class="title-subtitle flex flex-col justify-between items-center gap-1">
+            <h2 class="font-semibold text-start text-xl text-(--color-text)">
+              No Assessment Taken Yet
+            </h2>
+            <span class="font-normal text-start text-base text-(--color-text)"
+              >You can check back after you have completed the mock assessment.</span
+            >
+          </div>
+        </div>
+
       </div>
     </div>
+
+
   </div>
+
+
 </div>

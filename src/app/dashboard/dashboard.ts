@@ -1,16 +1,17 @@
 import { Component, signal } from '@angular/core';
-import { BannerCard } from './interfaces/banner-card';
+import { BannerCard } from '../interfaces/banner-card';
 import { CommonModule } from '@angular/common';
-import { CourseModule } from './interfaces/course-module';
+import { CourseModule } from '../interfaces/course-module';
+import { RoundProgressComponent } from 'angular-svg-round-progressbar';
 
 @Component({
   selector: 'app-dashboard',
-  imports: [CommonModule],
+  imports: [CommonModule , RoundProgressComponent],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.scss',
 })
 export class Dashboard {
-  cards: BannerCard[] = [
+   cards: BannerCard[] = [
     {
       id: 1,
       title: 'Book your Official Driving Test and Certification Exam',
@@ -52,12 +53,6 @@ export class Dashboard {
   runningCourses = signal<number>(6);
   total = signal<number>(100);
   progress = signal<number>(35);
-
-  readonly circumference = 2 * Math.PI * 18; // ≈ 113.1
-
-  getDashOffset(progress: number): number {
-    return this.circumference - (progress / 100) * this.circumference;
-  }
 
   modules: CourseModule[] = [
     {
