@@ -10,13 +10,14 @@
     >
   </div>
 
-  <div class="modules w-full flex flex-col justify-between items-start gap-3! p-3!">
+  <div class="modules w-full flex flex-col justify-between items-center gap-3! py-6!">
     <!--Courser Modules-->
     <div
       *ngFor="let module of modules"
-      class="relative w-full flex flex-row justify-between items-center gap-4 p-5! [background:var(--color-card-wrapper)] gradient-border gradient-border--light rounded-xl! transition-transform duration-200 hover:-translate-y-0.5"
+      class="relative w-full flex flex-row justify-between items-center gap-10! p-5! [background:var(--color-card-wrapper)] gradient-border gradient-border--light rounded-xl! transition-transform duration-200 hover:-translate-y-0.5"
     >
-      <div class="flex items-start gap-4">
+      <!--Icon & Content-->
+      <div class="w-full flex items-start gap-6">
         <!-- Icon box -->
         <div
           class="shrink-0 flex items-center justify-center w-14 h-14 rounded-xl [background:var(--color-nav-bg)]"
@@ -24,7 +25,7 @@
         ></div>
 
         <!-- Title & Subtitle -->
-        <div class="flex-1 min-w-0">
+        <div class="flex flex-col justify-between items-start gap-1!">
           <h3 class="font-semibold text-start text-lg text-(--color-text)">
             {{ module.title }}
           </h3>
@@ -32,16 +33,19 @@
             {{ module.subtitle }}
           </p>
         </div>
+      </div>
 
+      <!--Progress ring and button-->
+      <div class="progres-button w-full flex justify-between items-center gap-16!">
         <!-- Progress -->
-        <div class="shrink-0 self-start relative w-13 h-13">
+        <div class="shrink-0 self-start relative w-18 h-18">
           <round-progress
             [current]="module.currentProgress"
             [max]="100"
             [color]="'var(--color-primary)'"
             [background]="'rgba(255,255,255,0.15)'"
-            [radius]="22"
-            [stroke]="4"
+            [radius]="36"
+            [stroke]="6"
             [semicircle]="false"
             [rounded]="true"
             [clockwise]="true"
@@ -55,14 +59,13 @@
             {{ module.currentProgress }}%
           </span>
         </div>
+        <!-- Button -->
+        <button
+          class="btn btn__light transition-colors duration-150 cursor-pointer shadow-none! rounded-md!"
+        >
+          {{ module.buttonLabel }}
+        </button>
       </div>
-
-      <!-- Button -->
-      <button
-        class="btn btn__light w-1/4! transition-colors duration-150 cursor-pointer shadow-none! rounded-md!"
-      >
-        {{ module.buttonLabel }}
-      </button>
     </div>
   </div>
 </div>
