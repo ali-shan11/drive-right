@@ -1,0 +1,40 @@
+.nav-bar {
+  background: var(--color-nav-bg);
+}
+
+.nav-item {
+  backdrop-filter: blur(15.555556px);
+  box-shadow:
+    0px 7.78px 7.78px 0px rgba(0, 0, 0, 0.1),
+    0px 3.11px 3.11px 0px rgba(0, 0, 0, 0.05),
+    0px 0.78px 17.11px 0px rgba(255, 255, 255, 0.1),
+    inset 0px 0px 15.56px 0px rgba(198, 204, 255, 0.2),
+    inset 0px 0.78px 2.33px 0px rgba(199, 220, 255, 0.35);
+}
+
+//remove border radius from top of border
+.gradient-border--no-top {
+  border-radius: 0 0 12px 12px;
+
+  &::before {
+    padding: 0 2px 2px 2px;
+    border-radius: inherit;
+  }
+}
+
+.active {
+  background: conic-gradient(
+    from 195.7deg at 50% 50%,
+    #7a0f1a 0deg,
+    rgba(78, 52, 46, 0) 95.01deg,
+    rgba(251, 191, 36, 0.6) 185.59deg,
+    rgba(10, 24, 51, 0.8) 274.88deg,
+    #7a0f1a 360deg
+  );
+  backdrop-filter: blur(15.555556297302246px);
+}
+
+.profile-image {
+  box-shadow: 0px -10px 50px 0px rgba(255, 243, 6, 0.8);
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}

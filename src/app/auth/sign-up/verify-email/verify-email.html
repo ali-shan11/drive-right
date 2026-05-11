@@ -1,0 +1,51 @@
+<div class="verify-email relative min-h-full flex flex-col justify-center pt-12! pb-3.5! px-5">
+  <!--Logo-->
+  <div class="seal absolute top-1 right-5">
+    <img
+      class="leading-0"
+      ngSrc="/lasg-logo.png"
+      width="90"
+      height="90"
+      alt="Lagos State Government"
+      priority
+    />
+  </div>
+
+  <!--Verify email content-->
+  <div class="verify content flex flex-col justify-between items-center gap-6">
+    <!--verify image-->
+    <div class="w-45 h-45 bg-(image:--verify-email-image) bg-contain bg-center bg-no-repeat"></div>
+
+    <!--verify title-subtitle-->
+    <div class="verify-title-subtitle flex flex-col gap-2">
+      <h2 class="text-2xl font-semibold text-center text-(--color-text)">
+        Verify your Email Address
+      </h2>
+      <span class="text-xs font-normal text-center text-(--color-text)"
+        >Enter the code we sent to your email address to complete registration</span
+      >
+    </div>
+
+    <!--Otp Code-->
+    <div class="otp-wrapper">
+      <app-otp
+        [length]="6"
+        [hasError]="error()"
+        [disabled]="loading()"
+        (otpChange)="onOtpChange($event)"
+        (otpComplete)="onOtpComplete($event)"
+      />
+    </div>
+
+    <!--Buttons-->
+    <div class="buttons w-full flex flex-col justify-between items-center gap-4">
+      <div (click)="next.emit()" class="gradient-border gradient-border--light w-full">
+        <button class="btn btn__light">Confirm</button>
+      </div>
+
+      <div (click)="back.emit()" class="gradient-border gradient-border--dark w-full">
+        <button class="btn btn__dark">Back</button>
+      </div>
+    </div>
+  </div>
+</div>

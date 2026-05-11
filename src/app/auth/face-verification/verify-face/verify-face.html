@@ -1,0 +1,57 @@
+<div class="recognize-face relative min-h-full flex flex-col justify-center pt-12! pb-3.5! px-5">
+  <!--Logo-->
+  <div class="seal absolute top-1 right-5">
+    <img
+      class="leading-0"
+      ngSrc="/lasg-logo.png"
+      width="90"
+      height="90"
+      alt="Lagos State Government"
+      priority
+    />
+  </div>
+
+  <!-- face Recognition-->
+  <div class="px-3! pt-12! flex flex-col justify-center items-center gap-3">
+    <div class="w-full h-60 border border-dashed border-[rgba(255, 243, 6, 1)] rounded-lg">
+      <img
+        class="leading-0 w-full! h-full! object-cover rounded-lg"
+        ngSrc="/face-scanning.jpg"
+        width="90"
+        height="90"
+        alt="Lagos State Government"
+        priority
+      />
+    </div>
+
+    <!--Loader-->
+    <div
+      class="loader relative flex items-center justify-center w-40 h-40"
+    >
+      <round-progress
+        [current]="current()"
+        [max]="max()"
+        [color]="'rgba(254, 203, 172, 1)'"
+        [background]="'rgba(255,255,255,0.1)'"
+        [radius]="70"
+        [stroke]="10"
+        [semicircle]="false"
+        [rounded]="true"
+        [clockwise]="false"
+        [duration]="800"
+        [animation]="'easeInOutQuart'"
+      />
+
+      <div
+        class="absolute flex items-center justify-center rounded-full w-35 h-35 [background:var(--color-user-icon)]"
+      >
+        <span class="text-xl font-semibold text-white">{{ current() }}%</span>
+      </div>
+    </div>
+
+    <!--Look at cam-->
+    <span class="text-xs font-normal text-center text-(--color-text)"
+      >Look Straight at the Camera</span
+    >
+  </div>
+</div>

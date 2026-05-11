@@ -1,0 +1,50 @@
+<div class="verify-success relative min-h-full flex flex-col justify-center pt-12! pb-3.5! px-5">
+  <!--Logo-->
+  <div class="seal absolute top-1 right-5">
+    <img
+      class="leading-0"
+      ngSrc="/lasg-logo.png"
+      width="90"
+      height="90"
+      alt="Lagos State Government"
+      priority
+    />
+  </div>
+
+  <!--Verify face content-->
+  <div class="verify content flex flex-col justify-between items-center gap-4">
+    <!--verify image-->
+    <div class="w-45 h-45 bg-(image:--face-verify-success) bg-contain bg-center bg-no-repeat"></div>
+
+    <!--verify title-subtitle-->
+    <div class="verify-title-subtitle flex flex-col gap-2">
+      <h2 class="text-2xl font-semibold text-center text-(--color-text)">Face ID Successful</h2>
+      <span class="text-xs font-normal text-center text-(--color-text)"
+        >You’re all set. Welcome Onboard.</span
+      >
+    </div>
+
+    <!--Loader-->
+    <div class="loader relative flex items-center justify-center w-45 h-45">
+      <round-progress
+        [current]="current()"
+        [max]="max()"
+        [color]="'rgba(254, 203, 172, 1)'"
+        [background]="'rgba(255,255,255,0.1)'"
+        [radius]="80"
+        [stroke]="10"
+        [semicircle]="false"
+        [rounded]="true"
+        [clockwise]="false"
+        [duration]="800"
+        [animation]="'easeInOutQuart'"
+      />
+
+      <div
+        class="absolute flex items-center justify-center rounded-full w-35 h-35 [background:var(--color-user-icon)]"
+      >
+        <span class="text-xl font-semibold text-white">{{ current() }}%</span>
+      </div>
+    </div>
+  </div>
+</div>

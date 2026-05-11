@@ -1,0 +1,169 @@
+<div class="dashboard flex flex-col px-6! py-10!">
+  <!--Greetings-->
+  <div class="greetings flex flex-col justify-between items-start gap-1">
+    <div class="name flex gap-2!">
+      <h2 class="font-semibold text-start text-2xl text-(--color-text)">Hello, Temidayo</h2>
+      <img src="images/greetings.svg" alt="greeting" />
+    </div>
+    <span class="font-normal text-start text-base text-(--color-text)"
+      >Dive back into learning, Here's a list of guided resources tailored just for you</span
+    >
+  </div>
+
+  <!--Dashboard banner-->
+  <!--Slider Wrappper-->
+  <div class="[background:var(--color-card-wrapper)] rounded-2xl! p-3! my-2!">
+    <div class="flex flex-row gap-3 overflow-x-auto">
+      <div
+        *ngFor="let card of cards"
+        class="relative rounded-xl isolate min-w-52 w-55 min-h-42.5 h-44 overflow-hidden shrink-0 flex flex-col justify-between"
+        [ngStyle]="{ background: card.bgGradient }"
+      >
+        <!-- scale-[1.01] (slightly overflows image to cover subpixel gaps on edges) -->
+        <img
+          [src]="card.cardImage"
+          alt=""
+          class="absolute inset-0 w-full h-full object-cover pointer-events-none scale-[1.01]"
+        />
+
+        <div class="relative z-10 flex flex-col justify-between h-full p-3!">
+          <h3 class="font-semibold text-base text-(--color-text) line-clamp-3 w-3/4">
+            {{ card.title }}
+          </h3>
+          <button
+            class="self-start px-3! py-1.5! rounded-lg bg-black/15 text-(--color-text) text-[8px] hover:bg-black/30 transition-colors duration-300 border-0 cursor-pointer"
+          >
+            {{ card.ctaText }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--Progress Track-->
+  <div class="track-progress flex flex-col justify-between gap-2!">
+    <!--heading-->
+    <div class="progress flex flex-row justify-between items-center py-3!">
+      <h2 class="font-semibold text-start text-2xl text-(--color-text)">
+        Here’s your progress track
+      </h2>
+      <div class="streak flex flex-row items-center gap-1!">
+        <span class="font-normal text-start text-base text-(--color-primary)"
+          >7 Day <span class="text-(--color-text)">Streak</span></span
+        >
+        <img src="images/dashboard/fire.svg" alt="fire emoji" />
+      </div>
+    </div>
+
+    <!--Progress bar-->
+    <div class="progressbar w-full rounded-xl p-3! [background:var(--color-card-wrapper)]">
+      <!--Heading-->
+      <div class="bar-heading flex flex-row justify-between text-(--color-text) mb-2!">
+        <span class="font-normal text-start text-base text-(--color-text)"
+          >{{ runningCourses() }} Courses</span
+        >
+        <span class="font-normal text-start text-base text-(--color-text)"
+          >{{ progress() }}% of <span class="text-(--color-primary)">{{ total() }}</span></span
+        >
+      </div>
+
+      <!--bar-->
+      <div class="bar w-full h-2 bg-white/20 rounded-full overflow-hidden">
+        <div
+          class="h-full rounded-full transition-all duration-500 ease-out bg-(--color-primary)"
+          [ngStyle]="{
+            width: (progress() / total()) * 100 + '%',
+          }"
+        ></div>
+      </div>
+    </div>
+
+    <!--Course Progress-->
+    <div
+      class="course-progress-wrapper w-full flex flex-row justify-between items-center gap-4! py-4!"
+    >
+      <!--Explore & Modules-->
+      <div class="explore-modules w-1/2 flex flex-col justify-between items-center gap-2!">
+        <!--Explore-->
+        <div
+          class="explore w-full flex flex-row justify-between items-center px-4! py-2! [background:var(--color-nav-bg)] rounded-full"
+        >
+          <div class="heading flex items-center gap-3!">
+            <div class="img [background:var(--color-card-wrapper)] p-1.5! rounded-full">
+              <img src="images/dashboard/explore.svg" alt="explore" />
+            </div>
+            <h2 class="font-semibold text-start text-2xl text-(--color-text)">
+              Explore Lagos Driving Aid
+            </h2>
+          </div>
+          <div class="link font-normal text-start text-base text-(--color-primary) hover:underline">
+            <a href="">View More</a>
+          </div>
+        </div>
+
+        <!--Modules-->
+        <div
+          class="modules w-full flex flex-col justify-between items-center gap-3! p-3! [background:var(--color-card-wrapper)] gradient-border gradient-border--light rounded-lg!"
+        >
+          <div
+            *ngFor="let module of modules"
+            class="relative flex flex-col gap-4 p-5! [background:var(--color-card-wrapper)] gradient-border gradient-border--light rounded-xl! transition-transform duration-200 hover:-translate-y-0.5"
+          >
+            <div class="flex items-start gap-4">
+              <!-- Icon box -->
+              <div
+                class="shrink-0 flex items-center justify-center w-14 h-14 rounded-xl [background:var(--color-nav-bg)]"
+                [innerHTML]="module.svgIcon"
+              ></div>
+
+              <!-- Title & Subtitle -->
+              <div class="flex-1 min-w-0">
+                <h3 class="font-semibold text-start text-lg text-(--color-text)">
+                  {{ module.title }}
+                </h3>
+                <p class="font-normal text-start text-xs text-(--color-text) mt-1!">
+                  {{ module.subtitle }}
+                </p>
+              </div>
+
+              <!-- Progress ring -->
+              <div class="shrink-0 relative flex items-center justify-center w-12 h-12">
+                <span class="relative text-[10px] font-semibold text-[#E6C84A] leading-none">
+                  {{ module.progress }}%
+                </span>
+              </div>
+            </div>
+
+            <!-- Button -->
+            <button
+              class="w-full btn btn__light transition-colors duration-150 cursor-pointer shadow-none! rounded-md!"
+            >
+              {{ module.buttonLabel }}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!--Performance & Assessment-->
+      <div class="performance-assessment w-1/2 flex flex-col justify-between items-center gap-2!">
+        <!--Performance-->
+        <div
+          class="performance w-full flex flex-row justify-between items-center px-4! py-2! [background:var(--color-nav-bg)] rounded-full"
+        >
+          <div class="heading flex items-center gap-3!">
+            <div class="img [background:var(--color-card-wrapper)] p-1.5! rounded-full">
+              <img src="images/dashboard/performance.svg" alt="performance" />
+            </div>
+            <h2 class="font-semibold text-start text-2xl text-(--color-text)">Performance</h2>
+          </div>
+          <div class="link"></div>
+        </div>
+
+        <!--Assessment-->
+        <div
+          class="assessment w-full flex flex-col justify-between items-center gap-3! p-3! [background:var(--color-card-wrapper)]"
+        ></div>
+      </div>
+    </div>
+  </div>
+</div>

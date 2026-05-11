@@ -1,0 +1,353 @@
+/* CSS Custom Properties (Variables)
+   This file defines color and style "tokens" for 4 visual themes:
+   green | yellow | blue | red */
+
+/* GREEN THEME */
+[data-theme='green'] {
+  /* --- Background --- */
+  --bg-primary: url('/green-bg.png');
+
+  /* Gradient overlay layered on top of the background image */
+  --color-overlay-gradient-bg: linear-gradient(
+    180deg,
+    rgba(24, 163, 94, 0.6) 0%,
+    rgba(5, 46, 25, 0.8) 100%
+  );
+
+  /* --- Brand / Accent Colors --- */
+  --color-primary: #19c964;
+  --color-primary-hover: #10a852;
+  --color-primary-glow: rgba(25, 201, 100, 0.22);
+
+  /* --- Background Surfaces --- */
+  --color-bg: #04100a;
+  --color-surface: #081810;
+  --color-surface-2: #0d2018;
+
+  /* --- Borders --- */
+  --color-image-border: linear-gradient(206.64deg, #fff3da 0.77%, rgba(251, 191, 36, 0.6) 99.23%);
+
+  --color-input-border: linear-gradient(
+    90deg,
+    rgba(210, 252, 215, 0.2) 0%,
+    rgba(34, 247, 60, 0.2) 100%
+  );
+  --color-border-focus: linear-gradient(90deg, #d2fcd7 0%, #22f73c 100%);
+
+  /* --- Input Fields --- */
+  --focus-box-shadow: 0px 0px 10px 0px rgba(17, 211, 13, 0.5);
+  --color-input-bg: linear-gradient(180deg, rgba(24, 163, 86, 0.5) 0%, rgba(5, 46, 25, 0.4) 100%);
+
+  /* --- Text Colors --- */
+  --color-text: #ecfdf5;
+  --color-text-muted: rgba(236, 253, 245, 0.5);
+  --color-text-link: #19c964;
+
+  /* --- Overlay Gradient --- */
+  --color-overlay-gradient: linear-gradient(
+    105deg,
+    rgba(4, 16, 10, 0.97) 0%,
+    rgba(4, 16, 10, 0.82) 45%,
+    rgba(4, 16, 10, 0.55) 75%,
+    rgba(4, 16, 10, 0.35) 100%
+  );
+
+  /* --- Light Button --- */
+  --color-light-button: linear-gradient(
+    352.43deg,
+    rgba(3, 47, 20, 0.4) 5.86%,
+    rgba(15, 122, 60, 0.8) 94.14%
+  );
+  --light-box-shadow: 0px 0px 10px 0px rgba(25, 201, 100, 0.8);
+  --light-button-border: linear-gradient(331.44deg, #d2fcd7 17.59%, #19c964 82.41%);
+
+  /* --- Dark Button --- */
+  --color-dark-button: linear-gradient(
+    89.96deg,
+    rgba(170, 183, 191, 0.4) 0.03%,
+    rgba(24, 163, 86, 0.8) 99.97%
+  );
+  --dark-button-border: linear-gradient(90deg, #d2fcd7 0%, #22f73c 100%);
+  --dark-box-shadow: 0px 0px 10px 0px rgba(17, 211, 13, 0.5);
+
+  /*Otp Colors*/
+  --otp-box-border: 1px solid rgba(34, 197, 94, 1);
+
+  /*Icon colors*/
+  --color-user-icon: linear-gradient(
+    180deg,
+    rgba(170, 183, 191, 0.5) 0%,
+    rgba(34, 197, 94, 0.8) 100%
+  );
+
+  /*Auth Images*/
+  --verify-email-image: url('/authimages/verify-email-green.svg');
+  --face-verify-image: url('/authimages/face-verify-green.svg');
+  --face-verify-success: url('/authimages/face-successful-green.svg');
+  --forgot-password-image: url('/authimages/forgot-password-green.svg');
+  --password-updated-image: url('/authimages/password-successful-green.svg');
+
+  /*Nav Bar Styles*/
+  --color-nav-bg : linear-gradient(180deg, #19C964 0%, #4e342e 100%);
+  /*card wrapper bg*/
+  --color-card-wrapper : linear-gradient(90.2deg, rgba(24, 163, 94, 0.6) 0.01%, rgba(170, 183, 191, 0.2) 99.99%);
+}
+
+/* YELLOW THEME */
+[data-theme='yellow'] {
+  /* --- Background --- */
+  --bg-primary: url('/yellow-bg.png');
+  --color-overlay-gradient-bg: linear-gradient(
+    180deg,
+    rgba(255, 187, 51, 0.6) 0%,
+    rgba(58, 40, 4, 0.8) 100%
+  );
+
+  /* --- Brand / Accent Colors --- */
+  --color-primary: #f0a500;
+  --color-primary-hover: #cc8b00;
+  --color-primary-glow: rgba(240, 165, 0, 0.22);
+
+  /* --- Background Surfaces --- */
+  --color-bg: #0c0900;
+  --color-surface: #181200;
+  --color-surface-2: #221a00;
+
+  /* --- Borders --- */
+  --color-image-border: linear-gradient(206.64deg, #fff3da 0.77%, rgba(251, 191, 36, 0.6) 99.23%);
+
+  --color-input-border: linear-gradient(
+    90deg,
+    rgba(255, 243, 218, 0.2) 0%,
+    rgba(251, 191, 36, 0.2) 100%
+  );
+  --color-border-focus: linear-gradient(90deg, #fff3da 0%, #fbbf24 100%);
+
+  /* --- Input Fields --- */
+  --focus-box-shadow: 0px 0px 10px 0px rgba(255, 187, 51, 1);
+  --color-input-bg: linear-gradient(180deg, rgba(251, 191, 36, 0.5) 0%, rgba(78, 52, 46, 0.4) 100%);
+
+  /* --- Text Colors --- */
+  --color-text: #ecfdf5;
+  --color-text-muted: rgba(255, 251, 235, 0.5);
+  --color-text-link: #f0a500;
+
+  /* --- Light Button --- */
+  --color-light-button: linear-gradient(
+    352.43deg,
+    rgba(69, 42, 1, 0.4) 5.86%,
+    rgba(78, 52, 46, 0.8) 94.14%
+  );
+  --light-box-shadow: 0px 0px 10px 0px rgba(255, 187, 51, 0.8);
+  --light-button-border: linear-gradient(331.44deg, #fff3da 17.59%, #ffbb33 82.41%);
+
+  /* --- Dark Button --- */
+  --color-dark-button: linear-gradient(
+    89.96deg,
+    rgba(170, 183, 191, 0.4) 0.03%,
+    rgba(251, 191, 36, 0.8) 99.97%
+  );
+  --dark-button-border: rgba(255, 243, 218, 1);
+  --dark-box-shadow: 0px 0px 10px 0px rgba(255, 187, 51, 0.5);
+
+  /*Otp Colors*/
+  --otp-box-border: 1px solid rgb(255, 243, 6);
+
+  /*Icon colors*/
+  --color-user-icon: linear-gradient(
+    180deg,
+    rgba(170, 183, 191, 0.5) 0%,
+    rgba(255, 243, 6, 0.8) 100%
+  );
+  
+  /*Auth Images*/
+  --verify-email-image: url('/authimages/verify-email-yellow.svg');
+  --face-verify-image: url('/authimages/face-verify-yellow.svg');
+  --face-verify-success: url('/authimages/face-successful-yellow.svg');
+  --forgot-password-image: url('/authimages/forgot-password-yellow.svg');
+  --password-updated-image: url('/authimages/password-successful-yellow.svg');
+
+  /* --- Side/Content Overlay Gradient --- */
+  --color-overlay-gradient: linear-gradient(
+    105deg,
+    rgba(12, 9, 0, 0.97) 0%,
+    rgba(12, 9, 0, 0.82) 45%,
+    rgba(12, 9, 0, 0.55) 75%,
+    rgba(12, 9, 0, 0.35) 100%
+  );
+
+  /*Nav Bar Styles*/
+  --color-nav-bg : linear-gradient(180deg, #fbbf24 0%, #4e342e 100%);
+  /*card wrapper bg*/
+  --color-card-wrapper : linear-gradient(90.2deg, rgba(255, 243, 6, 0.4) 0.01%, rgba(170, 183, 191, 0.2) 99.99%);
+}
+
+/* BLUE THEME */
+[data-theme='blue'] {
+  /* --- Background --- */
+  --bg-primary: url('/blue-bg.png');
+  --color-overlay-gradient-bg: linear-gradient(180deg, #4d8eff 0%, rgba(0, 23, 74, 0.8) 100%);
+
+  /* --- Brand / Accent Colors --- */
+  --color-primary: #3b82f6;
+  --color-primary-hover: #2563eb;
+  --color-primary-glow: rgba(59, 130, 246, 0.22);
+
+  /* --- Background Surfaces --- */
+  --color-bg: #03081a;
+  --color-surface: #071226;
+  --color-surface-2: #0c1b35;
+
+  /* --- Borders --- */
+  --color-image-border: linear-gradient(206.64deg, #edf5ff 0.77%, #00b4fb 99.23%);
+
+  --color-input-border: linear-gradient(
+    90deg,
+    rgba(237, 245, 255, 0.2) 0%,
+    rgba(0, 180, 251, 0.2) 100%
+  );
+  --color-border-focus: linear-gradient(90deg, #edf5ff 0%, #00b4fb 100%);
+
+  /* --- Input Fields --- */
+  --focus-box-shadow: 0px 0px 10px 0px rgba(0, 180, 251, 1);
+  --color-input-bg: linear-gradient(180deg, rgba(77, 142, 255, 0.5) 0%, rgba(0, 23, 74, 0.4) 100%);
+
+  /* --- Text Colors --- */
+  --color-text: #ecfdf5;
+  --color-text-muted: rgba(239, 246, 255, 0.5);
+  --color-text-link: #3b82f6;
+
+  /* --- Side/Content Overlay Gradient --- */
+  --color-overlay-gradient: linear-gradient(
+    105deg,
+    rgba(3, 8, 26, 0.97) 0%,
+    rgba(3, 8, 26, 0.82) 45%,
+    rgba(3, 8, 26, 0.55) 75%,
+    rgba(3, 8, 26, 0.35) 100%
+  );
+
+  /* --- Light Button --- */
+  --color-light-button: linear-gradient(
+    352.43deg,
+    rgba(3, 15, 47, 0.4) 5.86%,
+    rgba(15, 60, 122, 0.8) 94.14%
+  );
+  --light-box-shadow: 0px 0px 10px 0px rgba(59, 130, 246, 0.8);
+  --light-button-border: linear-gradient(331.44deg, #edf5ff 17.59%, #3b82f6 82.41%);
+
+  /* --- Dark Button --- */
+  --color-dark-button: linear-gradient(
+    89.96deg,
+    rgba(170, 183, 191, 0.4) 0.03%,
+    rgba(77, 142, 255, 0.8) 99.97%
+  );
+  --dark-button-border: linear-gradient(90deg, #edf5ff 0%, #00b4fb 100%);
+  --dark-box-shadow: 0px 0px 10px 0px rgba(0, 180, 251, 0.5);
+
+  /*Otp Colors*/
+  --otp-box-border: 1px solid rgba(59, 130, 246, 1);
+
+  /*Icon colors*/
+  --color-user-icon: linear-gradient(
+    180deg,
+    rgba(170, 183, 191, 0.5) 0%,
+    rgba(59, 130, 246, 0.8) 100%
+  );
+
+  /*Auth Images*/
+  --verify-email-image: url('/authimages/verify-email-blue.svg');
+  --face-verify-image: url('/authimages/face-verify-blue.svg');
+  --face-verify-success: url('/authimages/face-successful-blue.svg');
+  --forgot-password-image: url('/authimages/forgot-password-blue.svg');
+  --password-updated-image: url('/authimages/password-successful-blue.svg');
+
+  /*Nav Bar styles*/
+  --color-nav-bg : linear-gradient(180deg, #3B82F6 0%, #4e342e 100%);
+  /*cardWrapper bg*/
+  --color-card-wrapper : linear-gradient(90.2deg, rgba(77, 142, 255, 0.5) 0.01%, rgba(170, 183, 191, 0.2) 99.99%);
+
+}
+
+/* RED THEME */
+[data-theme='red'] {
+  /* --- Background --- */
+  --bg-primary: url('/red-bg.png');
+  --color-overlay-gradient-bg: linear-gradient(180deg, #7a0f1a 0%, #2f030d 100%);
+
+  /* --- Brand / Accent Colors --- */
+  --color-primary: #ef4444;
+  --color-primary-hover: #dc2626;
+  --color-primary-glow: rgba(239, 68, 68, 0.22);
+
+  /* --- Background Surfaces --- */
+  --color-bg: #0a0303;
+  --color-surface: #160707;
+  --color-surface-2: #200c0c;
+
+  /* --- Borders --- */
+  --color-image-border: linear-gradient(206.64deg, #fecbac 0.77%, #cc2520 99.23%);
+
+  --color-input-border: linear-gradient(
+    90deg,
+    rgba(254, 203, 172, 0.2) 0%,
+    rgba(204, 37, 32, 0.2) 100%
+  );
+  --color-border-focus: linear-gradient(90deg, #fecbac 0%, #cc2520 100%);
+
+  /* --- Input Fields --- */
+  --focus-box-shadow: 0px 0px 10px 0px rgba(255, 238, 204, 0.5);
+  --color-input-bg: linear-gradient(180deg, rgba(232, 58, 78, 0.5) 0%, rgba(47, 3, 13, 0.4) 100%);
+
+  /* --- Text Colors --- */
+  --color-text: #fef2f2;
+  --color-text-muted: rgba(254, 242, 242, 0.5);
+  --color-text-link: #ef4444;
+
+  /* --- Side/Content Overlay Gradient --- */
+  --color-overlay-gradient: linear-gradient(
+    105deg,
+    rgba(10, 3, 3, 0.97) 0%,
+    rgba(10, 3, 3, 0.82) 45%,
+    rgba(10, 3, 3, 0.55) 75%,
+    rgba(10, 3, 3, 0.35) 100%
+  );
+  /* --- Light Button --- */
+  --color-light-button: linear-gradient(
+    352.43deg,
+    rgba(69, 42, 1, 0.4) 5.86%,
+    rgba(78, 52, 46, 0.8) 94.14%
+  );
+  --light-box-shadow: 0px 0px 10px 0px rgba(153, 27, 27, 0.8);
+  --light-button-border: linear-gradient(331.44deg, #fecbac 17.59%, #99171b 82.41%);
+
+  /* --- Dark Button --- */
+  --color-dark-button: linear-gradient(
+    89.96deg,
+    rgba(170, 183, 191, 0.4) 0.03%,
+    rgba(232, 58, 78, 0.8) 99.97%
+  );
+  --dark-button-border: linear-gradient(90deg, #fecbac 0%, #cc2520 100%);
+  --dark-box-shadow: 0px 0px 10px 0px rgba(234, 58, 78, 0.5);
+
+  /*Otp Colors*/
+  --otp-box-border: 1px solid rgba(153, 27, 27, 1);
+
+  /*Icon colors*/
+  --color-user-icon: linear-gradient(
+    180deg,
+    rgba(170, 183, 191, 0.5) 0%,
+    rgba(153, 27, 27, 0.8) 100%
+  );
+
+  /*Auth Images*/
+  --verify-email-image: url('/authimages/verify-email-red.svg');
+  --face-verify-image: url('/authimages/face-verify-red.svg');
+  --face-verify-success: url('/authimages/face-successful-red.svg');
+  --forgot-password-image: url('/authimages/forgot-password-red.svg');
+  --password-updated-image: url('/authimages/password-successful-red.svg');
+
+  /*Nav Bar styles*/
+  --color-nav-bg : linear-gradient(180deg, #EF4444 0%, #4e342e 100%);
+  /*card wrapper bg*/
+  --color-card-wrapper : linear-gradient(90.2deg, rgba(232, 58, 78, 0.5) 0.01%, rgba(170, 183, 191, 0.2) 99.99%);
+}

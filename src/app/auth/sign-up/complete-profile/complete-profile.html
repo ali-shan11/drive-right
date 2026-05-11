@@ -1,0 +1,410 @@
+<div class="complete-profile relative min-h-full flex flex-col justify-start px-5! pb-3.5! pt-18!">
+  <!--Logo-->
+  <div class="seal absolute top-1 right-5">
+    <img
+      class="leading-0"
+      ngSrc="/lasg-logo.png"
+      width="90"
+      height="90"
+      alt="Lagos State Government"
+      priority
+    />
+  </div>
+
+  <!--Content-->
+  <div class="flex flex-col items-center gap-6">
+    <!--Image-->
+   <div class="w-45 h-45 bg-(image:--face-verify-image) bg-contain bg-center bg-no-repeat"></div>
+
+    <!--Title / Subtitle-->
+    <div class="flex flex-col gap-2">
+      <h2 class="text-2xl font-semibold text-center text-(--color-text)">
+        Complete your KYC Profile
+      </h2>
+      <span class="text-xs font-normal text-center text-(--color-text)">
+        We need a few details to complete the verification of your identity
+      </span>
+    </div>
+
+    <!--Upload Profile Picture title-->
+    <div class="flex flex-col items-center gap-2">
+      <h2 class="text-base font-semibold text-center text-(--color-text)">
+        Upload Profile Picture
+      </h2>
+      <span class="text-xs font-normal text-center text-(--color-text)">
+        This ID links your details directly to the database
+      </span>
+    </div>
+
+    <!--Avatar Upload-->
+    <div class="relative w-28 h-28 cursor-pointer group" (click)="triggerInput()">
+      <div
+        class="w-28 h-28 rounded-full [background:var(--color-user-icon)] border-2 border-gray-300 overflow-hidden flex items-center justify-center transition-opacity group-hover:opacity-80"
+      >
+        @if (!previewUrl) {
+          <img ngSrc="/authimages/user-icon.svg" width="64" height="64" alt="user-icon" priority />
+        }
+        @if (previewUrl) {
+          <img [src]="previewUrl" class="w-full h-full object-cover" alt="Profile photo" />
+        }
+      </div>
+
+      <!--Upload badge-->
+      <div
+        class="absolute bottom-1 right-1 w-8 h-8 rounded-full bg-(--color-surface-2) border border-gray-300 flex items-center justify-center"
+      >
+        <img ngSrc="/authimages/upload-icon.svg" width="16" height="16" alt="upload-icon" priority />
+      </div>
+    </div>
+
+    <!--Hidden file input-->
+    <input
+      #avatarInput
+      type="file"
+      accept="image/*"
+      class="hidden"
+      (change)="onFileChange($event)"
+    />
+
+    <!--Form-->
+    <form class="w-full flex flex-col gap-4" [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+      <!-- ── Personal Information ── -->
+      <p class="text-xs font-semibold text-(--color-text) mt-2">Personal Information</p>
+
+      <!-- Full Name -->
+      <div class="flex flex-col gap-1.5">
+        <label class="text-xs font-medium text-(--color-text)" for="fullName">Full Name</label>
+        <div class="field__control gradient-border">
+          <input
+            class="field__input w-full"
+            id="fullName"
+            type="text"
+            formControlName="fullName"
+            placeholder="Full Name"
+            autocomplete="name"
+          />
+        </div>
+      </div>
+
+      <!-- Gender + Date of Birth -->
+      <div class="grid grid-cols-2 gap-3">
+        <div class="flex flex-col gap-1.5">
+          <label class="text-xs font-medium text-(--color-text)" for="gender">Gender</label>
+          <div class="field__control gradient-border">
+            <img
+              class="absolute right-3 z-10 pointer-events-none"
+              ngSrc="/dropdown.svg"
+              width="12"
+              height="8"
+              alt=""
+              priority
+            />
+            <select class="field__input field__select w-full" id="gender" formControlName="gender">
+              <option value="" disabled selected>Select</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="flex flex-col gap-1.5">
+          <label class="text-xs font-medium text-(--color-text)" for="dob">Date of Birth</label>
+          <div class="field__control gradient-border">
+            <input class="field__input w-full" id="dob" type="date" formControlName="dob" />
+          </div>
+        </div>
+      </div>
+
+      <!-- State of Origin + Nationality -->
+      <div class="grid grid-cols-2 gap-3">
+        <div class="flex flex-col gap-1.5">
+          <label class="text-xs font-medium text-(--color-text)" for="stateOfOrigin"
+            >State of Origin</label
+          >
+          <div class="field__control gradient-border">
+            <img
+              class="absolute right-3 z-10 pointer-events-none"
+              ngSrc="/dropdown.svg"
+              width="12"
+              height="8"
+              alt=""
+              priority
+            />
+            <select
+              class="field__input field__select w-full"
+              id="stateOfOrigin"
+              formControlName="stateOfOrigin"
+            >
+              <option value="" disabled selected>Select</option>
+              <option value="lagos">Lagos</option>
+              <option value="ogun">Ogun</option>
+              <option value="abuja">Abuja</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="flex flex-col gap-1.5">
+          <label class="text-xs font-medium text-(--color-text)" for="nationality"
+            >Nationality</label
+          >
+          <div class="field__control gradient-border">
+            <img
+              class="absolute right-3 z-10 pointer-events-none"
+              ngSrc="/dropdown.svg"
+              width="12"
+              height="8"
+              alt=""
+              priority
+            />
+            <select
+              class="field__input field__select w-full"
+              id="nationality"
+              formControlName="nationality"
+            >
+              <option value="" disabled selected>Select</option>
+              <option value="nigerian">Nigerian</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Marital Status -->
+      <div class="flex flex-col gap-1.5">
+        <label class="text-xs font-medium text-(--color-text)" for="maritalStatus"
+          >Marital Status</label
+        >
+        <div class="field__control gradient-border">
+          <img
+            class="absolute right-3 z-10 pointer-events-none"
+            ngSrc="/dropdown.svg"
+            width="12"
+            height="8"
+            alt=""
+            priority
+          />
+          <select
+            class="field__input field__select w-full"
+            id="maritalStatus"
+            formControlName="maritalStatus"
+          >
+            <option value="" disabled selected>Select</option>
+            <option value="single">Single</option>
+            <option value="married">Married</option>
+            <option value="divorced">Divorced</option>
+            <option value="widowed">Widowed</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- ── Contact Details ── -->
+      <p class="text-xs font-semibold text-(--color-text) mt-2">Contact Details</p>
+
+      <!-- Email -->
+      <div class="flex flex-col gap-1.5">
+        <label class="text-xs font-medium text-(--color-text)" for="email">Email Address</label>
+        <div class="field__control gradient-border">
+          <input
+            class="field__input w-full"
+            id="email"
+            type="email"
+            formControlName="email"
+            placeholder="example@gmail.com"
+            autocomplete="email"
+          />
+        </div>
+      </div>
+
+      <!-- Phone -->
+      <div class="flex flex-col gap-1.5">
+        <label class="text-xs font-medium text-(--color-text)" for="phone">Phone Number</label>
+        <div class="field__control gradient-border">
+          <input
+            class="field__input w-full"
+            id="phone"
+            type="tel"
+            formControlName="phone"
+            placeholder="+234 00 0000 0000"
+            autocomplete="tel"
+          />
+        </div>
+      </div>
+
+      <!-- Residential Address -->
+      <div class="flex flex-col gap-1.5">
+        <label class="text-xs font-medium text-(--color-text)" for="address"
+          >Residential Address</label
+        >
+        <div class="field__control gradient-border">
+          <input
+            class="field__input w-full"
+            id="address"
+            type="text"
+            formControlName="address"
+            placeholder="Street, City, State"
+            autocomplete="street-address"
+          />
+        </div>
+      </div>
+
+      <!-- ── Upload Documents ── -->
+      <p class="text-xs font-semibold text-(--color-text) mt-2">Upload Document</p>
+
+      <!-- National ID Card -->
+      <div class="flex flex-col gap-1.5">
+        <label class="text-xs font-medium text-(--color-text)">
+          National ID Card
+          <span class="font-normal opacity-70">(NIN, Passport, Voter's Card)</span>
+        </label>
+        <div
+          class="gradient-border gradient-border--upload cursor-pointer"
+          (click)="nationalIdInput.click()"
+        >
+          <div
+            class="flex flex-col items-center justify-center gap-3 py-5! rounded-xl bg-(--color-input-bg)!"
+          >
+            <input
+              #nationalIdInput
+              type="file"
+              accept=".pdf,.png,.jpg,.doc"
+              class="hidden"
+              (change)="onDocumentChange($event, 'nationalIdCard')"
+            />
+            <div
+              class="img flex justify-center items-center bg-(--color-surface) p-2! rounded-full border-2 border-[rgba(248, 249, 247, 1)]"
+            >
+              <img ngSrc="/authimages/upload-icon.svg" width="20" height="20" alt="" priority />
+            </div>
+            <span class="text-[11px] text-white/70 text-center">
+              Upload Document. Max 50MB per file. PDF, PNG, DOC.
+            </span>
+          </div>
+        </div>
+        @if (nationalIdFileName) {
+          <span class="text-[11px] text-(--color-text) opacity-80 pl-1">
+            {{ nationalIdFileName }}
+          </span>
+        }
+      </div>
+
+      <!-- Utility Bill -->
+      <div class="flex flex-col gap-1.5">
+        <label class="text-xs font-medium text-(--color-text)">Utility Bill</label>
+        <div
+          class="gradient-border gradient-border--upload cursor-pointer"
+          (click)="utilityBillInput.click()"
+        >
+          <div
+            class="flex flex-col items-center justify-center gap-3 py-5! rounded-xl bg-(--color-input-bg)!"
+          >
+            <input
+              #utilityBillInput
+              type="file"
+              accept=".pdf,.png,.jpg,.doc"
+              class="hidden"
+              (change)="onDocumentChange($event, 'utilityBill')"
+            />
+            <div
+              class="img flex justify-center items-center bg-(--color-surface) p-2! rounded-full border-2 border-[rgba(248, 249, 247, 1)]"
+            >
+              <img ngSrc="/authimages/upload-icon.svg" width="20" height="20" alt="" priority />
+            </div>
+            <span class="text-[11px] text-white/70 text-center">
+              Upload Document. Max 50MB per file. PDF, PNG, DOC.
+            </span>
+          </div>
+        </div>
+        @if (utilityBillFileName) {
+          <span class="text-[11px] text-(--color-text) opacity-80 pl-1">
+            {{ utilityBillFileName }}
+          </span>
+        }
+      </div>
+
+      <!-- ── Next of Kin / Emergency Contact ── -->
+      <p class="text-xs font-semibold text-(--color-text) mt-2">Next of Kin / Emergency Contact</p>
+
+      <!-- Kin Full Name -->
+      <div class="flex flex-col gap-1.5">
+        <label class="text-xs font-medium text-(--color-text)" for="kinFullName">Full Name</label>
+        <div class="field__control gradient-border">
+          <input
+            class="field__input w-full"
+            id="kinFullName"
+            type="text"
+            formControlName="kinFullName"
+            placeholder="Full Name"
+            autocomplete="off"
+          />
+        </div>
+      </div>
+
+      <!-- Kin Relationship + Phone -->
+      <div class="grid grid-cols-2 gap-3">
+        <div class="flex flex-col gap-1.5">
+          <label class="text-xs font-medium text-(--color-text)" for="kinRelationship"
+            >Relationship</label
+          >
+          <div class="field__control gradient-border">
+            <img
+              class="absolute right-3 z-10 pointer-events-none"
+              ngSrc="/dropdown.svg"
+              width="12"
+              height="8"
+              alt=""
+              priority
+            />
+            <select
+              class="field__input field__select w-full"
+              id="kinRelationship"
+              formControlName="kinRelationship"
+            >
+              <option value="" disabled selected>Select</option>
+              <option value="parent">Parent</option>
+              <option value="sibling">Sibling</option>
+              <option value="spouse">Spouse</option>
+              <option value="friend">Friend</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="flex flex-col gap-1.5">
+          <label class="text-xs font-medium text-(--color-text)" for="kinPhone">Phone Number</label>
+          <div class="field__control gradient-border">
+            <input
+              class="field__input w-full"
+              id="kinPhone"
+              type="tel"
+              formControlName="kinPhone"
+              placeholder="+234 00 0000 0000"
+              autocomplete="off"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- Kin Address -->
+      <div class="flex flex-col gap-1.5">
+        <label class="text-xs font-medium text-(--color-text)" for="kinAddress"
+          >Residential Address</label
+        >
+        <div class="field__control gradient-border">
+          <input
+            class="field__input w-full"
+            id="kinAddress"
+            type="text"
+            formControlName="kinAddress"
+            placeholder="Street, City, State"
+            autocomplete="off"
+          />
+        </div>
+      </div>
+
+      <!-- Submit Button -->
+      <div (click)="next.emit()" class="gradient-border gradient-border--light w-full mt-2">
+        <button class="btn btn__light" type="submit">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,180 @@
+.gradient-border {
+  position: relative;
+  border-radius: 12px;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    padding: 2px;
+    // Falls back to --color-input-border when --gradient-border-color is not set
+    background: var(--gradient-border-color, var(--color-input-border));
+    border-radius: inherit;
+
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: destination-out;
+    mask-composite: exclude;
+
+    pointer-events: none;
+  }
+
+  &:focus-within::before {
+    background: var(--color-border-focus);
+  }
+}
+
+//Button Style
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  height: 32px;
+  border-radius: 12px;
+  border: none;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  letter-spacing: 0.01em;
+  transition:
+    opacity 0.18s ease,
+    transform 0.1s ease;
+
+  &:active {
+    transform: translateY(1px);
+  }
+  &__light {
+    background: var(--color-light-button);
+    box-shadow: var(--light-box-shadow);
+    color: var(--color-text);
+  }
+
+  &__dark {
+    background: var(--color-dark-button);
+    box-shadow: var(--dark-box-shadow);
+    color: var(--color-text);
+  }
+}
+// Global — themed input fields
+// ─────────────────────────────────────────────────────────────────────────
+// Field
+// ─────────────────────────────────────────────────────────────────────────
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  &__label {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--color-text);
+  }
+
+  // Wrapper that holds input + right-side addon
+  &__control {
+    position: relative;
+    display: flex;
+    align-items: center;
+    isolation: isolate;
+  }
+
+  &__input {
+    width: 100%;
+    height: 32px;
+    padding: 0 14px;
+    border-radius: 12px;
+    border: none;
+    background: var(--color-input-bg);
+    font-size: 13px;
+    font-family: inherit;
+    color: #ffffff;
+    outline: none;
+    transition:
+      border-color 0.18s ease,
+      background 0.18s ease,
+      box-shadow 0.18s ease;
+    position: relative;
+    z-index: 1;
+
+    &::placeholder {
+      color: #ffffff;
+      opacity: 0.8;
+    }
+
+    // When inside .field__control the right addon needs room
+    .field__control & {
+      padding-right: 44px;
+    }
+
+    &:focus {
+      box-shadow: var(--focus-box-shadow);
+    }
+
+    &--err {
+      border-color: #ef4444 !important;
+      background: #2a1212;
+      box-shadow: none;
+    }
+  }
+
+  &__select {
+    appearance: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+    background: var(--color-input-bg);
+
+    option {
+      background: var(--color-primary);
+      color: var(--color-text);
+      font-size: 13px;
+    }
+
+    option[value=''] {
+      color: rgba(255, 255, 255, 0.5);
+    }
+  }
+
+  // Right-side icon or button inside .field__control
+  &__addon {
+    position: absolute;
+    right: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    z-index: 2;
+
+    // Non-interactive status icon
+    &--ok,
+    &--err {
+      pointer-events: none;
+    }
+
+    // Interactive toggle button
+    &--btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 3px;
+      border-radius: 4px;
+      color: rgba(241, 245, 249, 0.45);
+      transition: color 0.15s;
+
+      &:hover {
+        color: rgba(241, 245, 249, 0.85);
+      }
+    }
+  }
+}
+// Sets the var that ::before reads — overrides the --color-input-border fallback
+.gradient-border--light {
+  --gradient-border-color: var(--light-button-border);
+}
+
+.gradient-border--dark {
+  --gradient-border-color: var(--dark-button-border);
+}

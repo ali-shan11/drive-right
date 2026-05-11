@@ -1,0 +1,35 @@
+<div class="verify-face relative min-h-full flex flex-col justify-center pt-12! pb-3.5! px-5">
+  <!--Logo-->
+  <div class="seal absolute top-1 right-5">
+    <img
+      class="leading-0"
+      ngSrc="/lasg-logo.png"
+      width="90"
+      height="90"
+      alt="Lagos State Government"
+      priority
+    />
+  </div>
+
+  <!--Verify face content-->
+  <div class="verify content flex flex-col justify-between items-center gap-4">
+    <!--verify image-->
+    <div class="w-45 h-45 bg-(image:--face-verify-image) bg-contain bg-center bg-no-repeat"></div>
+
+    <!--verify title-subtitle-->
+    <div class="verify-title-subtitle flex flex-col gap-2">
+      <h2 class="text-2xl font-semibold text-center text-(--color-text)">Face ID Verification</h2>
+      <span class="text-xs font-normal text-center text-(--color-text)"
+        >Please ensure your camera is in the front of your face</span
+      >
+    </div>
+
+    <!--Verification image-->
+    <div class="image-face image-face--scan w-30! h-30!"></div>
+
+    <!--Button-->
+    <div class="gradient-border gradient-border--light w-full mt-4!">
+      <button (click)="next.emit()" class="btn btn__light">Start Verification</button>
+    </div>
+  </div>
+</div>

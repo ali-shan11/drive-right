@@ -1,0 +1,19 @@
+<!-- otp-input.component.html -->
+
+<div class="otp-wrapper">
+
+  <!-- @if guards against the null state before ngOnChanges fires -->
+  @if (config) {
+    <ng-otp-input
+      [config]="config"
+      (onInputChange)="handleChange($event)"
+      [class.otp-error]="hasError"
+      [class.otp-disabled]="disabled"
+    ></ng-otp-input>
+  }
+
+  @if (hasError) {
+    <p class="otp-error-msg">Incorrect code. Please try again.</p>
+  }
+
+</div>

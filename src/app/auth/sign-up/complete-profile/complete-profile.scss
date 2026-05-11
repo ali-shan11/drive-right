@@ -1,0 +1,15 @@
+// Upload box — override pill radius to rounded rectangle + dashed border
+.gradient-border {
+  &--upload {
+    border-radius: 12px !important;
+
+    &::before {
+      border-radius: 12px;
+      padding: 1.5px;
+      background: var(--color-input-bg) !important;
+      border : 2px dashed var(--color-primary) !important;
+      -webkit-mask: none;
+      mask: none;
+    }
+  }
+}
