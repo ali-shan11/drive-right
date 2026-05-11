@@ -24,8 +24,8 @@ export const routes: Routes = [
   },
 
   {
-    path: 'dashboard',
+    path: '',
     component: AppLayout,
-    children: [{ path: 'user', component: Dashboard }],
+    children: [{ path: 'dashboard', component: Dashboard }],
   },
 ];
