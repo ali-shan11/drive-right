@@ -1,8 +1,8 @@
 import { Component, signal } from '@angular/core';
 import { BannerCard } from '../interfaces/banner-card';
 import { CommonModule } from '@angular/common';
-import { CourseModule } from '../interfaces/course-module';
 import { RoundProgressComponent } from 'angular-svg-round-progressbar';
+import { DriveAid } from '../interfaces/drive-aid';
 
 @Component({
   selector: 'app-dashboard',
@@ -54,7 +54,7 @@ export class Dashboard {
   total = signal<number>(100);
   progress = signal<number>(35);
 
-  modules: CourseModule[] = [
+  driveAids: DriveAid[] = [
     {
       id: 1,
       title: 'Round Abouts',
@@ -62,8 +62,7 @@ export class Dashboard {
         "Explore the dynamics of Lagos' most notable roundabouts. Always yield to the left.",
       buttonLabel: 'Explore Lagos Roundabouts',
       progress: 12,
-      svgIcon: '',
-      currentProgress : 27
+      imageUrl: 'images/dashboard/intersection-module.svg',
 
     },
     {
@@ -73,8 +72,7 @@ export class Dashboard {
         'Practice reading LASTMA hand signals and navigating major light-controlled junctions.',
       buttonLabel: 'Explore Lagos Intersections',
       progress: 0,
-      svgIcon: '',
-      currentProgress : 68
+      imageUrl: 'images/dashboard/intersection-module.svg',
     },
   ];
 }

@@ -1,4 +1,11 @@
-<div class="course-modules w-full flex flex-col px-6! py-10!">
+<div class="driving-aid w-full flex flex-col px-6! py-10!">
+  <!-- Button -->
+  <button
+    class="btn btn__light w-20! transition-colors duration-150 cursor-pointer shadow-none! rounded-md! mb-2!"
+  >
+    back
+  </button>
+
   <!--Heading-->
   <div class="title-subtitle flex flex-col justify-between items-start gap-1">
     <div class="title flex gap-2!">
@@ -11,36 +18,43 @@
   </div>
 
   <div class="modules w-full flex flex-col justify-between items-center gap-3! py-6!">
-    <!--Courser Modules-->
+    <!--All driving aids-->
     <div
-      *ngFor="let module of modules"
+      *ngFor="let d of drivingAid"
       class="relative w-full flex flex-row justify-between items-center gap-10! p-5! [background:var(--color-card-wrapper)] gradient-border gradient-border--light rounded-xl! transition-transform duration-200 hover:-translate-y-0.5"
     >
       <!--Icon & Content-->
-      <div class="w-full flex items-start gap-6">
+      <div class="w-full flex items-start gap-6!">
         <!-- Icon box -->
         <div
-          class="shrink-0 flex items-center justify-center w-14 h-14 rounded-xl [background:var(--color-nav-bg)]"
-          [innerHTML]="module.svgIcon"
-        ></div>
+          class="shrink-0 flex items-center justify-center w-14 h-14 rounded-xl [background:var(--color-nav-bg)] p-1.5!"
+        >
+          <img
+            [src]="d.imageUrl"
+            [alt]="d.title"
+            class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+            loading="lazy"
+            onerror="this.src = 'images/roundabouts/fallback.jpg'"
+          />
+        </div>
 
         <!-- Title & Subtitle -->
         <div class="flex flex-col justify-between items-start gap-1!">
           <h3 class="font-semibold text-start text-lg text-(--color-text)">
-            {{ module.title }}
+            {{ d.title }}
           </h3>
           <p class="font-normal text-start text-xs text-(--color-text) mt-1!">
-            {{ module.subtitle }}
+            {{ d.subtitle }}
           </p>
         </div>
       </div>
 
       <!--Progress ring and button-->
       <div class="progres-button w-full flex justify-between items-center gap-16!">
-        <!-- Progress --> 
+        <!-- Progress -->
         <div class="shrink-0 self-start relative w-18 h-18">
           <round-progress
-            [current]="module.currentProgress"
+            [current]="d.progress"
             [max]="100"
             [color]="'var(--color-primary)'"
             [background]="'rgba(255,255,255,0.15)'"
@@ -56,14 +70,14 @@
           <span
             class="absolute inset-0 flex items-center justify-center text-[10px] font-medium text-white leading-none"
           >
-            {{ module.currentProgress }}%
+            {{ d.progress }}%
           </span>
         </div>
         <!-- Button -->
         <button
           class="btn btn__light transition-colors duration-150 cursor-pointer shadow-none! rounded-md!"
         >
-          {{ module.buttonLabel }}
+          {{ d.buttonLabel }}
         </button>
       </div>
     </div>

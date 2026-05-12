@@ -1,0 +1,65 @@
+<div class="aid-list w-full flex flex-col px-6! py-10!">
+  <!-- Button -->
+  <button
+    class="btn btn__light w-20! transition-colors duration-150 cursor-pointer shadow-none! rounded-md! mb-2!"
+  >
+    back
+  </button>
+
+  <!--Heading-->
+  <div class="title-subtitle flex flex-col justify-between items-start gap-1">
+    <div class="title flex gap-2!">
+      <h2 class="font-semibold text-start text-2xl text-(--color-text)">Roundabouts</h2>
+    </div>
+    <span class="font-normal text-start text-base text-(--color-text)"
+      >Explore the dynamics of Lagos most notable roundabouts</span
+    >
+  </div>
+
+  <!-- Card grid -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4! pt-6!">
+    <div
+      *ngFor="let a of aidList"
+      class="relative flex flex-col rounded-xl! overflow-hidden [background:var(--color-card-wrapper)] gradient-border gradient-border--light transition-transform duration-200 hover:-translate-y-0.5 cursor-pointer p-2!"
+    >
+      <!-- Image -->
+      <div class="relative h-40 overflow-hidden">
+        <img
+          [src]="a.imageUrl"
+          [alt]="a.title"
+          class="w-full h-full object-cover transition-transform duration-500 hover:scale-105 rounded-lg"
+          loading="lazy"
+          onerror="this.src = 'images/roundabouts/fallback.jpg'"
+        />
+      </div>
+
+      <!-- Body -->
+      <div class="flex flex-col flex-1 p-4! gap-1!">
+        <!-- Title -->
+        <h3 class="font-semibold text-base text-start text-(--color-text) leading-snug mt-1!">
+          {{ a.title }}
+        </h3>
+
+        <!-- subtitle -->
+        <p class="text-xs text-start text-(--color-text) leading-relaxed mt-1! flex-1">
+          {{ a.subtitle }}
+          <span class="opacity-90">Key skill: {{ a.keySkill }}.</span>
+        </p>
+
+        <button
+          class="btn btn__light mt-3! w-24! self-start! transition-colors duration-150 cursor-pointer shadow-none! rounded-md!"
+        >
+          {{a.buttonLabel}}
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Empty state -->
+  <div
+    *ngIf="aidList.length === 0"
+    class="text-center opacity-40 text-(--color-text) text-sm mt-16!"
+  >
+    No Driving Aids match this filter.
+  </div>
+</div>

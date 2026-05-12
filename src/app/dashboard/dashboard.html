@@ -76,10 +76,8 @@
     <div
       class="course-progress-wrapper w-full flex flex-row justify-between items-stretch gap-4! py-4!"
     >
-
-      <!--Left Column — Explore & Modules-->
-      <div class="explore-modules w-1/2 flex flex-col justify-between items-center gap-4!">
-
+      <!--Left Column — Explore & driving aids-->
+      <div class="explore-aids w-1/2 flex flex-col justify-between items-center gap-4!">
         <!--Explore -->
         <div
           class="explore w-full flex flex-row justify-between items-center px-4! py-2! [background:var(--color-nav-bg)] rounded-full"
@@ -101,30 +99,37 @@
           class="modules flex-1 w-full flex flex-col justify-between items-center gap-3! p-3! [background:var(--color-card-wrapper)] gradient-border gradient-border--light rounded-lg!"
         >
           <div
-            *ngFor="let module of modules"
+            *ngFor="let d of driveAids"
             class="relative flex flex-col gap-4 p-5! [background:var(--color-card-wrapper)] gradient-border gradient-border--light rounded-xl! transition-transform duration-200 hover:-translate-y-0.5"
           >
             <div class="flex items-start gap-4">
               <!-- Icon box -->
               <div
-                class="shrink-0 flex items-center justify-center w-14 h-14 rounded-xl [background:var(--color-nav-bg)]"
-                [innerHTML]="module.svgIcon"
-              ></div>
+                class="shrink-0 flex items-center justify-center w-14 h-14 rounded-xl [background:var(--color-nav-bg)] p-1.5!"
+              >
+                <img
+                  [src]="d.imageUrl"
+                  [alt]="d.title"
+                  class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                  loading="lazy"
+                  onerror="this.src = 'images/roundabouts/fallback.jpg'"
+                />
+              </div>
 
               <!-- Title & Subtitle -->
               <div class="flex-1 min-w-0">
                 <h3 class="font-semibold text-start text-lg text-(--color-text)">
-                  {{ module.title }}
+                  {{ d.title }}
                 </h3>
                 <p class="font-normal text-start text-xs text-(--color-text) mt-1!">
-                  {{ module.subtitle }}
+                  {{ d.subtitle }}
                 </p>
               </div>
 
               <!-- Progress -->
               <div class="shrink-0 self-start relative w-13 h-13">
                 <round-progress
-                  [current]="module.currentProgress"
+                  [current]="d.progress"
                   [max]="100"
                   [color]="'var(--color-primary)'"
                   [background]="'rgba(255,255,255,0.15)'"
@@ -140,7 +145,7 @@
                 <span
                   class="absolute inset-0 flex items-center justify-center text-[10px] font-medium text-white leading-none"
                 >
-                  {{ module.currentProgress }}%
+                  {{ d.progress }}%
                 </span>
               </div>
             </div>
@@ -149,7 +154,7 @@
             <button
               class="w-full btn btn__light transition-colors duration-150 cursor-pointer shadow-none! rounded-md!"
             >
-              {{ module.buttonLabel }}
+              {{ d.buttonLabel }}
             </button>
           </div>
         </div>
@@ -157,7 +162,6 @@
 
       <!--Right Column — Performance & Assessment-->
       <div class="performance-assessment w-1/2 flex flex-col justify-between items-center gap-4!">
-
         <!--Performance -->
         <div
           class="performance w-full flex flex-row justify-between items-center px-4! py-2! [background:var(--color-nav-bg)] rounded-full"
@@ -188,12 +192,7 @@
             >
           </div>
         </div>
-
       </div>
     </div>
-
-
   </div>
-
-
 </div>

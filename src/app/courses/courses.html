@@ -1,0 +1,131 @@
+<div class="w-full flex flex-col px-6! py-10!">
+  <!-- Heading -->
+  <div class="flex flex-col justify-between items-start gap-1">
+    <h2 class="font-semibold text-start text-2xl text-(--color-text)">Courses</h2>
+    <span class="font-normal text-start text-base text-(--color-text)">
+      Here’s a structured curriculum of courses tailored to guide you into attaining your license.
+    </span>
+  </div>
+
+  <!--Tab-->
+  <div class="w-full flex flex-col py-2!">
+    <div class="flex items-center gap-1!">
+      <button
+        *ngFor="let tab of tabs"
+        (click)="activeTab = tab.id"
+        class="flex items-center gap-2! px-4! py-3! text-sm font-medium text-white border-b-2 cursor-pointer whitespace-nowrap transition-all duration-200"
+        [ngStyle]="
+          activeTab === tab.id
+            ? { color: 'var(--color-primary)', borderColor: 'var(--color-primary)' }
+            : { color: 'var(--color-text)', borderColor: 'transparent', opacity: '0.45' }
+        "
+      >
+        <img class="" [src]="tab.imageUrl" [alt]="tab.label" />
+        {{ tab.label }}
+      </button>
+    </div>
+
+    <div class="w-full h-px bg-white/20"></div>
+  </div>
+
+  <!--Course Cards-->
+  <div class="flex flex-row gap-3 overflow-x-auto py-3!">
+    <div
+      *ngFor="let card of cards"
+      class="relative rounded-xl isolate min-w-52 w-55 min-h-42.5 h-44 overflow-hidden shrink-0 flex flex-col justify-between gradient-border gradient-border--light"
+      [ngStyle]="{ background: card.bgGradient }"
+    >
+      <img
+        [src]="card.cardImage"
+        alt=""
+        class="absolute inset-0 w-full h-full object-cover pointer-events-none scale-[1.01]"
+      />
+      <div class="relative z-10 flex flex-col justify-between h-full p-3!">
+        <div class="title-subtitle flex flex-col justify-between gap-1">
+          <h3 class="font-semibold text-base text-(--color-text) line-clamp-3 w-3/4">
+            {{ card.title }}
+          </h3>
+          <span class="font-semibold text-base text-(--color-text) line-clamp-3 w-3/4">
+            {{ card.subtitle }}
+          </span>
+        </div>
+
+        <button
+          class="self-start px-3! py-1.5! rounded-lg bg-black/15 text-(--color-text) text-[8px] hover:bg-black/30 transition-colors duration-300 border-0 cursor-pointer"
+        >
+          {{ card.ctaText }}
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!--Course Catalogue-->
+  <div class="heading">
+    <h2 class="font-semibold text-start text-2xl text-(--color-text)">Course Catalogue</h2>
+  </div>
+  <!-- Difficulty filter chips -->
+  <div class="flex gap-2! flex-wrap py-2!">
+    <button
+      *ngFor="let d of difficulties"
+      (click)="setFilter(d)"
+      class="px-4! py-1.5! rounded-lg text-xs font-semibold uppercase tracking-widest border transition-all duration-200 cursor-pointer"
+      [ngStyle]="
+        activeFilter === d
+          ? { background: 'var(--color-primary)', color: '#fff', borderColor: 'transparent' }
+          : {
+              background: 'transparent',
+              color: 'var(--color-text)',
+              borderColor: 'rgba(255,255,255,0.15)',
+            }
+      "
+    >
+      {{ d }}
+    </button>
+  </div>
+
+  <!-- Course Cards grid -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4! pt-6!">
+    <div
+      *ngFor="let c of filteredCourses; trackBy: trackById"
+      class="relative flex flex-col rounded-xl! overflow-hidden [background:var(--color-card-wrapper)] gradient-border gradient-border--light transition-transform duration-200 hover:-translate-y-0.5 cursor-pointer p-2!"
+    >
+      <!-- Image -->
+      <div class="relative h-40 overflow-hidden">
+        <img
+          [src]="c.imageUrl"
+          [alt]="c.title"
+          class="w-full h-full object-cover transition-transform duration-500 hover:scale-105 rounded-lg"
+          loading="lazy"
+          onerror="this.src = ''"
+        />
+      </div>
+
+      <!-- Body -->
+      <div class="flex flex-col flex-1 p-4! gap-1!">
+        <!-- Title -->
+        <h3 class="font-semibold text-base text-start text-(--color-text) leading-snug mt-1!">
+          {{ c.title }}
+        </h3>
+
+        <!-- subtitle -->
+        <p class="text-xs text-start text-(--color-text) opacity-70 leading-relaxed mt-1! flex-1">
+          {{ c.subtitle }}
+        </p>
+
+        <button
+          class="btn btn__light w-24! mt-3! self-start transition-colors duration-150 cursor-pointer shadow-none! rounded-md!"
+        >
+          Read Now
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Empty state -->
+  <div
+    *ngIf="filteredCourses.length === 0"
+    class="text-center opacity-40 text-(--color-text) text-sm mt-16!"
+  >
+    No courses match this filter.
+  </div>
+</div>

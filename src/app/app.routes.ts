@@ -1,8 +1,10 @@
 import { Routes } from '@angular/router';
-import { Header } from './shared/components/header/header';
 import { AppLayout } from './app-layout/app-layout';
 import { Dashboard } from './dashboard/dashboard';
-import { CourseModules } from './dashboard/course-modules/course-modules';
+import { DrivingAid } from './dashboard/driving-aid/driving-aid';
+import { AidList } from './dashboard/aid-list/aid-list';
+import { Courses } from './courses/courses';
+import { CourseDetail } from './courses/course-detail/course-detail';
 
 export const routes: Routes = [
   {
@@ -29,7 +31,10 @@ export const routes: Routes = [
     component: AppLayout,
     children: [
       { path: 'dashboard', component: Dashboard },
-      { path: 'modules', component: CourseModules },
+      { path: 'driving-aids', component: DrivingAid },
+      { path: 'aid-list', component: AidList },
+      { path: 'courses', component: Courses },
+      { path: 'course-detail', component: CourseDetail },
     ],
   },
 ];
