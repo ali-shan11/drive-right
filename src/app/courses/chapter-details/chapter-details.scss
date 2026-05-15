@@ -1,0 +1,11 @@
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  font-size: 14px;
+  text-align: start;
+  padding: 0px 12px 0px;
+}
+.active{
+    background: conic-gradient(from 195.7deg at 50% 50%, #0A1833 0deg, rgba(78, 52, 46, 0) 95.01deg, rgba(251, 191, 36, 0.6) 185.59deg, rgba(255, 243, 6, 0.8) 274.88deg, #0A1833 360deg);
+}

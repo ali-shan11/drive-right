@@ -1,0 +1,23 @@
+.btn {
+  &__next {
+    background: conic-gradient(
+      from 195.7deg at 50% 50%,
+      #7a0f1a 0deg,
+      rgba(78, 52, 46, 0) 95.01deg,
+      rgba(251, 191, 36, 0.6) 185.59deg,
+      rgba(255, 243, 6, 0.8) 274.88deg,
+      #7a0f1a 360deg
+    );
+  }
+}
+.incorrect {
+  &::before {
+    background: linear-gradient(
+      193.61deg,
+      rgba(254, 203, 172, 0.8) 9.73%,
+      rgba(204, 37, 32, 0.8) 90.27%
+    );
+  }
+  background: linear-gradient(180deg, rgba(122, 15, 26, 0.5) 0%, rgba(47, 3, 13, 0.4) 100%);
+  box-shadow: 0px 0px 20px 0px rgba(204, 37, 32, 0.5);
+}

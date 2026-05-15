@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//home/alishan/Downloads/**)",
+      "Bash(npm run *)",
+      "WebFetch(domain:www.figma.com)",
+      "WebFetch(domain:api.figma.com)",
+      "Bash(curl -s \"https://api.figma.com/v1/files/G4LLUF7vuUdyye32yvLtrG/nodes?ids=2:19\")",
+      "Bash(curl -s \"https://api.figma.com/v1/files/G4LLUF7vuUdyye32yvLtrG\")",
+      "Bash(curl -sL -A 'Mozilla/5.0 \\(X11; Linux x86_64\\) AppleWebKit/537.36 Chrome/120.0.0.0 Safari/537.36' 'https://www.figma.com/design/G4LLUF7vuUdyye32yvLtrG/Untitled?node-id=2-19' -H 'Accept: text/html,application/xhtml+xml')",
+      "Bash(curl -sL 'https://www.figma.com/file/G4LLUF7vuUdyye32yvLtrG/thumbnail?node-id=2-19&in-better-link-exp=true' -o /home/alishan/Downloads/figma-thumbnail.png)",
+      "Bash(identify /home/alishan/Downloads/figma-thumbnail.png)",
+      "Bash(curl -sL \"https://www.figma.com/api/oembed?url=https://www.figma.com/design/G4LLUF7vuUdyye32yvLtrG/Untitled?node-id=2-19\")",
+      "Bash(python3 -m json.tool)",
+      "Bash(curl -sL 'https://api-cdn.figma.com/resize/thumbnails/d6189ab0-a320-4197-adb7-b0cd032b006b?expiration=1778457600&signature=28f6e940d1b176619ec52a9323e1c3a18e2e081023985c3a15c63de57dbb5346&height=450&bucket=figma-alpha' -o /home/alishan/Downloads/figma-design.png)",
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); styles=d['projects'][list\\(d['projects'].keys\\(\\)\\)[0]]['architect']['build']['options']; print\\(json.dumps\\(styles, indent=2\\)\\)\")"
+    ]
+  }
+}

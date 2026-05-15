@@ -1,0 +1,98 @@
+<div class="interactive-session flex flex-col gap-2">
+  <!-- Question -->
+  <div class="flex flex-col items-start justify-between gap-1">
+    <span class="text-start textlg text-(--color-text) font-normal">
+      Question {{ currentIndex + 1 }}/{{ questions.length }}
+    </span>
+    <span class="text-start textlg text-(--color-text) font-semibold">
+      {{ current.question }}
+    </span>
+  </div>
+
+  <!--Image-->
+  <div
+    class="image max-h-120 h-full w-full gradient-border gradient-border--light aspect-video rounded-md! p-2"
+  >
+    <img class="w-full h-full object-contain rounded-md" [src]="current.image" alt="image" />
+  </div>
+
+  <!-- Options -->
+  <div class="options grid grid-cols-2 gap-2">
+    <!-- success message on correct -->
+    @if (answered && selectedIndex === current.correctIndex) {
+      <div
+        class="info col-span-2 bg-(--color-card-wrapper) gradient-border gradient-border--light p-2 flex flex-col gap-1"
+      >
+        <div class="info-heading flex items-center gap-2">
+          <img src="images/icons/correct.svg" alt="info" />
+
+          <span class="text-start text-base text-[rgba(34,247,60,1)] font-normal"> Correct! </span>
+        </div>
+
+        <p class="text-start text-base text-(--color-text) font-normal">
+          A sharp bend to the left warns drivers to reduce speed.
+        </p>
+      </div>
+    }
+
+    <!-- Error Message on wrong -->
+    @if (answered && selectedIndex !== current.correctIndex) {
+      <div
+        class="incorrect col-span-2 bg-(--color-card-wrapper) gradient-border p-2 flex flex-col gap-1"
+      >
+        <div class="info-heading flex items-center gap-2">
+          <img src="images/icons/incorrect.svg" alt="info" />
+
+          <span class="text-start text-base text-[rgba(204,37,32,1)] font-normal">
+            Incorrect!
+          </span>
+        </div>
+
+        <p class="text-start text-base text-(--color-text) font-normal">
+          The correct answer is B. This sign indicates a sharp bend to the left.
+        </p>
+      </div>
+    }
+    @for (option of current.options; track option; let i = $index) {
+      <div class="options flex flex-col justify-between gap-1">
+        <label class="field__label">Option {{ getLabel($index) }}</label>
+        <div
+          class="gradient-border cursor-pointer"
+          [ngClass]="{
+            'gradient-border--light': answered && selectedIndex === i && i === current.correctIndex,
+            incorrect: answered && selectedIndex === i && i !== current.correctIndex,
+          }"
+        >
+          <div
+            (click)="select($index)"
+            class="field__input flex items-center"
+            [ngClass]="{
+              incorrect: answered && selectedIndex === i && i !== current.correctIndex,
+            }"
+          >
+            {{ option }}
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+
+  <!-- Buttons -->
+  <div class="w-ful flex items-center justify-end gap-3 px-2 py-4">
+    <button
+      (click)="prev()"
+      [disabled]="isFirst"
+      class="w-34! btn btn__glass disabled:opacity-30 disabled:cursor-not-allowed"
+    >
+      Previous Exercise
+    </button>
+
+    <button
+      (click)="next()"
+      [disabled]="isLast"
+      class="w-34! btn btn__next disabled:cursor-not-allowed"
+    >
+      Next Exercise
+    </button>
+  </div>
+</div>
