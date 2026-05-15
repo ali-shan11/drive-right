@@ -1,0 +1,330 @@
+<p-dialog
+  [(visible)]="visible"
+  [modal]="true"
+  [closable]="true"
+  [draggable]="false"
+  [resizable]="false"
+  styleClass="dialog-box"
+>
+  <!--Modal Styling-->
+  <div class="relative custom-modal gradient-border gradient-border--light">
+    <!-- HEADER -->
+    <div class="flex flex-col items-center gap-1! mb-8!">
+      <!--Image-->
+      <div
+        [ngStyle]="{
+          width: '8rem',
+          height: '8rem',
+          'background-image': stepConfig[currentStep()].image,
+          'background-size': 'contain',
+          'background-repeat': 'no-repeat',
+          'background-position': 'center',
+        }"
+      ></div>
+
+      <h2 class="font-semibold text-center text-2xl text-(--color-text)">
+        {{ stepConfig[currentStep()].title }}
+      </h2>
+      @if (currentStep() === 1) {
+        <span class="font-normal text-center text-sm text-(--color-text)"
+          >Choose any of the payment method below to complete your order.</span
+        >
+      }
+
+      @if (currentStep() === 4) {
+        <span class="font-normal text-center text-sm text-(--color-text)"
+          >Your transaction was completed successfully. You now have full lifetime access to Lagos
+          Traffic Laws & Highway Code.</span
+        >
+      }
+      <button
+        type="button"
+        (click)="closeModal()"
+        class="absolute top-6 right-6 w-8 h-8 rounded-full flex items-center justify-center bg-(--color-text)/80 border-none cursor-pointer hover:-translate-y-0.5 transition-all duration-300"
+      >
+        <img class="" src="images/icons/cross.svg" alt="cross" />
+      </button>
+    </div>
+
+    <!-- BODY -->
+    <div class="overflow-y-auto flex-1 px-4!">
+      <ng-container>
+        @if (currentStep() === 0) {
+          <ng-template [ngTemplateOutlet]="stepOne"></ng-template>
+        }
+
+        @if (currentStep() === 1) {
+          <ng-template [ngTemplateOutlet]="stepTwo"></ng-template>
+        }
+
+        @if (currentStep() === 2) {
+          <ng-template [ngTemplateOutlet]="stepThree"></ng-template>
+        }
+        @if (currentStep() === 3) {
+          <ng-template [ngTemplateOutlet]="stepFour"></ng-template>
+        }
+        @if (currentStep() === 4) {
+          <ng-template [ngTemplateOutlet]="stepOne"></ng-template>
+        }
+      </ng-container>
+    </div>
+
+    @if (currentStep() === 4) {
+        <!-- FOOTER -->
+        <div class="flex flex-col justify-between gap-3! mt-10!">
+          <!--Buttons-->
+          <button class="h-10! btn btn__light" (click)="payNow()">{{finalBtnText}}</button>
+          <!--Footer Line-->
+          <div class="footer-line flex justify-between items-center gap-1! self-center">
+            <img src="images/icons/paystack-icon.svg" alt="Pay Stack" />
+            <span class="font-normal text-center text-xs text-(--color-text)">Secured By Paystack</span>
+          </div>
+        </div>
+    }@else {
+        <!-- FOOTER -->
+        <div class="flex flex-col justify-between gap-3! mt-10!">
+          <!--Buttons-->
+          <div class="buttons flex gap-6!">
+            <button class="h-10! btn btn__glass" (click)="previousStep()">Back</button>
+    
+            <button class="h-10! btn btn__light" (click)="nextStep()">Proceed</button>
+          </div>
+          <!--Footer Line-->
+          <div class="footer-line flex justify-between items-center gap-1! self-center">
+            <img src="images/icons/paystack-icon.svg" alt="Pay Stack" />
+            <span class="font-normal text-center text-xs text-(--color-text)">Secured By Paystack</span>
+          </div>
+        </div>
+    }
+  </div>
+</p-dialog>
+
+<!-- STEP TEMPLATES -->
+
+<ng-template #stepOne>
+  <div
+    class="rounded-lg! bg-(--color-modal-bg) gradient-border gradient-border--light p-4! text-(--color-text)"
+  >
+    <h3 class="font-normal text-start text-2xl text-[(--color-text)] mb-3!">Order Summary</h3>
+
+    <div class="space-y-2!">
+      <!--Course Name-->
+      <div class="flex justify-between border-b border-white/30 pb-1!">
+        <span class="font-normal text-start text-sm text-[(--color-text)]">Course</span>
+        <span class="font-normal text-start text-sm text-[(--color-text)]"
+          >Lagos Traffic Laws & Highway Code</span
+        >
+      </div>
+      <!--Course Fee-->
+      <div class="flex justify-between border-b border-white/30 pb-1!">
+        <span class="font-normal text-start text-sm text-[(--color-text)]">Course Fee</span>
+        <span class="font-normal text-start text-sm text-[(--color-text)]">₦2,350.00</span>
+      </div>
+      <!--Processing Fee-->
+      <div class="flex justify-between border-b border-white/30 pb-1!">
+        <span class="font-normal text-start text-sm text-[(--color-text)]">Processing Fee</span>
+        <span class="font-normal text-start text-sm text-[(--color-text)]">₦100.00</span>
+      </div>
+      <!--Vat-->
+      <div class="flex justify-between border-b border-white/30 pb-1!">
+        <span class="font-normal text-start text-sm text-[(--color-text)]">Vat(7.5)%</span>
+        <span class="font-normal text-start text-sm text-[(--color-text)]">₦50.00</span>
+      </div>
+
+      <!--Total-->
+      <div class="flex justify-between border-b border-white/30 pb-1!">
+        <span class="font-normal text-start text-sm text-[(--color-text)]">Total</span>
+        <span class="font-normal text-start text-sm text-[(--color-text)]">₦2,500</span>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<!-- STEP 2 -->
+<ng-template #stepTwo>
+  <div class="select-method">
+    <div class="grid grid-cols-1 gap-3">
+      <!--Bank Transfer-->
+      <div
+        class="h-20 flex flex-row justify-between items-center rounded-lg! bg-(--color-modal-bg) gradient-border gradient-border--light p-4! text-(--color-text)"
+      >
+        <!--Image & Title-->
+        <div class="image-title flex justify-between items-center gap-3!">
+          <!-- Image -->
+          <div
+            class="shrink-0 flex items-center justify-center w-14 h-14 rounded-xl [background:var(--color-card-wrapper)] p-1.5!"
+          >
+            <div
+              class="w-10 h-10 bg-(image:--bank-icon-image) bg-contain bg-center bg-no-repeat"
+            ></div>
+          </div>
+          <!--Title-->
+          <div class="title flex flex-col gap-1!">
+            <h2 class="font-normal text-start text-lg text-[(--color-text)]">Bank Transfer</h2>
+            <span class="font-normal text-start text-sm text-[(--color-text)]"
+              >Direct transfer to our account</span
+            >
+          </div>
+        </div>
+        <!--Button Icon-->
+        <div class="icon">
+          <img src="images/icons/next-button.svg" alt="next-button" />
+        </div>
+      </div>
+
+      <!--Pay With Card-->
+      <div
+        class="h-20 flex flex-row justify-between items-center rounded-lg! bg-(--color-modal-bg) gradient-border gradient-border--light p-4! text-(--color-text)"
+      >
+        <!--Image & Title-->
+        <div class="image-title flex justify-between items-center gap-3!">
+          <!-- Image -->
+          <div
+            class="shrink-0 flex items-center justify-center w-14 h-14 rounded-xl [background:var(--color-card-wrapper)] p-1.5!"
+          >
+            <div
+              class="w-10 h-10 bg-(image:--card-icon-image) bg-contain bg-center bg-no-repeat"
+            ></div>
+          </div>
+          <!--Title-->
+          <div class="title flex flex-col gap-1!">
+            <h2 class="font-normal text-start text-lg text-[(--color-text)]">Pay with Card</h2>
+            <span class="font-normal text-start text-sm text-[(--color-text)]"
+              >Visa, Mastercard, Verve</span
+            >
+          </div>
+        </div>
+        <!--Button Icon-->
+        <div class="icon">
+          <img src="images/icons/next-button.svg" alt="next-button" />
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<!-- STEP 3 -->
+<ng-template #stepThree>
+  <div class="modal-body text-(--color-text)">
+    <!-- Amount Card -->
+    <div class="rounded-2xl px-4! mx-10! py-2! mb-4! bg-[rgba(78,52,46,0.5)]">
+      <!--heading-->
+      <div class="font-normal text-center text-base text-[(--color-text)] pb-1!">Amount to Pay</div>
+      <!--empty line-->
+      <div class="w-full h-px bg-white/40 my-3"></div>
+      <!--Amount-->
+      <div class="relative">
+        <div
+          class="absolute top-1! w-9 h-9 rounded-full flex items-center justify-center bg-[rgba(170,183,191,0.5)]"
+        >
+          <img src="images/icons/card-icon.svg" alt="card-icon" />
+        </div>
+
+        <h2 class="font-semibold text-center text-2xl py-1! text-[(--color-text)]">₦2,500</h2>
+      </div>
+    </div>
+
+    <!-- Bank Name -->
+    <div class="field mb-3!">
+      <label class="field__label"> Bank Name </label>
+      <div class="field__control gradient-border">
+        <input class="field__input" id="" type="" placeholder="Paystack-TITAN" />
+        <button type="button" class="field__addon field__addon--btn">
+          <img src="images/icons/copy.svg" alt="copy" />
+        </button>
+      </div>
+    </div>
+
+    <!-- Account Number -->
+    <div class="field mb-3!">
+      <label class="field__label"> Account Number </label>
+      <div class="field__control gradient-border">
+        <input class="field__input" id="" type="" placeholder="90123456789" />
+        <button type="button" class="field__addon field__addon--btn">
+          <img src="images/icons/copy.svg" alt="copy" />
+        </button>
+      </div>
+    </div>
+
+    <!-- Expiry Card -->
+    <div
+      class="rounded-2xl px-6! py-3! bg-(--color-modal-bg) gradient-border gradient-border--light"
+    >
+      <div class="flex items-center gap-4! mb-2!">
+        <span class="font-normal text-start text-base text-[(--color-text)]">
+          This Transaction Expires In
+        </span>
+
+        <div
+          class="px-3! py-1! rounded-full text-sm flex items-center gap-2 bg-[rgba(170,170,187,0.25)]"
+        >
+          <i class="pi pi-clock text-xs"></i>
+
+          <span class="font-normal text-center text-sm text-[(--color-text)]"> 09:59s </span>
+        </div>
+      </div>
+
+      <p class="font-normal text-start text-sm text-[(--color-text)]g">
+        Use this account for this transaction only.
+      </p>
+    </div>
+  </div>
+</ng-template>
+
+<!-- STEP 4 -->
+<ng-template #stepFour>
+  <div class="modal-body text-(--color-text)">
+    <!-- Amount Card -->
+    <div class="rounded-2xl px-4! mx-10! py-2! mb-4! bg-[rgba(78,52,46,0.5)]">
+      <!--heading-->
+      <div class="font-normal text-center text-base text-[(--color-text)] pb-1!">Amount to Pay</div>
+      <!--empty line-->
+      <div class="w-full h-px bg-white/40 my-3"></div>
+      <!--Amount-->
+      <div class="relative">
+        <div
+          class="absolute top-1! w-9 h-9 rounded-full flex items-center justify-center bg-[rgba(170,183,191,0.5)]"
+        >
+          <img src="images/icons/card-icon.svg" alt="card-icon" />
+        </div>
+
+        <h2 class="font-semibold text-center text-2xl py-1! text-[(--color-text)]">₦2,500</h2>
+      </div>
+    </div>
+
+    <!--Input Fields-->
+    <div class="input-fields grid grid-cols-2 justify-between items-center gap-3!">
+      <!-- card number -->
+      <div class="col-span-2 field mb-3!">
+        <label class="field__label"> Card Number </label>
+        <div class="field__control gradient-border">
+          <input class="field__input" id="" type="" placeholder="**** **** **** 8888" />
+        </div>
+      </div>
+      <!-- Bank Name -->
+      <div class="field mb-3!">
+        <label class="field__label"> Bank Name </label>
+        <div class="field__control gradient-border">
+          <input class="field__input" id="" type="" placeholder="Paystack-TITAN" />
+          <button type="button" class="field__addon field__addon--btn">
+            <i class="pi pi-copy"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Account Number -->
+      <div class="field mb-3!">
+        <label class="field__label"> Account Number </label>
+        <div class="field__control gradient-border">
+          <input class="field__input" id="" type="" placeholder="90123456789" />
+          <button type="button" class="field__addon field__addon--btn">
+            <i class="pi pi-copy"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<!-- STEP 5 -->
+<ng-template #stepFive> <ng-template [ngTemplateOutlet]="stepOne"></ng-template> </ng-template>

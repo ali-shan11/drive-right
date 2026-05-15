@@ -1,1 +1,176 @@
-<p>mock-test works!</p>
+<div class="mock-test flex flex-col px-6! py-10!">
+  <div class="greetings flex flex-col justify-between items-start gap-1">
+    <div class="title font-semibold text-start text-2xl text-(--color-text)">Mock CBT</div>
+    <span class="font-normal text-start text-sm text-(--color-text)">
+        Discover your Knowledge level and receive customized learning recommendations.
+    </span>
+  </div>
+
+  <div class="w-full flex items-center justify-between gap-4! p-4! [background:var(--color-card-wrapper)] gradient-border gradient-border--light my-2!">
+    <div class="flex gap-3">
+      <img class="w-17.5" src="mock-test/mock-test-icon.svg" />
+
+      <div class="flex flex-col justify-center gap-0!">
+        <h4 class="font-semibold text-start text-md text-(--color-text) tracking-wide">
+          Drivers license CBT Mock test
+        </h4>
+        <p class="font-normal text-start text-[10px] text-(--color-text) tracking-wide">
+          Sit the official FRSC Computer-Based Mock examination entirely online, on your own
+          schedule, and take the exam right here on the platform.
+        </p>
+
+        <div class="flex gap-3 mt-2">
+            <div class="flex gap-3">
+                <div class="flex gap-1">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M7.52762 3.01855C8.97089 2.89777 10.4058 3.33428 11.5374 4.23828L11.7698 4.4248L11.9807 4.21387L12.7132 3.48047L13.1848 3.95215L12.2415 4.89551L12.428 5.12891C13.3318 6.26041 13.7675 7.69553 13.6468 9.13867C13.5259 10.5818 12.857 11.9242 11.7776 12.8896C10.6983 13.8549 9.29047 14.3703 7.84305 14.3301C6.39536 14.2898 5.01754 13.6969 3.99344 12.6729C2.96932 11.6487 2.37652 10.271 2.33621 8.82324C2.29595 7.37554 2.81112 5.96716 3.77664 4.8877C4.74217 3.80828 6.08443 3.13935 7.52762 3.01855ZM8.00027 3.66602C6.67419 3.66602 5.40182 4.19318 4.46414 5.13086C3.52668 6.06851 3.00027 7.3401 3.00027 8.66602C3.00027 9.99194 3.52668 11.2635 4.46414 12.2012C5.40182 13.1389 6.67419 13.666 8.00027 13.666C8.65679 13.666 9.30682 13.5364 9.91336 13.2852C10.52 13.0339 11.0712 12.6655 11.5354 12.2012C11.9997 11.7369 12.3682 11.1857 12.6194 10.5791C12.8706 9.97256 13.0003 9.32252 13.0003 8.66602C13.0003 8.00951 12.8706 7.35947 12.6194 6.75293C12.3682 6.14636 11.9997 5.59512 11.5354 5.13086C11.0712 4.66658 10.52 4.29815 9.91336 4.04688C9.30682 3.79564 8.65679 3.66605 8.00027 3.66602ZM8.33328 5.66602V8.99902H7.66629V5.66602H8.33328ZM10.3333 0.999023V1.66602H5.66629V0.999023H10.3333Z" fill="#4E342E" stroke="#4E342E" stroke-width="0.666667"/>
+                    </svg>
+                    <span class="text-[10px] text-(--secondary-color) font-semibold self-center">30 Minutes</span>
+                </div>
+            </div>
+            <div class="flex gap-3">
+                <div class="flex gap-1">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M2.66699 1.66699H13.333C13.5169 1.66699 13.667 1.81707 13.667 2.00098V4.36621L13 5.0332V2.33398H3V13.667H13V11.6328L13.667 10.9658V14.001C13.6668 14.1847 13.5168 14.334 13.333 14.334H2.66699C2.4832 14.334 2.33318 14.1847 2.33301 14.001V2.00098C2.33301 1.81707 2.48309 1.66699 2.66699 1.66699ZM14.9893 6.81445L10.1377 11.666H9.66504L9.66602 11.1963L14.5186 6.34375L14.9893 6.81445ZM8.33301 8.33398V9.00098H5.66699V8.33398H8.33301ZM10.333 5.66699V6.33398H5.66699V5.66699H10.333Z" fill="#4E342E" stroke="#4E342E" stroke-width="0.666667"/>
+                    </svg>
+                    <span class="text-[10px] text-(--secondary-color) font-semibold self-center">30 Questions</span>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+    <div class="shrink-0 w-45 rounded-sm flex items-center justify-center relative z-10">
+      <button class="w-50! btn btn__light">Start General Mock</button>
+    </div>
+  </div>
+
+    <div class="mt-2">
+        <div class="title font-semibold text-start text-md text-(--color-text)">Recent Attempts</div>
+
+        <div class="attempts-wrapper mt-3">
+            @if (false) {
+                <div class="attempts flex-1 w-full flex flex-col justify-center items-center gap-3! p-3!">
+                  <!-- Empty state -->
+                  <div class="image">
+                    <img src="images/dashboard/no-assessment.svg" alt="no-assessment" />
+                  </div>
+                  <!--Empty state title & subtitle-->
+                  <div class="title-subtitle flex flex-col justify-between items-center gap-1">
+                    <h2 class="font-semibold text-start text-md text-(--color-text)">
+                      No Attempts Yet
+                    </h2>
+                    <span class="font-normal text-start text-xs text-(--color-text)">
+                        You haven't attempted this section yet
+                    </span>
+                  </div>
+                </div>
+            }@else {
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4!">
+                    @for (attempt of attemptsArr; track $index) {
+                        <div class="relative flex flex-col rounded-xl! overflow-hidden [background:var(--color-card-wrapper)] gradient-border gradient-border--light transition-transform duration-200 hover:-translate-y-0.5 cursor-pointer p-2!">
+                            <div class="flex flex-col flex-1 p-2! gap-2!">
+                                <h3 class="font-semibold text-base text-start text-(--color-text) leading-none">
+                                    {{ attempt.name }}
+                                </h3>
+                                <p class="text-xs text-start text-(--color-text) leading-none flex-1">
+                                    <strong>Exam ID: </strong> {{ attempt.examId }}
+                                </p>
+
+                                <div class="flex gap-2">
+                                    <div class="self-center">
+                                        <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <g clip-path="url(#clip0_215_6772)">
+                                            <path d="M8.75 4.84863C8.94531 4.9821 9.11947 5.13346 9.27246 5.30273C9.42546 5.47201 9.55729 5.65755 9.66797 5.85938C9.77865 6.0612 9.86003 6.27441 9.91211 6.49902C9.96419 6.72363 9.99349 6.95312 10 7.1875C10 7.57487 9.92676 7.93945 9.78027 8.28125C9.63379 8.62305 9.43197 8.9209 9.1748 9.1748C8.91764 9.42871 8.61979 9.62891 8.28125 9.77539C7.94271 9.92188 7.57812 9.99675 7.1875 10C6.89128 10 6.60482 9.95605 6.32812 9.86816C6.05143 9.78027 5.79753 9.65332 5.56641 9.4873C5.33529 9.32129 5.13021 9.12272 4.95117 8.8916C4.77214 8.66048 4.63379 8.40495 4.53613 8.125H0.625V0.625H1.875V0H2.5V0.625H6.875V0H7.5V0.625H8.75V4.84863ZM1.25 1.25V2.5H8.125V1.25H7.5V1.875H6.875V1.25H2.5V1.875H1.875V1.25H1.25ZM4.38965 7.5C4.37988 7.39909 4.375 7.29492 4.375 7.1875C4.375 6.80013 4.44824 6.43555 4.59473 6.09375C4.74121 5.75195 4.94303 5.4541 5.2002 5.2002C5.45736 4.94629 5.75521 4.74609 6.09375 4.59961C6.43229 4.45312 6.79688 4.37826 7.1875 4.375C7.51302 4.375 7.82552 4.42871 8.125 4.53613V3.125H1.25V7.5H4.38965ZM7.1875 9.375C7.49023 9.375 7.77344 9.31803 8.03711 9.2041C8.30078 9.09017 8.5319 8.93392 8.73047 8.73535C8.92904 8.53678 9.08529 8.30566 9.19922 8.04199C9.31315 7.77832 9.37175 7.49349 9.375 7.1875C9.375 6.88477 9.31803 6.60156 9.2041 6.33789C9.09017 6.07422 8.93392 5.8431 8.73535 5.64453C8.53678 5.44596 8.30566 5.28971 8.04199 5.17578C7.77832 5.06185 7.49349 5.00326 7.1875 5C6.88477 5 6.60156 5.05697 6.33789 5.1709C6.07422 5.28483 5.8431 5.44108 5.64453 5.63965C5.44596 5.83822 5.28971 6.06934 5.17578 6.33301C5.06185 6.59668 5.00326 6.88151 5 7.1875C5 7.49023 5.05697 7.77344 5.1709 8.03711C5.28483 8.30078 5.44108 8.5319 5.63965 8.73047C5.83822 8.92904 6.06934 9.08529 6.33301 9.19922C6.59668 9.31315 6.88151 9.37175 7.1875 9.375ZM7.5 6.875H8.4375V7.5H6.875V5.625H7.5V6.875Z" fill="white"/>
+                                            </g>
+                                            <defs>
+                                            <clipPath id="clip0_215_6772">
+                                            <rect width="10" height="10" fill="white"/>
+                                            </clipPath>
+                                            </defs>
+                                        </svg>
+                                    </div>
+
+                                    <span class="text-[10px] font-semibold">
+                                        {{attempt.startDate | date: 'dd MMMM yyyy, hh:mm a'}} - {{attempt.endDate | date: 'hh:mm a'}}
+                                    </span>
+                                </div>
+
+                                <div class="stats flex gap-2">
+                                    <div class="w-[25%] flex flex-col">
+                                        <div class="bg-[rgba(170,183,191,0.45)] rounded-md text-(--color-text) text-xs leading-none p-2 text-center">
+                                            {{$index + 1}} Attempt
+                                        </div>
+
+                                        <div class="flex flex-col gap-2 bg-(--secondary-color)/40 rounded-lg p-2 mt-2">
+                                            <div class="shrink-0 self-start relative w-13 h-13">
+                                                <round-progress
+                                                    [current]="attempt.progressReport"
+                                                    [max]="100"
+                                                    [color]="'var(--color-primary)'"
+                                                    [background]="'rgba(255,255,255,0.15)'"
+                                                    [radius]="25"
+                                                    [stroke]="5"
+                                                    [semicircle]="false"
+                                                    [rounded]="true"
+                                                    [clockwise]="true"
+                                                    [duration]="800"
+                                                    [animation]="'easeInOutQuart'"
+                                                    class="block w-full h-full"
+                                                />
+                                                <span class="absolute inset-0 flex items-center justify-center text-[10px] font-medium text-white leading-none" >
+                                                    <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M1.50195 0.5V9.5" stroke="#AAB7BF" stroke-opacity="0.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                        <path d="M1.50195 1.25H5.00195L6.75195 2H8.50195C8.63456 2 8.76174 2.05268 8.85551 2.14645C8.94928 2.24021 9.00195 2.36739 9.00195 2.5V6.75C9.00195 6.88261 8.94928 7.00979 8.85551 7.10355C8.76174 7.19732 8.63456 7.25 8.50195 7.25H6.75195L5.00195 6.5H1.50195V1.25Z" stroke="#AAB7BF" stroke-opacity="0.5" stroke-linejoin="round"/>
+                                                        <path d="M0.5 9.5H2.5" stroke="#AAB7BF" stroke-opacity="0.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                    </svg>
+                                                </span>
+                                            </div>
+                                            <p class="text-lg text-(--color-text) font-semibold">{{attempt.progressReport}}%</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="w-[75%] flex flex-col justify-between">
+                                        <div class="flex flex-col gap-1 bg-(--secondary-color)/40 rounded-lg p-2">
+                                            <div class="flex gap-3 justify-between">
+                                                <p class="text-[10px] font-semibold text-(--color-text)">Correct Options</p>
+                                                <div class="bar w-30 h-2 bg-white/20 rounded-full overflow-hidden self-center">
+                                                    <p-progressbar [value]="50" [showValue]="false" class="custom-green-progress" />
+                                                </div>
+                                                <p class="text-[10px] font-semibold text-(--color-text) self-center">{{attempt.questionStats.correct}}</p>
+                                            </div>
+                                            <hr>
+                                            <div class="flex gap-3 justify-between">
+                                                <p class="text-[10px] font-semibold text-(--color-text)">Incorrect Options</p>
+                                                <div class="bar w-30 h-2 bg-white/20 rounded-full overflow-hidden self-center">
+                                                    <p-progressbar [value]="50" [showValue]="false" class="custom-red-progress" />
+                                                </div>
+                                                <p class="text-[10px] font-semibold text-(--color-text) self-center">{{attempt.questionStats.incorrect}}</p>
+                                            </div>
+                                            <hr>
+                                            <div class="flex gap-3 justify-between">
+                                                <p class="text-[10px] font-semibold text-(--color-text)">Blank Options</p>
+                                                <div class="bar w-30 h-2 bg-white/20 rounded-full overflow-hidden self-center">
+                                                    <p-progressbar [value]="50" [showValue]="false" class="custom-yellow-progress" />
+                                                </div>
+                                                <p class="text-[10px] font-semibold text-(--color-text) self-center">{{attempt.questionStats.blank}}</p>
+                                            </div>
+
+                                            <div class="flex gap-3 mt-2">
+                                                <p class="text-[10px] font-semibold text-(--color-text) self-center">Total Options</p>
+                                                <button class="max-w-fit px-3 h-6! rounded-md! btn btn__light">{{attempt.questionStats.total}}</button>
+                                            </div>
+                                        </div>
+
+                                        <div class="bg-[#FFEDE9] rounded-xl text-[#EF1B1B] text-xs leading-none py-1 px-3 text-center mt-2 w-fit" [ngClass]="{'text-[#15B428]!': attempt.status==='Passed'}">
+                                            {{attempt.status}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+    </div>
+</div>

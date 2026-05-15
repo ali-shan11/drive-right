@@ -88,9 +88,31 @@
   --password-updated-image: url('/authimages/password-successful-green.svg');
 
   /*Nav Bar Styles*/
-  --color-nav-bg : linear-gradient(180deg, #19C964 0%, #4e342e 100%);
+  --color-nav-bg: linear-gradient(180deg, #19c964 0%, #4e342e 100%);
   /*card wrapper bg*/
+  --color-card-wrapper: linear-gradient(
+    90.2deg,
+    rgba(24, 163, 94, 0.6) 0.01%,
+    rgba(170, 183, 191, 0.2) 99.99%
+  );
+
+  /*Modal Box Background*/
+  --color-modal-bg: linear-gradient(
+    180deg,
+    rgba(170, 183, 191, 0.4) 0%,
+    rgba(34, 197, 94, 0.5) 100%
+  );
+  --modal-box-shadow: 0 0 40px rgba(34, 197, 94, 0.25);
+  /*Courses Images*/
+  --payment-details-image: url('/images/courses/payment-details-green.svg');
+  --bank-transfer-image: url('/images/courses/bank-green.svg');
+  --card-payment-image: url('/images/courses/pay-card-green.svg');
+  --payment-done-image: url('/images/courses/payment-done-green.svg');
+  --bank-icon-image: url('/images/icons/bank-icon-green.svg');
+  --card-icon-image: url('/images/icons/card-green.svg');
   --color-card-wrapper : linear-gradient(90.2deg, rgba(24, 163, 94, 0.6) 0.01%, rgba(170, 183, 191, 0.2) 99.99%);
+
+  --secondary-color: #4E342E;
 }
 
 /* YELLOW THEME */
@@ -159,7 +181,7 @@
     rgba(170, 183, 191, 0.5) 0%,
     rgba(255, 243, 6, 0.8) 100%
   );
-  
+
   /*Auth Images*/
   --verify-email-image: url('/authimages/verify-email-yellow.svg');
   --face-verify-image: url('/authimages/face-verify-yellow.svg');
@@ -177,12 +199,34 @@
   );
 
   /*Nav Bar Styles*/
-  --color-nav-bg : linear-gradient(180deg, #fbbf24 0%, #4e342e 100%);
+  --color-nav-bg: linear-gradient(180deg, #fbbf24 0%, #4e342e 100%);
   /*card wrapper bg*/
+  --color-card-wrapper: linear-gradient(
+    90.2deg,
+    rgba(170, 183, 191, 0.2) 99.99%
+  );
+
+  /*Modal Box Background*/
+  --color-modal-bg: linear-gradient(
+    180deg,
+    rgba(170, 183, 191, 0.4) 0%,
+    rgba(255, 243, 6, 0.5) 100%
+  );
+  --modal-box-shadow: 0 0 40px rgba(255, 243, 6, 0.25);
+
+  /*Courses Images*/
+  --payment-details-image: url('/images/courses/payment-details-yellow.svg');
+  --bank-transfer-image: url('/images/courses/bank-yellow.svg');
+  --card-payment-image: url('/images/courses/pay-card-yellow.svg');
+  --payment-done-image: url('/images/courses/payment-done-yellow.svg');
+  --bank-icon-image: url('/images/icons/bank-icon-yellow.svg');
+  --card-icon-image: url('/images/icons/card-yellow.svg');
   --color-card-wrapper : linear-gradient(90.2deg, rgba(255, 243, 6, 0.4) 0.01%, rgba(170, 183, 191, 0.2) 99.99%);
+
+
+  --secondary-color: #4E342E;
 }
 
-/* BLUE THEME */
 [data-theme='blue'] {
   /* --- Background --- */
   --bg-primary: url('/blue-bg.png');
@@ -262,10 +306,30 @@
   --password-updated-image: url('/authimages/password-successful-blue.svg');
 
   /*Nav Bar styles*/
-  --color-nav-bg : linear-gradient(180deg, #3B82F6 0%, #4e342e 100%);
+  --color-nav-bg: linear-gradient(180deg, #3b82f6 0%, #4e342e 100%);
   /*cardWrapper bg*/
-  --color-card-wrapper : linear-gradient(90.2deg, rgba(77, 142, 255, 0.5) 0.01%, rgba(170, 183, 191, 0.2) 99.99%);
+  --color-card-wrapper: linear-gradient(
+    90.2deg,
+    rgba(77, 142, 255, 0.5) 0.01%,
+    rgba(170, 183, 191, 0.2) 99.99%
+  );
 
+  /*Modal Box Background*/
+  --color-modal-bg: linear-gradient(
+    180deg,
+    rgba(170, 183, 191, 0.4) 0%,
+    rgba(59, 130, 246, 0.5) 100%
+  );
+  --modal-box-shadow: 0 0 40px rgba(59, 130, 246, 0.25);
+
+  /*Courses Images*/
+  --payment-details-image: url('/images/courses/payment-details-blue.svg');
+  --bank-transfer-image: url('/images/courses/bank-blue.svg');
+  --card-payment-image: url('/images/courses/pay-card-blue.svg');
+  --payment-done-image: url('/images/courses/payment-done-blue.svg');
+  --bank-icon-image: url('/images/icons/bank-icon-blue.svg');
+  --card-icon-image: url('/images/icons/card-blue.svg');
+  --secondary-color: #4E342E;
 }
 
 /* RED THEME */
@@ -347,7 +411,30 @@
   --password-updated-image: url('/authimages/password-successful-red.svg');
 
   /*Nav Bar styles*/
-  --color-nav-bg : linear-gradient(180deg, #EF4444 0%, #4e342e 100%);
+  --color-nav-bg: linear-gradient(180deg, #ef4444 0%, #4e342e 100%);
   /*card wrapper bg*/
+  --color-card-wrapper: linear-gradient(
+    90.2deg,
+    rgba(232, 58, 78, 0.5) 0.01%,
+    rgba(170, 183, 191, 0.2) 99.99%
+  );
+
+  /*Modal Box Background*/
+  --color-modal-bg: linear-gradient(
+    180deg,
+    rgba(170, 183, 191, 0.4) 0%,
+    rgba(153, 27, 27, 0.5) 100%
+  );
+  --modal-box-shadow: 0 0 40px rgba(239, 68, 68, 0.25);
+
+  /*Courses Images*/
+  --payment-details-image: url('/images/courses/payment-details-red.svg');
+  --bank-transfer-image: url('/images/courses/bank-red.svg');
+  --card-payment-image: url('/images/courses/pay-card-red.svg');
+  --payment-done-image: url('/images/courses/payment-done-red.svg');
+  --bank-icon-image: url('/images/icons/bank-icon-red.svg');
+  --card-icon-image: url('/images/icons/card-red.svg');
   --color-card-wrapper : linear-gradient(90.2deg, rgba(232, 58, 78, 0.5) 0.01%, rgba(170, 183, 191, 0.2) 99.99%);
+
+  --secondary-color: #4E342E;
 }

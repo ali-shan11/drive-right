@@ -1,0 +1,208 @@
+<p-dialog
+  [(visible)]="visible"
+  [modal]="true"
+  [closable]="true"
+  [draggable]="false"
+  [resizable]="false"
+  styleClass="dialog-box"
+>
+  <!--Modal Styling-->
+  <div class="relative custom-modal gradient-border gradient-border--light">
+    <!-- HEADER -->
+    <div class="flex flex-col items-center gap-1! mb-8!">
+      <!--Image-->
+      <div
+        [ngStyle]="{
+          width: '8rem',
+          height: '8rem',
+          'background-image': stepConfig[currentStep()].image,
+          'background-size': 'contain',
+          'background-repeat': 'no-repeat',
+          'background-position': 'center',
+        }"
+      ></div>
+
+        <h2 class="font-semibold text-center text-2xl text-(--color-text)">
+            {{ stepConfig[currentStep()].title }}
+        </h2>
+        <span class="font-normal text-center text-sm text-(--color-text)">
+            {{ stepConfig[currentStep()].desc }}
+        </span>
+      <button
+        type="button"
+        (click)="closeModal()"
+        class="absolute top-6 right-6 w-8 h-8 rounded-full flex items-center justify-center bg-(--color-text)/80 border-none cursor-pointer hover:-translate-y-0.5 transition-all duration-300"
+      >
+        <img class="" src="images/icons/cross.svg" alt="cross" />
+      </button>
+    </div>
+
+    <!-- BODY -->
+    <div class="overflow-y-auto flex-1 px-4!">
+      <ng-container>
+        @if (currentStep() === 0) {
+          <ng-template [ngTemplateOutlet]="stepOne"></ng-template>
+        }
+
+        @if (currentStep() === 1) {
+          <ng-template [ngTemplateOutlet]="stepTwo"></ng-template>
+        }
+
+        @if (currentStep() === 2) {
+          <ng-template [ngTemplateOutlet]="stepThree"></ng-template>
+        }
+      </ng-container>
+    </div>
+  </div>
+</p-dialog>
+
+<!-- STEP TEMPLATES -->
+
+<ng-template #stepOne>
+    <div class="rounded-lg! bg-(--color-modal-bg) gradient-border gradient-border--light p-1! text-(--color-text)">
+        <p-datepicker class="w-full custom-datepicker" [(ngModel)]="date" [inline]="true" [showWeek]="true" />
+    </div>
+
+    <div class="mt-3">
+        <div class="text-md text-semibold text-(--color-text)">Available Time Slot <span class="text-[12px]">- Select a Date</span></div>
+        <div class="flex gap-2 mt-1">
+            @for (timeslot of [1,2,3,4]; track $index) {
+                <button class="h-6 btn btn__glass px-3 max-w-fit">08:00 AM</button>
+            }
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="flex flex-col justify-between gap-3! mt-10!">
+      <!--Buttons-->
+      <div class="buttons flex gap-6!">
+        <button class="h-10! btn btn__glass" (click)="nextStep()">Proceed To Confirmation</button>
+      </div>
+    </div>
+</ng-template>
+
+<!-- STEP 2 -->
+<ng-template #stepTwo>
+    <div class="rounded-lg! bg-(--color-modal-bg) gradient-border gradient-border--light p-4! text-(--color-text)">
+        <h3 class="font-normal text-start text-2xl text-[(--color-text)] mb-3!">Examination Schedule </h3>
+
+        <div class="space-y-2!">
+        <!--Course Name-->
+        <div class="flex justify-between border-b border-white/30 pb-1!">
+            <span class="font-normal text-start text-sm text-[(--color-text)]">Exam</span>
+            <span class="font-normal text-start text-sm text-[(--color-text)]"
+            >FRSC Theory CBT</span
+            >
+        </div>
+        <!--Course Fee-->
+        <div class="flex justify-between border-b border-white/30 pb-1!">
+            <span class="font-normal text-start text-sm text-[(--color-text)]">Date</span>
+            <span class="font-normal text-start text-sm text-[(--color-text)]">Tuesday, 24 May 2026</span>
+        </div>
+        <!--Processing Fee-->
+        <div class="flex justify-between border-b border-white/30 pb-1!">
+            <span class="font-normal text-start text-sm text-[(--color-text)]">Time</span>
+            <span class="font-normal text-start text-sm text-[(--color-text)]">10:00 AM</span>
+        </div>
+        <!--Vat-->
+        <div class="flex justify-between border-b border-white/30 pb-1!">
+            <span class="font-normal text-start text-sm text-[(--color-text)]">Format</span>
+            <span class="font-normal text-start text-sm text-[(--color-text)]">Online · DriveRight Platform</span>
+        </div>
+
+        <!--Total-->
+        <div class="flex justify-between pb-1!">
+            <span class="font-normal text-start text-[#4E342E] text-sm">Payment</span>
+            <span class="font-normal text-start text-sm text-[(--color-text)] flex gap-3">
+                <span class="text-[#4E342E]">₦8,440</span>
+                <span class="text-[#4E342E] flex gap-1">
+                    <div class="self-center">
+                        <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <mask id="mask0_215_22023" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="10" height="10">
+                            <path d="M4.99968 9.16537C5.54695 9.16604 6.08896 9.05857 6.59458 8.84914C7.10019 8.6397 7.55943 8.33242 7.94593 7.94495C8.33339 7.55846 8.64067 7.09921 8.85011 6.5936C9.05955 6.08799 9.16702 5.54597 9.16634 4.9987C9.16702 4.45143 9.05955 3.90942 8.85011 3.4038C8.64067 2.89819 8.33339 2.43895 7.94593 2.05245C7.55943 1.66498 7.10019 1.3577 6.59458 1.14827C6.08896 0.938828 5.54695 0.83136 4.99968 0.832034C4.4524 0.83136 3.91039 0.938828 3.40478 1.14827C2.89917 1.3577 2.43992 1.66498 2.05343 2.05245C1.66596 2.43895 1.35868 2.89819 1.14924 3.4038C0.939805 3.90942 0.832336 4.45143 0.833011 4.9987C0.832336 5.54597 0.939805 6.08799 1.14924 6.5936C1.35868 7.09921 1.66596 7.55846 2.05343 7.94495C2.43992 8.33242 2.89917 8.6397 3.40478 8.84914C3.91039 9.05857 4.4524 9.16604 4.99968 9.16537Z" fill="white" stroke="white" stroke-width="0.666667" stroke-linejoin="round"/>
+                            <path d="M3.33301 5L4.58301 6.25L7.08301 3.75" stroke="black" stroke-width="0.666667" stroke-linecap="round" stroke-linejoin="round"/>
+                            </mask>
+                            <g mask="url(#mask0_215_22023)">
+                            <path d="M0 0H10V10H0V0Z" fill="#4E342E"/>
+                            </g>
+                        </svg>
+                    </div>
+
+                    Paid
+                </span>
+            </span>
+        </div>
+        </div>
+    </div>
+
+    <div class="buttons flex gap-6! mt-4">
+        <button class="h-10! btn btn__glass" (click)="previousStep()">Back</button>
+
+        <button class="h-10! btn btn__light" (click)="nextStep()">Proceed</button>
+    </div>
+</ng-template>
+
+<!-- STEP 3 -->
+<ng-template #stepThree>
+    <div class="rounded-lg! bg-(--color-modal-bg) gradient-border gradient-border--light p-4! text-(--color-text)">
+        <h3 class="font-normal text-start text-2xl text-[(--color-text)] mb-3!">Examination Schedule </h3>
+
+        <div class="space-y-2!">
+        <!--Course Name-->
+        <div class="flex justify-between border-b border-white/30 pb-1!">
+            <span class="font-normal text-start text-sm text-[(--color-text)]">Candidate</span>
+            <span class="font-normal text-start text-sm text-[(--color-text)]"
+            >Ogunyemi Temidayo</span
+            >
+        </div>
+        <!--Course Fee-->
+        <div class="flex justify-between border-b border-white/30 pb-1!">
+            <span class="font-normal text-start text-sm text-[(--color-text)]">Exam Date</span>
+            <span class="font-normal text-start text-sm text-[(--color-text)]">Tuesday, 24 May 2026</span>
+        </div>
+        <!--Processing Fee-->
+        <div class="flex justify-between border-b border-white/30 pb-1!">
+            <span class="font-normal text-start text-sm text-[(--color-text)]">Time</span>
+            <span class="font-normal text-start text-sm text-[(--color-text)]">10:00 AM</span>
+        </div>
+        <!--Vat-->
+        <div class="flex justify-between border-b border-white/30 pb-1!">
+            <span class="font-normal text-start text-sm text-[(--color-text)]">Format</span>
+            <span class="font-normal text-start text-sm text-[(--color-text)]">Online · DriveRight Platform</span>
+        </div>
+
+        <div class="flex justify-between border-b border-white/30 pb-1!">
+            <span class="font-normal text-start text-sm text-[(--color-text)]">Amount Paid</span>
+            <span class="font-normal text-start text-sm text-[#4E342E]">₦8,440</span>
+        </div>
+
+        <!--Total-->
+        <div class="flex justify-between pb-1!">
+            <span class="font-normal text-start text-sm">Status</span>
+            <span class="font-normal text-start text-sm text-[(--color-text)] flex gap-3">
+                <span class="text-[#4E342E] flex gap-1">
+                    <div class="self-center">
+                        <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <mask id="mask0_215_22023" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="10" height="10">
+                            <path d="M4.99968 9.16537C5.54695 9.16604 6.08896 9.05857 6.59458 8.84914C7.10019 8.6397 7.55943 8.33242 7.94593 7.94495C8.33339 7.55846 8.64067 7.09921 8.85011 6.5936C9.05955 6.08799 9.16702 5.54597 9.16634 4.9987C9.16702 4.45143 9.05955 3.90942 8.85011 3.4038C8.64067 2.89819 8.33339 2.43895 7.94593 2.05245C7.55943 1.66498 7.10019 1.3577 6.59458 1.14827C6.08896 0.938828 5.54695 0.83136 4.99968 0.832034C4.4524 0.83136 3.91039 0.938828 3.40478 1.14827C2.89917 1.3577 2.43992 1.66498 2.05343 2.05245C1.66596 2.43895 1.35868 2.89819 1.14924 3.4038C0.939805 3.90942 0.832336 4.45143 0.833011 4.9987C0.832336 5.54597 0.939805 6.08799 1.14924 6.5936C1.35868 7.09921 1.66596 7.55846 2.05343 7.94495C2.43992 8.33242 2.89917 8.6397 3.40478 8.84914C3.91039 9.05857 4.4524 9.16604 4.99968 9.16537Z" fill="white" stroke="white" stroke-width="0.666667" stroke-linejoin="round"/>
+                            <path d="M3.33301 5L4.58301 6.25L7.08301 3.75" stroke="black" stroke-width="0.666667" stroke-linecap="round" stroke-linejoin="round"/>
+                            </mask>
+                            <g mask="url(#mask0_215_22023)">
+                            <path d="M0 0H10V10H0V0Z" fill="#4E342E"/>
+                            </g>
+                        </svg>
+                    </div>
+
+                    Paid
+                </span>
+            </span>
+        </div>
+        </div>
+    </div>
+
+    <div class="buttons flex gap-6! mt-4">
+        <button class="h-10! btn btn__glass" (click)="closeDialog()">Close</button>
+
+        <button class="h-10! btn btn__light" (click)="closeDialog()">Reschedule</button>
+    </div>
+</ng-template>

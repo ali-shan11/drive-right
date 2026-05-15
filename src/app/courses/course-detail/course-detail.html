@@ -33,15 +33,16 @@
       <!--course num & pricing-->
       <div class="number-pricing flex justify-between items-center">
         <div
-          class="number flex justify-between items-center gap-0.5! border border(--color-primary) rounded-lg px-1!"
+          class="number flex justify-between items-center gap-0.5! border border(--color-primary) rounded-lg px-1! [background:rgba(170,183,191,0.25)]"
         >
           <img src="images/icons/price.svg" alt="price" />
           <span class="px-1! py-1! font-normal text-start text-base text-(--color-text)"
             >₦4,000</span
           >
         </div>
+
         <div
-          class="pricing flex justify-between items-center gap-0.5! border border(--color-primary) rounded-full px-1!"
+          class="pricing flex justify-between items-center gap-0.5! border border(--color-primary) rounded-full px-1! [background:rgba(170,183,191,0.25)]"
         >
           <img src="images/icons/lock.svg" alt="lock" />
           <span class="px-1! py-1! font-normal text-center text-sm text-(--color-text)"
@@ -50,24 +51,20 @@
         </div>
       </div>
 
-      <!--Benefits-->
-      <div
-        class="benefits flex flex-col justify-between gap-2! py-1! border-b border-(--color-primary)"
-      >
-        <h4 class="font-normal text-start text-sm text-(--color-text)">
-          Includes lifetime access & Official Practice Exams
-        </h4>
+      <h4 class="font-normal text-start text-sm text-(--color-text) py-1!">
+        Includes lifetime access & Official Practice Exams
+      </h4>
 
+      <!--Benefits-->
+      <div class="benefits flex flex-col justify-between py-1!">
         <!--Duration & time-->
-        <div class="duration-time flex justify-between items-center">
+        <div class="duration-time flex justify-between items-center py-1!">
           <div class="number flex justify-between items-center gap-0.5!">
             <img src="images/icons/duration.svg" alt="duration" />
-            <span class="px-1! font-normal text-start text-sm text-(--color-text)"
-              >Duration</span
-            >
+            <span class="px-1! font-normal text-start text-sm text-(--color-text)">Duration</span>
           </div>
           <div
-            class="time flex justify-between items-center gap-1! border border(--color-primary) rounded-full"
+            class="time flex justify-between items-center gap-1! border border(--color-primary) rounded-full [background:rgba(170,183,191,0.25)]"
           >
             <img src="" alt="" />
             <span class="px-2! py-1! font-normal text-center text-xs text-(--color-text)"
@@ -77,15 +74,15 @@
         </div>
 
         <!--format -->
-        <div class="format flex justify-between items-center border-t border-(--color-primary)">
+        <div
+          class="format flex justify-between items-center border-t border-(--color-primary) py-1!"
+        >
           <div class="number flex justify-between items-center gap-0.5!">
             <img src="images/icons/zip.svg" alt="zip" />
-            <span class="px-1! font-normal text-start text-sm text-(--color-text)"
-              >Format</span
-            >
+            <span class="px-1! font-normal text-start text-sm text-(--color-text)">Format</span>
           </div>
           <div
-            class="format-cat flex justify-between items-center gap-1! border border(--color-primary) rounded-full"
+            class="format-cat flex justify-between items-center gap-1! border border(--color-primary) rounded-full [background:rgba(170,183,191,0.25)]"
           >
             <img src="" alt="" />
             <span class="px-2! py-1! font-normal text-center text-xs text-(--color-text)"
@@ -95,15 +92,15 @@
         </div>
 
         <!--Modules -->
-        <div class="modules flex justify-between items-center border-t border-(--color-primary)">
+        <div
+          class="modules flex justify-between items-center border-t border-(--color-primary) py-1!"
+        >
           <div class="modules flex justify-between items-center gap-0.5!">
             <img src="images/icons/modules.svg" alt="modules" />
-            <span class="px-1! font-normal text-start text-sm text-(--color-text)"
-              >Modules</span
-            >
+            <span class="px-1! font-normal text-start text-sm text-(--color-text)">Modules</span>
           </div>
           <div
-            class="modules-chap flex justify-between items-center gap-1! border border(--color-primary) rounded-full"
+            class="modules-chap flex justify-between items-center gap-1! border border(--color-primary) rounded-full [background:rgba(170,183,191,0.25)]"
           >
             <img src="" alt="" />
             <span class="px-2! py-1! font-normal text-center text-xs text-(--color-text)"
@@ -114,7 +111,7 @@
 
         <!--certificate-->
         <div
-          class="certificate flex justify-between items-center border-t border-(--color-primary)"
+          class="certificate flex justify-between items-center border-t border-(--color-primary) py-1!"
         >
           <div class="certificate flex justify-between items-center gap-0.5!">
             <img src="images/icons/certificate.svg" alt="certificate" />
@@ -123,18 +120,18 @@
             >
           </div>
           <div
-            class="certificate-yes flex justify-between items-center gap-1! border border(--color-primary) rounded-full"
+            class="certificate-yes flex justify-between items-center gap-1! border border(--color-primary) rounded-full [background:rgba(170,183,191,0.25)]"
           >
             <img src="" alt="" />
             <span class="px-2! py-1! font-normal text-center text-xs text-(--color-text)">Yes</span>
           </div>
         </div>
 
-        <button class="btn btn__light">Enroll Now</button>
+        <button class="btn btn__light mt-3!">Enroll Now</button>
       </div>
 
       <!--Section 2-->
-      <div class="learning flex flex-col justify-between gap-1! py-2!">
+      <div class="learning flex flex-col justify-between gap-1! py-1!">
         <h2 class="font-semibold text-start text-base text-(--color-text)">What you will learn</h2>
         <div class="learn1 flex flex-row gap-1!">
           <img src="images/icons/double-tick.svg" alt="double-tick" />
@@ -162,14 +159,17 @@
         </div>
       </div>
 
+      <!--Requirement list-->
       <div class="requirements flex flex-col justify-between gap-1!">
         <h2 class="font-semibold text-start text-base text-(--color-text)">Requirements</h2>
-        <span class="font-normal text-start text-xs text-(--color-text)"
-          >No prior driving experience needed.</span
-        >
-        <span class="font-normal text-start text-xs text-(--color-text)"
-          >Interpret all regulatory, warning, and info signs.</span
-        >
+        <ul class="list-disc pl-4!">
+          <li class="font-normal text-start text-xs text-(--color-text)">
+            No prior driving experience needed.
+          </li>
+          <li class="font-normal text-start text-xs text-(--color-text)">
+            Interpret all regulatory, warning, and info signs.
+          </li>
+        </ul>
       </div>
     </div>
   </div>
@@ -205,14 +205,18 @@
   </div>
 
   <div class="flex items-center gap-4 flex-wrap border-b border-(--color-primary)">
-    <span class="flex items-center gap-1.5 font-normal text-start text-sm text-(--color-primary)">
-      <img src="" alt="">
+    <span class="flex items-center gap-2! font-normal text-start text-sm text-(--color-primary)">
+      <img class="w-4 h-4" src="images/icons/course.svg" alt="course" />
       4 Courses
     </span>
-    <span class="flex items-center font-normal text-start text-sm text-(--color-primary)">
+    <span class="flex items-center gap-2! font-normal text-start text-sm text-(--color-primary)">
+      <img class="w-4 h-4" src="images/icons/assessment.svg" alt="assesment" />
       4 Assessments
     </span>
-    <span class="flex items-center font-normal text-start text-sm text-(--color-primary) pb-1!">
+    <span
+      class="flex items-center gap-2! font-normal text-start text-sm text-(--color-primary) pb-1!"
+    >
+      <img class="w-4 h-4" src="images/icons/cert-badge.svg" alt="cert-badge" />
       Badge of Completion
     </span>
   </div>
@@ -226,8 +230,11 @@
         <span class="font-semibold text-start text-lg text-(--color-text) tracking-wide"
           >Core Principles (Theory)</span
         >
+
         <div class="flex items-center gap-2 shrink-0">
-          <div class="progress-track"><div class="progress-fill" style="width: 0%"></div></div>
+          <div class="w-40 h-1.5 bg-white/20 rounded-full overflow-hidden">
+            <div class="h-full bg-(--color-primary) rounded-full" style="width: 0%"></div>
+          </div>
           <span class="text-[0.62rem] text-app-text/45 whitespace-nowrap">0% Complete</span>
         </div>
       </div>
@@ -249,7 +256,7 @@
           Start Learning
         </button>
         <button
-          class="btn btn__dark w-40! rounded-full! font-normal text-center text-xs text-(--color-text) tracking-wide"
+          class="btn btn__glass w-40! rounded-full! font-normal text-center text-xs text-(--color-text) tracking-wide"
         >
           Take Assessment
         </button>
@@ -268,7 +275,7 @@
           Sit the official FRSC Computer-Based Mock examination entirely online, on your own
           schedule, and take the exam right here on the platform.
         </p>
-        <button class="w-50! btn btn__light">
+        <button class="w-50! btn btn__glass">
           Start Mock CBT Test
           <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
             <path
@@ -318,11 +325,13 @@
 
   <!--Other Courses-->
   <div class="other-courses flex flex-col justify-between items-start gap-2! py-3!">
-    <h2 class="font-semibold text-start text-lg text-(--color-text) tracking-wide">Other Courses</h2>
+    <h2 class="font-semibold text-start text-lg text-(--color-text) tracking-wide">
+      Other Courses
+    </h2>
     <!-- Course Cards grid -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4!">
       <div
-        *ngFor="let c of courses;"
+        *ngFor="let c of courses"
         class="relative flex flex-col rounded-xl! overflow-hidden [background:var(--color-card-wrapper)] gradient-border gradient-border--light transition-transform duration-200 hover:-translate-y-0.5 cursor-pointer p-2!"
       >
         <!-- Image -->
@@ -349,7 +358,7 @@
           </p>
 
           <button
-            class="btn btn__light w-24! mt-3! self-start transition-colors duration-150 cursor-pointer shadow-none! rounded-md!"
+            class="btn btn__glass w-24! mt-3! self-start transition-colors duration-150 cursor-pointer shadow-none! rounded-md!"
           >
             Read Now
           </button>

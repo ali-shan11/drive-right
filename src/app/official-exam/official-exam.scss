@@ -1,0 +1,39 @@
+.booking-main-card{
+    &.background-blue{
+        background: linear-gradient(90.2deg, rgba(0, 240, 248, 0.5) 0.01%, rgba(170, 183, 191, 0.2) 99.99%);
+    }
+    &.gradient-border--blue{
+        --gradient-border-color: linear-gradient(180deg, #FFF3DA 0%, #39B6CC 100%);
+    }
+
+    &.background-green{
+        background: linear-gradient(90.2deg, rgba(0, 232, 50, 0.5) 0.01%, rgba(170, 183, 191, 0.2) 99.99%);
+    }
+    &.gradient-border--green{
+        --gradient-border-color: linear-gradient(180deg, #FFF3DA 0%, #18A35E 100%);   
+    }
+    
+    &.background-red{
+        background: linear-gradient(90.2deg, rgba(239, 27, 27, 0.5) 0.01%, rgba(170, 183, 191, 0.2) 99.99%);
+    }
+    &.gradient-border--red{
+        --gradient-border-color: linear-gradient(180deg, #FFF3DA 0%, #EF1B1B 100%);   
+    }
+
+
+    .btn__blue{
+        background: linear-gradient(180deg, rgba(57, 182, 204, 0.9) 0%, rgba(10, 24, 51, 0.56) 100%);
+        backdrop-filter: blur(26.69192123413086px);
+        box-shadow: 0px 13.35px 13.35px 0px #0000001A, 0px 5.34px 5.34px 0px #0000000D, 0px 1.33px 0px 0px #0000000D;
+    }
+    .btn__red{
+        background: linear-gradient(180deg, rgba(239, 27, 27, 0.9) 0%, rgba(10, 24, 51, 0.56) 100%);
+        backdrop-filter: blur(26.69192123413086px);
+        box-shadow: 0px 13.35px 13.35px 0px #0000001A, 0px 5.34px 5.34px 0px #0000000D, 0px 1.33px 0px 0px #0000000D;
+    }
+    .btn__green{
+        background: linear-gradient(180deg, rgba(24, 163, 94, 0.9) 0%, rgba(10, 24, 51, 0.56) 100%);
+        backdrop-filter: blur(26.69192123413086px);
+        box-shadow: 0px 13.35px 13.35px 0px #0000001A, 0px 5.34px 5.34px 0px #0000000D, 0px 1.33px 0px 0px #0000000D;
+    }
+}

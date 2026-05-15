@@ -1,8 +1,9 @@
 import { Component, signal } from '@angular/core';
 import { BannerCard } from '../interfaces/banner-card';
-import { CommonModule } from '@angular/common';
+
 import { RoundProgressComponent } from 'angular-svg-round-progressbar';
 import { DriveAid } from '../interfaces/drive-aid';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-dashboard',

@@ -1,0 +1,148 @@
+<div class="mock-test flex flex-col px-6! py-10!">
+    <div class="greetings flex flex-col justify-between items-start gap-1">
+        <div class="flex gap-2">
+            <button class="h-8! rounded-lg! btn btn__glass max-w-fit px-4 self-center flex gap-1!" [routerLink]="['recent-attempts']">
+                <div class="self-center">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M15.8335 9.16511H5.95016L8.97516 5.53177C9.11661 5.36159 9.18466 5.14219 9.16435 4.92184C9.14403 4.70148 9.03701 4.49822 8.86683 4.35677C8.69665 4.21532 8.47725 4.14727 8.25689 4.16759C8.03654 4.18791 7.83328 4.29493 7.69183 4.46511L3.52516 9.46511C3.49656 9.5045 3.47146 9.54633 3.45016 9.59011C3.45016 9.63177 3.45016 9.65677 3.39183 9.69844C3.35406 9.79399 3.33428 9.8957 3.3335 9.99844C3.33428 10.1012 3.35406 10.2029 3.39183 10.2984C3.39183 10.3401 3.39183 10.3651 3.45016 10.4068C3.47146 10.4505 3.49656 10.4924 3.52516 10.5318L7.69183 15.5318C7.77018 15.6258 7.8683 15.7015 7.9792 15.7533C8.09011 15.8052 8.21107 15.832 8.3335 15.8318C8.52821 15.8322 8.7169 15.7643 8.86683 15.6401C8.95121 15.5701 9.02096 15.4842 9.07209 15.3873C9.12322 15.2903 9.15471 15.1842 9.16478 15.0751C9.17484 14.9659 9.16327 14.8559 9.13073 14.7512C9.0982 14.6465 9.04533 14.5493 8.97516 14.4651L5.95016 10.8318H15.8335C16.0545 10.8318 16.2665 10.744 16.4228 10.5877C16.579 10.4314 16.6668 10.2195 16.6668 9.99844C16.6668 9.77743 16.579 9.56546 16.4228 9.40918C16.2665 9.2529 16.0545 9.16511 15.8335 9.16511Z" fill="white"/>
+                    </svg>
+                </div>
+                <span>Back</span>
+            </button>
+            <div class="title font-semibold text-start text-2xl text-(--color-text)">Recent Attempts</div>
+        </div>
+        <span class="font-normal text-start text-sm text-(--color-text) mt-2">
+            Here are some of the breakdown on your previous attempt of the FRSC Exam
+        </span>
+    </div>
+
+    <div class="mt-3">
+        <!-- <div class="title font-semibold text-start text-md text-(--color-text)">Recent Attempts</div> -->
+
+        <div class="attempts-wrapper mt-3">
+            @if (false) {
+                <div class="attempts flex-1 w-full flex flex-col justify-center items-center gap-3! p-3!">
+                  <!-- Empty state -->
+                  <div class="image">
+                    <img src="images/dashboard/no-assessment.svg" alt="no-assessment" />
+                  </div>
+                  <!--Empty state title & subtitle-->
+                  <div class="title-subtitle flex flex-col justify-between items-center gap-1">
+                    <h2 class="font-semibold text-start text-md text-(--color-text)">
+                      No Attempts Yet
+                    </h2>
+                    <span class="font-normal text-start text-xs text-(--color-text)">
+                        You haven't attempted this section yet
+                    </span>
+                  </div>
+                </div>
+            }@else {
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4!">
+                    @for (attempt of attemptsArr; track $index) {
+                        <div [routerLink]="['/official-exam/recent-attempts/1']" class="relative flex flex-col rounded-xl! overflow-hidden [background:var(--color-card-wrapper)] gradient-border gradient-border--light transition-transform duration-200 hover:-translate-y-0.5 cursor-pointer p-2!b">
+                            <div class="flex flex-col flex-1 p-2! gap-2!">
+                                <h3 class="font-semibold text-base text-start text-(--color-text) leading-none">
+                                    {{ attempt.name }}
+                                </h3>
+                                <p class="text-xs text-start text-(--color-text) leading-none flex-1">
+                                    <strong>Exam ID: </strong> {{ attempt.examId }}
+                                </p>
+
+                                <div class="flex gap-2">
+                                    <div class="self-center">
+                                        <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <g clip-path="url(#clip0_215_6772)">
+                                            <path d="M8.75 4.84863C8.94531 4.9821 9.11947 5.13346 9.27246 5.30273C9.42546 5.47201 9.55729 5.65755 9.66797 5.85938C9.77865 6.0612 9.86003 6.27441 9.91211 6.49902C9.96419 6.72363 9.99349 6.95312 10 7.1875C10 7.57487 9.92676 7.93945 9.78027 8.28125C9.63379 8.62305 9.43197 8.9209 9.1748 9.1748C8.91764 9.42871 8.61979 9.62891 8.28125 9.77539C7.94271 9.92188 7.57812 9.99675 7.1875 10C6.89128 10 6.60482 9.95605 6.32812 9.86816C6.05143 9.78027 5.79753 9.65332 5.56641 9.4873C5.33529 9.32129 5.13021 9.12272 4.95117 8.8916C4.77214 8.66048 4.63379 8.40495 4.53613 8.125H0.625V0.625H1.875V0H2.5V0.625H6.875V0H7.5V0.625H8.75V4.84863ZM1.25 1.25V2.5H8.125V1.25H7.5V1.875H6.875V1.25H2.5V1.875H1.875V1.25H1.25ZM4.38965 7.5C4.37988 7.39909 4.375 7.29492 4.375 7.1875C4.375 6.80013 4.44824 6.43555 4.59473 6.09375C4.74121 5.75195 4.94303 5.4541 5.2002 5.2002C5.45736 4.94629 5.75521 4.74609 6.09375 4.59961C6.43229 4.45312 6.79688 4.37826 7.1875 4.375C7.51302 4.375 7.82552 4.42871 8.125 4.53613V3.125H1.25V7.5H4.38965ZM7.1875 9.375C7.49023 9.375 7.77344 9.31803 8.03711 9.2041C8.30078 9.09017 8.5319 8.93392 8.73047 8.73535C8.92904 8.53678 9.08529 8.30566 9.19922 8.04199C9.31315 7.77832 9.37175 7.49349 9.375 7.1875C9.375 6.88477 9.31803 6.60156 9.2041 6.33789C9.09017 6.07422 8.93392 5.8431 8.73535 5.64453C8.53678 5.44596 8.30566 5.28971 8.04199 5.17578C7.77832 5.06185 7.49349 5.00326 7.1875 5C6.88477 5 6.60156 5.05697 6.33789 5.1709C6.07422 5.28483 5.8431 5.44108 5.64453 5.63965C5.44596 5.83822 5.28971 6.06934 5.17578 6.33301C5.06185 6.59668 5.00326 6.88151 5 7.1875C5 7.49023 5.05697 7.77344 5.1709 8.03711C5.28483 8.30078 5.44108 8.5319 5.63965 8.73047C5.83822 8.92904 6.06934 9.08529 6.33301 9.19922C6.59668 9.31315 6.88151 9.37175 7.1875 9.375ZM7.5 6.875H8.4375V7.5H6.875V5.625H7.5V6.875Z" fill="white"/>
+                                            </g>
+                                            <defs>
+                                            <clipPath id="clip0_215_6772">
+                                            <rect width="10" height="10" fill="white"/>
+                                            </clipPath>
+                                            </defs>
+                                        </svg>
+                                    </div>
+
+                                    <span class="text-[10px] font-semibold">
+                                        {{attempt.startDate | date: 'dd MMMM yyyy, hh:mm a'}} - {{attempt.endDate | date: 'hh:mm a'}}
+                                    </span>
+                                </div>
+
+                                <div class="stats flex gap-2">
+                                    <div class="w-[25%] flex flex-col">
+                                        <div class="bg-[rgba(170,183,191,0.45)] rounded-md text-(--color-text) text-xs leading-none p-2 text-center">
+                                            {{$index + 1}} Attempt
+                                        </div>
+
+                                        <div class="flex flex-col gap-2 bg-(--secondary-color)/40 rounded-lg p-2 mt-2">
+                                            <div class="shrink-0 self-start relative w-13 h-13">
+                                                <round-progress
+                                                    [current]="attempt.progressReport"
+                                                    [max]="100"
+                                                    [color]="'var(--color-primary)'"
+                                                    [background]="'rgba(255,255,255,0.15)'"
+                                                    [radius]="25"
+                                                    [stroke]="5"
+                                                    [semicircle]="false"
+                                                    [rounded]="true"
+                                                    [clockwise]="true"
+                                                    [duration]="800"
+                                                    [animation]="'easeInOutQuart'"
+                                                    class="block w-full h-full"
+                                                />
+                                                <span class="absolute inset-0 flex items-center justify-center text-[10px] font-medium text-white leading-none" >
+                                                    <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M1.50195 0.5V9.5" stroke="#AAB7BF" stroke-opacity="0.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                        <path d="M1.50195 1.25H5.00195L6.75195 2H8.50195C8.63456 2 8.76174 2.05268 8.85551 2.14645C8.94928 2.24021 9.00195 2.36739 9.00195 2.5V6.75C9.00195 6.88261 8.94928 7.00979 8.85551 7.10355C8.76174 7.19732 8.63456 7.25 8.50195 7.25H6.75195L5.00195 6.5H1.50195V1.25Z" stroke="#AAB7BF" stroke-opacity="0.5" stroke-linejoin="round"/>
+                                                        <path d="M0.5 9.5H2.5" stroke="#AAB7BF" stroke-opacity="0.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                    </svg>
+                                                </span>
+                                            </div>
+                                            <p class="text-lg text-(--color-text) font-semibold">{{attempt.progressReport}}%</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="w-[75%] flex flex-col justify-between">
+                                        <div class="flex flex-col gap-1 bg-(--secondary-color)/40 rounded-lg p-2">
+                                            <div class="flex gap-3 justify-between">
+                                                <p class="text-[10px] font-semibold text-(--color-text)">Correct Options</p>
+                                                <div class="bar w-30 h-2 bg-white/20 rounded-full overflow-hidden self-center">
+                                                    <p-progressbar [value]="50" [showValue]="false" class="custom-green-progress" />
+                                                </div>
+                                                <p class="text-[10px] font-semibold text-(--color-text) self-center">{{attempt.questionStats.correct}}</p>
+                                            </div>
+                                            <hr>
+                                            <div class="flex gap-3 justify-between">
+                                                <p class="text-[10px] font-semibold text-(--color-text)">Incorrect Options</p>
+                                                <div class="bar w-30 h-2 bg-white/20 rounded-full overflow-hidden self-center">
+                                                    <p-progressbar [value]="50" [showValue]="false" class="custom-red-progress" />
+                                                </div>
+                                                <p class="text-[10px] font-semibold text-(--color-text) self-center">{{attempt.questionStats.incorrect}}</p>
+                                            </div>
+                                            <hr>
+                                            <div class="flex gap-3 justify-between">
+                                                <p class="text-[10px] font-semibold text-(--color-text)">Blank Options</p>
+                                                <div class="bar w-30 h-2 bg-white/20 rounded-full overflow-hidden self-center">
+                                                    <p-progressbar [value]="50" [showValue]="false" class="custom-yellow-progress" />
+                                                </div>
+                                                <p class="text-[10px] font-semibold text-(--color-text) self-center">{{attempt.questionStats.blank}}</p>
+                                            </div>
+
+                                            <div class="flex gap-3 mt-2">
+                                                <p class="text-[10px] font-semibold text-(--color-text) self-center">Total Options</p>
+                                                <button class="max-w-fit px-3 h-6! rounded-md! btn btn__light">{{attempt.questionStats.total}}</button>
+                                            </div>
+                                        </div>
+
+                                        <div class="bg-[#FFEDE9] rounded-xl text-[#EF1B1B] text-xs leading-none py-1 px-3 text-center mt-2 w-fit" [ngClass]="{'text-[#15B428]!': attempt.status==='Passed'}">
+                                            {{attempt.status}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+    </div>
+</div>

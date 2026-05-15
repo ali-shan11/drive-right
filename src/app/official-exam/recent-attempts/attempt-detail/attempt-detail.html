@@ -1,0 +1,169 @@
+<div class="mock-test flex flex-col px-6! py-10!">
+    <div
+    class="result-main-card w-full flex items-center justify-between gap-4! p-10! gradient-border mt-3 mb-2! gradient-border--light bg-cover bg-no-repeat bg-center h-100"
+    [style.background-image]="
+        isPassed
+        ? 'url(exam-flow/exam-passed.svg)'
+        : 'url(exam-flow/exam-failed.svg)'
+    "
+    >
+      <div class="w-full h-full flex flex-col gap-2 items-center justify-start">
+        <div class="mt-8">
+            @if (isPassed) {
+                <img class="w-20" src="exam-flow/exam-passed-icon.svg" alt="passed">
+            }@else {
+                <img class="w-20" src="exam-flow/exam-failed-icon.svg" alt="failed">
+            }
+        </div>
+        <div class="title font-semibold text-start text-2xl text-(--color-text)">Examination {{isPassed? 'Passed': 'Failed'}}!</div>
+        @if (isPassed) {
+             <span class="font-normal text-start text-sm text-(--color-text)">
+                Congratulations, you met the required 75% pass mark.
+            </span>
+        }@else {
+             <span class="font-normal text-start text-sm text-(--color-text)">
+                Unfortunately, you did not meet the required 75% pass mark.
+            </span>
+        }
+        <span class="font-semibold text-start text-md text-(--color-text)">
+            <span class="text-[28px]">80</span> <span>/100</span>
+        </span>
+
+        @if (isPassed) {
+             <span class="flex gap-1 rounded-[50px] font-normal text-start text-[10px] text-(--color-text) bg-[#11D30D] px-2 py-1">
+                <div class="self-center">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8.00016 14.6654C4.31816 14.6654 1.3335 11.6807 1.3335 7.9987C1.3335 4.3167 4.31816 1.33203 8.00016 1.33203C11.6822 1.33203 14.6668 4.3167 14.6668 7.9987C14.6668 11.6807 11.6822 14.6654 8.00016 14.6654ZM7.3355 10.6654L12.0488 5.95136L11.1062 5.0087L7.3355 8.78003L5.4495 6.89403L4.50683 7.8367L7.3355 10.6654Z" fill="white"/>
+                    </svg>
+                </div>
+                <span class="self-center">Passed</span>
+            </span>
+        }@else {
+             <span class="flex gap-1 rounded-[50px] font-normal text-start text-[10px] text-(--color-text) bg-[#E91313] px-2 py-1">
+                <div class="self-center">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M7.99967 14.6654C4.31767 14.6654 1.33301 11.6807 1.33301 7.9987C1.33301 4.3167 4.31767 1.33203 7.99967 1.33203C11.6817 1.33203 14.6663 4.3167 14.6663 7.9987C14.6663 11.6807 11.6817 14.6654 7.99967 14.6654ZM7.99967 7.05603L6.11434 5.17003L5.17101 6.11336L7.05701 7.9987L5.17101 9.88403L6.11434 10.8274L7.99967 8.94136L9.88501 10.8274L10.8283 9.88403L8.94234 7.9987L10.8283 6.11336L9.88501 5.17003L7.99967 7.05603Z" fill="white"/>
+                    </svg>
+                </div>
+                <span class="self-center">Failed</span>
+            </span>
+        }
+
+        <div class="buttons flex gap-6! mt-4 w-full">
+            <button class="h-10! btn btn__glass">Done</button>
+
+            <button class="h-10! btn btn__light">Review Exam Question</button>
+        </div>
+      </div>
+  </div>
+
+  <div class="flex gap-3">
+    <div class="attempt-stats w-1/2 flex flex-col gap-2! p-4! [background:var(--color-card-wrapper)] gradient-border gradient-border--light mt-3 mb-2!">
+        <div class="flex justify-between">
+            <h4 class="font-semibold text-start text-md text-(--color-text) tracking-wide">
+                Exam Summary
+            </h4>
+            <!-- <div class="py-1 px-2 rounded-xl text-[8px] bg-(--color-text)/25 self-center">Exam Rules & Conduct</div> -->
+        </div>
+
+        <div class="flex justify-between mt-2">
+            <h4 class="font-semibold text-start text-[10px] text-(--color-text) tracking-wide">
+                Date Taken
+            </h4>
+            <div class="text-start text-[10px] text-(--color-text) tracking-wide">18th April, 2026.  02:32 PM </div>
+        </div>
+        <hr>
+        <div class="flex justify-between">
+            <h4 class="font-semibold text-start text-[10px] text-(--color-text) tracking-wide">
+                Time Used
+            </h4>
+            <div class="text-start text-[10px] text-(--color-text) tracking-wide">00:28:59/00:30:00</div>
+        </div>
+        <hr>
+        <div class="flex justify-between">
+            <h4 class="font-semibold text-start text-[10px] text-(--color-text) tracking-wide">
+                Total Question
+            </h4>
+            <div class="text-start text-[10px] text-(--color-text) tracking-wide">30</div>
+        </div>
+        <hr>
+        <div class="flex justify-between">
+            <h4 class="font-semibold text-start text-[10px] text-(--color-text) tracking-wide">
+                Correct Answer
+            </h4>
+            <div class="text-start text-[10px] text-(--color-text) tracking-wide">26</div>
+        </div>
+        <hr>
+        <div class="flex justify-between">
+            <h4 class="font-semibold text-start text-[10px] text-(--color-text) tracking-wide">
+                Inorrect Answer
+            </h4>
+            <div class="text-start text-[10px] text-(--color-text) tracking-wide">4</div>
+        </div>
+        <hr>
+        <div class="flex justify-between">
+            <h4 class="font-semibold text-start text-[10px] text-(--color-text) tracking-wide">
+                Flagged Questions
+            </h4>
+            <div class="text-start text-[10px] text-(--color-text) tracking-wide">0</div>
+        </div>
+    </div>
+
+    <div class="attempt-stats w-1/2 flex flex-col gap-2! p-4! [background:var(--color-card-wrapper)] gradient-border gradient-border--light mt-3 mb-2!">
+        <div class="flex justify-between">
+            <h4 class="font-semibold text-start text-md text-(--color-text) tracking-wide">
+                Performance By Section
+            </h4>
+            <!-- <div class="py-1 px-2 rounded-xl text-[8px] bg-(--color-text)/25 self-center">Exam Rules & Conduct</div> -->
+        </div>
+
+        <div class="flex justify-between mt-2">
+            <h4 class="font-semibold text-start text-[10px] text-(--color-text) tracking-wide">
+                Road Signs
+            </h4>
+            <div class="flex gap-2 justify-end">
+                <div class="bar w-50 h-2 bg-white/20 rounded-full overflow-hidden self-center">
+                    <p-progressbar [value]="50" [showValue]="false" class="custom-red-progress" />
+                </div>
+                <p class="text-[10px] font-semibold text-(--color-text) self-center">10%</p>
+            </div>
+        </div>
+        <hr>
+        <div class="flex justify-between">
+            <h4 class="font-semibold text-start text-[10px] text-(--color-text) tracking-wide">
+                Traffic Laws
+            </h4>
+            <div class="flex gap-2 justify-end">
+                <div class="bar w-50 h-2 bg-white/20 rounded-full overflow-hidden self-center">
+                    <p-progressbar [value]="50" [showValue]="false" class="custom-red-progress" />
+                </div>
+                <p class="text-[10px] font-semibold text-(--color-text) self-center">10%</p>
+            </div>
+        </div>
+        <hr>
+        <div class="flex justify-between">
+            <h4 class="font-semibold text-start text-[10px] text-(--color-text) tracking-wide">
+                Speed Regulation
+            </h4>
+            <div class="flex gap-2 justify-end">
+                <div class="bar w-50 h-2 bg-white/20 rounded-full overflow-hidden self-center">
+                    <p-progressbar [value]="50" [showValue]="false" class="custom-red-progress" />
+                </div>
+                <p class="text-[10px] font-semibold text-(--color-text) self-center">10%</p>
+            </div>
+        </div>
+        <hr>
+        <div class="flex justify-between">
+            <h4 class="font-semibold text-start text-[10px] text-(--color-text) tracking-wide">
+                Legal Requirements
+            </h4>
+            <div class="flex gap-2 justify-end">
+                <div class="bar w-50 h-2 bg-white/20 rounded-full overflow-hidden self-center">
+                    <p-progressbar [value]="50" [showValue]="false" class="custom-red-progress" />
+                </div>
+                <p class="text-[10px] font-semibold text-(--color-text) self-center">10%</p>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,369 @@
+<div class="mock-test flex flex-col px-6! py-10!">
+  <div class="flex gap-2 justify-between">
+        <div class="greetings flex flex-col justify-between items-start gap-1">
+            <div class="title font-semibold text-start text-2xl text-(--color-text)">Official Exam</div>
+            <span class="font-normal text-start text-sm text-(--color-text)">
+                Book and pay for your FRSC-Certified driving examination.
+            </span>
+        </div>
+
+        <button class="h-10! btn btn__glass max-w-fit px-4 self-center flex gap-1!" [routerLink]="['recent-attempts']">
+            <div class="self-center">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M13.5 8H12V13L16.28 15.54L17 14.33L13.5 12.25V8ZM13 3C10.6131 3 8.32387 3.94821 6.63604 5.63604C4.94821 7.32387 4 9.61305 4 12H1L4.96 16.03L9 12H6C6 10.1435 6.7375 8.36301 8.05025 7.05025C9.36301 5.7375 11.1435 5 13 5C14.8565 5 16.637 5.7375 17.9497 7.05025C19.2625 8.36301 20 10.1435 20 12C20 13.8565 19.2625 15.637 17.9497 16.9497C16.637 18.2625 14.8565 19 13 19C11.07 19 9.32 18.21 8.06 16.94L6.64 18.36C7.47161 19.2004 8.46234 19.8668 9.55433 20.32C10.6463 20.7733 11.8177 21.0045 13 21C15.3869 21 17.6761 20.0518 19.364 18.364C21.0518 16.6761 22 14.3869 22 12C22 9.61305 21.0518 7.32387 19.364 5.63604C17.6761 3.94821 15.3869 3 13 3Z" fill="white"/>
+                </svg>
+            </div>
+            <span>Recent Attempts</span>
+        </button>
+  </div>
+
+  <div class="booking-main-card w-full flex items-center justify-between gap-4! p-4! gradient-border mt-3 mb-2!"
+    [ngClass]="{
+        '[background:var(--color-card-wrapper)] gradient-border--light': examStatus==='no-booking',
+        'background-blue gradient-border--blue': examStatus==='booked',
+        'background-red gradient-border--red': examStatus==='failed',
+        'background-green gradient-border--green': examStatus==='passed',
+    }"
+    >
+      <div class="flex flex-col justify-center gap-0!">
+        @switch (examStatus) {
+            @case ('no-booking') {
+                <ng-container *ngTemplateOutlet="exam_no_booking"></ng-container>
+            }
+            @case ('booked') {
+                <ng-container *ngTemplateOutlet="exam_booked"></ng-container>
+            }
+            @case ('passed') {
+                <ng-container *ngTemplateOutlet="exam_passed"></ng-container>
+            }
+            @case ('failed') {
+                <ng-container *ngTemplateOutlet="exam_failed"></ng-container>
+            }
+        }
+      </div>
+      <div class="">
+        @switch (examStatus) {
+            @case ('no-booking') {
+                <img class="w-50" src="exam-flow/title-img-yellow.svg">
+            }
+            @case ('booked') {
+                <img class="w-50" src="exam-flow/title-img-blue.svg">
+            }
+            @case ('failed') {
+                <img class="w-50" src="exam-flow/title-img-red.svg">
+            }
+            @case ('passed') {
+                <img class="w-50" src="exam-flow/title-img-green.svg">
+            }
+        }
+      </div>
+  </div>
+
+  <div class="flex gap-3">
+    <div class="w-1/2 flex flex-col gap-2! p-4! [background:var(--color-card-wrapper)] gradient-border gradient-border--light mt-3 mb-2!">
+        <div class="flex justify-between">
+            <h4 class="font-semibold text-start text-sm text-(--color-text) tracking-wide">
+                Exam Summary
+            </h4>
+            <div class="py-1 px-2 rounded-xl text-[8px] bg-(--color-text)/25 self-center">Exam Rules & Conduct</div>
+        </div>
+
+        <div class="flex justify-between mt-2">
+            <h4 class="font-semibold text-start text-[10px] text-(--color-text) tracking-wide">
+                Examination
+            </h4>
+            <div class="text-start text-[10px] text-(--color-text) tracking-wide">FRSC Theory CBT</div>
+        </div>
+        <hr>
+        <div class="flex justify-between">
+            <h4 class="font-semibold text-start text-[10px] text-(--color-text) tracking-wide">
+                Conducting Body
+            </h4>
+            <div class="text-start text-[10px] text-(--color-text) tracking-wide">Federal Road Safety Corps (FRSC)</div>
+        </div>
+        <hr>
+        <div class="flex justify-between">
+            <h4 class="font-semibold text-start text-[10px] text-(--color-text) tracking-wide">
+                Mode
+            </h4>
+            <div class="text-start text-[10px] text-(--color-text) tracking-wide">Online - DriveRight Platform</div>
+        </div>
+        <hr>
+        <div class="flex justify-between">
+            <h4 class="font-semibold text-start text-[10px] text-(--color-text) tracking-wide">
+                Validity
+            </h4>
+            <div class="text-start text-[10px] text-(--color-text) tracking-wide">Pass Certificate Valid for 90 Days</div>
+        </div>
+        <hr>
+        <div class="flex justify-between">
+            <h4 class="font-semibold text-start text-[10px] text-(--color-text) tracking-wide">
+                Retake Policy
+            </h4>
+            <div class="text-start text-[10px] text-(--color-text) tracking-wide">14 Day Cooldown on Fail</div>
+        </div>
+        <hr>
+        <div class="flex justify-between">
+            <h4 class="font-semibold text-start text-[10px] text-(--color-text) tracking-wide">
+                Proctoring
+            </h4>
+            <div class="text-start text-[10px] text-(--color-text) tracking-wide">Live Webcam + Tab Monitoring</div>
+        </div>
+        <hr>
+        <div class="flex justify-between">
+            <h4 class="font-semibold text-start text-[10px] text-(--color-text) tracking-wide">
+                Payment
+            </h4>
+            <div class="text-start text-[10px] text-(--color-text) tracking-wide">Paystack - Card, Transfer </div>
+        </div>
+    </div>
+
+    <div class="w-1/2 flex flex-col gap-2! p-4! [background:var(--color-card-wrapper)] gradient-border gradient-border--light mt-3 mb-2!">
+        <div class="flex justify-between">
+            <h4 class="font-semibold text-start text-sm text-(--color-text) tracking-wide">
+                Your Booking
+            </h4>
+            @switch (bookingStatus) {
+                @case ('no-booking') {
+                    <div class="flex py-1 px-1 rounded-xl text-[8px] bg-[#E91313]/25 self-center">
+                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5.80864 10.6497C3.13523 10.6497 0.96814 8.48265 0.96814 5.80925C0.96814 3.13584 3.13523 0.96875 5.80864 0.96875C8.48204 0.96875 10.6491 3.13584 10.6491 5.80925C10.6491 8.48265 8.48204 10.6497 5.80864 10.6497ZM5.32604 7.74544L8.74827 4.32273L8.06382 3.63828L5.32604 6.37655L3.95666 5.00718L3.27222 5.69162L5.32604 7.74544Z" fill="#E53E3E"/>
+                        </svg>
+                        <span class="pl-1">No Bookings Yet</span>
+                    </div>
+                }
+                @case ('booked')
+                @case ('passed') {
+                    <div class="flex py-1 px-1 rounded-xl text-[8px] bg-(--color-text)/25 self-center">
+                        <div class="self-center">
+                            <svg width="9" height="9" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <mask id="mask0_215_12777" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="9" height="9">
+                                <path d="M4.50004 8.66537C5.04732 8.66604 5.58933 8.55857 6.09494 8.34914C6.60055 8.1397 7.0598 7.83242 7.44629 7.44495C7.83376 7.05846 8.14104 6.59921 8.35048 6.0936C8.55992 5.58799 8.66739 5.04597 8.66671 4.4987C8.66739 3.95143 8.55992 3.40942 8.35048 2.9038C8.14104 2.39819 7.83376 1.93895 7.44629 1.55245C7.0598 1.16498 6.60055 0.857705 6.09494 0.648267C5.58933 0.438828 5.04732 0.33136 4.50004 0.332034C3.95277 0.33136 3.41076 0.438828 2.90515 0.648267C2.39953 0.857705 1.94029 1.16498 1.55379 1.55245C1.16633 1.93895 0.859048 2.39819 0.64961 2.9038C0.440171 3.40942 0.332702 3.95143 0.333377 4.4987C0.332702 5.04597 0.440171 5.58799 0.64961 6.0936C0.859048 6.59921 1.16633 7.05846 1.55379 7.44495C1.94029 7.83242 2.39953 8.1397 2.90515 8.34914C3.41076 8.55857 3.95277 8.66604 4.50004 8.66537Z" fill="white" stroke="white" stroke-width="0.666667" stroke-linejoin="round"/>
+                                <path d="M2.83337 4.5L4.08337 5.75L6.58337 3.25" stroke="black" stroke-width="0.666667" stroke-linecap="round" stroke-linejoin="round"/>
+                                </mask>
+                                <g mask="url(#mask0_215_12777)">
+                                <path d="M-0.500122 -0.5H9.49988V9.5H-0.500122V-0.5Z" fill="#03C93E"/>
+                                </g>
+                            </svg>
+                        </div>
+                        <span class="pl-1 text-[#03C93E] self-center">{{bookingStatus === 'passed'? 'Passed' : 'Confirmed'}}</span>
+                    </div>
+                }
+            }
+        </div>
+
+        @switch (bookingStatus) {
+            @case ('no-booking') {
+                <ng-container *ngTemplateOutlet="no_booking"></ng-container>
+            }
+            @case ('booked') {
+                <ng-container *ngTemplateOutlet="booked"></ng-container>
+            }
+            @case ('passed') {
+                <ng-container *ngTemplateOutlet="passed"></ng-container>
+            }
+        }
+    </div>
+  </div>
+</div>
+
+
+<ng-template #exam_no_booking>
+    <h4 class="font-semibold text-start text-md text-(--color-text) tracking-wide">
+      Book Your Official CBT Driving Exam
+    </h4>
+    <p class="font-normal text-start text-[8px] text-(--color-text) tracking-wide w-[60%]">
+        Sit the official FRSC Computer-Based Theory examination entirely online, on your own schedule. Pay securely via Paystack, choose your date and time, and take the exam right here on the platform.
+    </p>
+    <p class="font-semibold text-start text-lg text-(--color-text)">
+        ₦ 3,200
+    </p>
+    <div class="flex gap-3 mt-2">
+        <div class="flex gap-3">
+            <div class="flex gap-1">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M7.52762 3.01855C8.97089 2.89777 10.4058 3.33428 11.5374 4.23828L11.7698 4.4248L11.9807 4.21387L12.7132 3.48047L13.1848 3.95215L12.2415 4.89551L12.428 5.12891C13.3318 6.26041 13.7675 7.69553 13.6468 9.13867C13.5259 10.5818 12.857 11.9242 11.7776 12.8896C10.6983 13.8549 9.29047 14.3703 7.84305 14.3301C6.39536 14.2898 5.01754 13.6969 3.99344 12.6729C2.96932 11.6487 2.37652 10.271 2.33621 8.82324C2.29595 7.37554 2.81112 5.96716 3.77664 4.8877C4.74217 3.80828 6.08443 3.13935 7.52762 3.01855ZM8.00027 3.66602C6.67419 3.66602 5.40182 4.19318 4.46414 5.13086C3.52668 6.06851 3.00027 7.3401 3.00027 8.66602C3.00027 9.99194 3.52668 11.2635 4.46414 12.2012C5.40182 13.1389 6.67419 13.666 8.00027 13.666C8.65679 13.666 9.30682 13.5364 9.91336 13.2852C10.52 13.0339 11.0712 12.6655 11.5354 12.2012C11.9997 11.7369 12.3682 11.1857 12.6194 10.5791C12.8706 9.97256 13.0003 9.32252 13.0003 8.66602C13.0003 8.00951 12.8706 7.35947 12.6194 6.75293C12.3682 6.14636 11.9997 5.59512 11.5354 5.13086C11.0712 4.66658 10.52 4.29815 9.91336 4.04688C9.30682 3.79564 8.65679 3.66605 8.00027 3.66602ZM8.33328 5.66602V8.99902H7.66629V5.66602H8.33328ZM10.3333 0.999023V1.66602H5.66629V0.999023H10.3333Z" fill="#4E342E" stroke="#4E342E" stroke-width="0.666667"/>
+                </svg>
+                <span class="text-[10px] text-(--secondary-color) font-semibold self-center">30-minute time limit</span>
+            </div>
+        </div>
+        <div class="flex gap-3">
+            <div class="flex gap-1">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M2.66699 1.66699H13.333C13.5169 1.66699 13.667 1.81707 13.667 2.00098V4.36621L13 5.0332V2.33398H3V13.667H13V11.6328L13.667 10.9658V14.001C13.6668 14.1847 13.5168 14.334 13.333 14.334H2.66699C2.4832 14.334 2.33318 14.1847 2.33301 14.001V2.00098C2.33301 1.81707 2.48309 1.66699 2.66699 1.66699ZM14.9893 6.81445L10.1377 11.666H9.66504L9.66602 11.1963L14.5186 6.34375L14.9893 6.81445ZM8.33301 8.33398V9.00098H5.66699V8.33398H8.33301ZM10.333 5.66699V6.33398H5.66699V5.66699H10.333Z" fill="#4E342E" stroke="#4E342E" stroke-width="0.666667"/>
+                </svg>
+                <span class="text-[10px] text-(--secondary-color) font-semibold self-center">30 multiple-choice questions</span>
+            </div>
+        </div>
+        <div class="flex gap-3">
+            <div class="flex gap-1">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M2.66699 1.66699H13.333C13.5169 1.66699 13.667 1.81707 13.667 2.00098V4.36621L13 5.0332V2.33398H3V13.667H13V11.6328L13.667 10.9658V14.001C13.6668 14.1847 13.5168 14.334 13.333 14.334H2.66699C2.4832 14.334 2.33318 14.1847 2.33301 14.001V2.00098C2.33301 1.81707 2.48309 1.66699 2.66699 1.66699ZM14.9893 6.81445L10.1377 11.666H9.66504L9.66602 11.1963L14.5186 6.34375L14.9893 6.81445ZM8.33301 8.33398V9.00098H5.66699V8.33398H8.33301ZM10.333 5.66699V6.33398H5.66699V5.66699H10.333Z" fill="#4E342E" stroke="#4E342E" stroke-width="0.666667"/>
+                </svg>
+                <span class="text-[10px] text-(--secondary-color) font-semibold self-center">Instant Result & Certificate</span>
+            </div>
+        </div>
+    </div>
+    <div class="shrink-0 w-45 flex items-center justify-center relative z-10 mt-3">
+        <button class="w-50! rounded-lg! btn btn__light" (click)="bookExamClick()">Book Exam Now</button>
+    </div>
+</ng-template>
+
+<ng-template #exam_booked>
+    <h4 class="font-semibold text-start text-md text-(--color-text) tracking-wide">
+      Book Your Official CBT Driving Exam
+    </h4>
+    <p class="font-normal text-start text-[8px] text-(--color-text) tracking-wide w-[60%]">
+        Sit the official FRSC Computer-Based Theory examination entirely online, on your own schedule. Pay securely via Paystack, choose your date and time, and take the exam right here on the platform.
+    </p>
+    <p class="font-semibold text-start text-lg text-(--color-text)">
+        ₦ 3,200
+    </p>
+    <div class="flex gap-3 mt-2">
+        <div class="flex gap-3">
+            <div class="flex gap-1">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M7.52762 3.01855C8.97089 2.89777 10.4058 3.33428 11.5374 4.23828L11.7698 4.4248L11.9807 4.21387L12.7132 3.48047L13.1848 3.95215L12.2415 4.89551L12.428 5.12891C13.3318 6.26041 13.7675 7.69553 13.6468 9.13867C13.5259 10.5818 12.857 11.9242 11.7776 12.8896C10.6983 13.8549 9.29047 14.3703 7.84305 14.3301C6.39536 14.2898 5.01754 13.6969 3.99344 12.6729C2.96932 11.6487 2.37652 10.271 2.33621 8.82324C2.29595 7.37554 2.81112 5.96716 3.77664 4.8877C4.74217 3.80828 6.08443 3.13935 7.52762 3.01855ZM8.00027 3.66602C6.67419 3.66602 5.40182 4.19318 4.46414 5.13086C3.52668 6.06851 3.00027 7.3401 3.00027 8.66602C3.00027 9.99194 3.52668 11.2635 4.46414 12.2012C5.40182 13.1389 6.67419 13.666 8.00027 13.666C8.65679 13.666 9.30682 13.5364 9.91336 13.2852C10.52 13.0339 11.0712 12.6655 11.5354 12.2012C11.9997 11.7369 12.3682 11.1857 12.6194 10.5791C12.8706 9.97256 13.0003 9.32252 13.0003 8.66602C13.0003 8.00951 12.8706 7.35947 12.6194 6.75293C12.3682 6.14636 11.9997 5.59512 11.5354 5.13086C11.0712 4.66658 10.52 4.29815 9.91336 4.04688C9.30682 3.79564 8.65679 3.66605 8.00027 3.66602ZM8.33328 5.66602V8.99902H7.66629V5.66602H8.33328ZM10.3333 0.999023V1.66602H5.66629V0.999023H10.3333Z" fill="#4E342E" stroke="#4E342E" stroke-width="0.666667"/>
+                </svg>
+                <span class="text-[10px] text-(--secondary-color) font-semibold self-center">30-minute time limit</span>
+            </div>
+        </div>
+        <div class="flex gap-3">
+            <div class="flex gap-1">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M2.66699 1.66699H13.333C13.5169 1.66699 13.667 1.81707 13.667 2.00098V4.36621L13 5.0332V2.33398H3V13.667H13V11.6328L13.667 10.9658V14.001C13.6668 14.1847 13.5168 14.334 13.333 14.334H2.66699C2.4832 14.334 2.33318 14.1847 2.33301 14.001V2.00098C2.33301 1.81707 2.48309 1.66699 2.66699 1.66699ZM14.9893 6.81445L10.1377 11.666H9.66504L9.66602 11.1963L14.5186 6.34375L14.9893 6.81445ZM8.33301 8.33398V9.00098H5.66699V8.33398H8.33301ZM10.333 5.66699V6.33398H5.66699V5.66699H10.333Z" fill="#4E342E" stroke="#4E342E" stroke-width="0.666667"/>
+                </svg>
+                <span class="text-[10px] text-(--secondary-color) font-semibold self-center">30 multiple-choice questions</span>
+            </div>
+        </div>
+        <div class="flex gap-3">
+            <div class="flex gap-1">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M2.66699 1.66699H13.333C13.5169 1.66699 13.667 1.81707 13.667 2.00098V4.36621L13 5.0332V2.33398H3V13.667H13V11.6328L13.667 10.9658V14.001C13.6668 14.1847 13.5168 14.334 13.333 14.334H2.66699C2.4832 14.334 2.33318 14.1847 2.33301 14.001V2.00098C2.33301 1.81707 2.48309 1.66699 2.66699 1.66699ZM14.9893 6.81445L10.1377 11.666H9.66504L9.66602 11.1963L14.5186 6.34375L14.9893 6.81445ZM8.33301 8.33398V9.00098H5.66699V8.33398H8.33301ZM10.333 5.66699V6.33398H5.66699V5.66699H10.333Z" fill="#4E342E" stroke="#4E342E" stroke-width="0.666667"/>
+                </svg>
+                <span class="text-[10px] text-(--secondary-color) font-semibold self-center">Instant Result & Certificate</span>
+            </div>
+        </div>
+    </div>
+    <div class="shrink-0 w-45 flex items-center justify-center relative z-10 mt-3">
+        <button class="w-50! rounded-lg! btn btn__blue">Start Exam Now</button>
+    </div>
+</ng-template>
+
+<ng-template #exam_passed>
+    <h4 class="font-semibold text-start text-md text-(--color-text) tracking-wide">
+      Congratulations, you passed!
+    </h4>
+    <p class="font-normal text-start text-[8px] text-(--color-text) tracking-wide w-[60%]">
+        You scored 85% on your official FRSC Computer-Based Theory examination. Your temporary certificate and pass key are now active.
+    </p>
+    <p class="font-semibold text-start text-lg text-(--color-text)">
+        ₦ 3,200
+    </p>
+    <div class="shrink-0 w-45 flex items-center justify-center relative z-10 mt-3">
+        <button class="w-50! rounded-lg! btn btn__green">View Certificate</button>
+    </div>
+</ng-template>
+
+<ng-template #exam_failed>
+    <h4 class="font-semibold text-start text-md text-(--color-text) tracking-wide">
+        Examination Not Passed.
+    </h4>
+    <p class="font-normal text-start text-[8px] text-(--color-text) tracking-wide w-[60%]">
+        You did not meet the required 75% pass mark for the official FRSC Computer-Based Theory examination. As per regulations, you must complete a 14-day cooldown period before you can retake the exam.
+    </p>
+    <p class="font-semibold text-start text-lg text-(--color-text)">
+        ₦ 3,200
+    </p>
+    <div class="shrink-0 w-45 flex items-center justify-center relative z-10 mt-3">
+        <button class="w-50! rounded-lg! btn btn__red">Retake Exam in 14 Days</button>
+    </div>
+</ng-template>
+
+
+<ng-template #no_booking>
+    <div class="h-full flex-1 w-full flex flex-col justify-center items-center gap-3! p-3!">
+      <!-- Empty state -->
+      <div class="image flex justify-center">
+        <img class="w-[85%]" src="exam-flow/no-booking.svg" alt="no-booking" />
+      </div>
+      <!--Empty state title & subtitle-->
+      <div class="title-subtitle flex flex-col justify-between items-center gap-1">
+        <h2 class="font-semibold text-start text-md text-(--color-text)">
+          Awaiting Exam Registration
+        </h2>
+        <span class="font-normal text-center text-[8px] text-(--color-text)">
+            Your official exam slot has not been reserved. Please proceed to payment to secure your seat for the FRSC Computer-Based Theory examination.
+        </span>
+      </div>
+      
+        <div class="shrink-0 w-full flex items-center justify-center relative z-10 mt-3">
+            <button class="rounded-lg! btn btn__light">Book Exam Now</button>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #booked>
+    <div class="h-full flex flex-col gap2 justify-between">
+        <div class="flex flex-col gap-2">
+            <div class="flex justify-between mt-2">
+                <h4 class="font-semibold text-start text-[10px] text-(--color-text) tracking-wide">
+                    Examination
+                </h4>
+                <div class="text-start text-[10px] text-(--color-text) tracking-wide">FRSC Theory CBT</div>
+            </div>
+            <hr>
+            <div class="flex justify-between">
+                <h4 class="font-semibold text-start text-[10px] text-(--color-text) tracking-wide">
+                    Candidate
+                </h4>
+                <div class="text-start text-[10px] text-(--color-text) tracking-wide">Ogunyemi Temidayo</div>
+            </div>
+            <hr>
+            <div class="flex justify-between">
+                <h4 class="font-semibold text-start text-[10px] text-(--color-text) tracking-wide">
+                    Format
+                </h4>
+                <div class="text-start text-[10px] text-(--color-text) tracking-wide">Online · DriveRight Platform</div>
+            </div>
+            <hr>
+            <div class="flex justify-between">
+                <h4 class="font-semibold text-start text-[10px] text-(--color-text) tracking-wide">
+                    Exam Date
+                </h4>
+                <div class="text-start text-[10px] text-(--color-text) tracking-wide">Tuesday, 24 May 2026</div>
+            </div>
+            <hr>
+            <div class="flex justify-between">
+                <h4 class="font-semibold text-start text-[10px] text-(--color-text) tracking-wide">
+                    Amount Paid
+                </h4>
+                <div class="text-start text-[10px] text-(--color-text) tracking-wide">₦8,440</div>
+            </div>
+        </div>
+
+        <div class="shrink-0 w-full flex items-center justify-center relative z-10">
+            <button class="rounded-lg! btn btn__light">00 Days : 00 Hours : 00Min: 00 Sec</button>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #passed>
+    <div class="font-semibold text-[12px]">Reference Code</div>
+    <div class="flex justify-between gap-2! p-4! [background:var(--color-card-wrapper)] gradient-border gradient-border--light mt-3 mb-2!">
+        <div class="text-lg font-bold">TRL-8X4K-9M2P</div>
+        <div class="p-2 rounded-[50px] bg-(--color-text)/40 w-7.5 h-7.5 cursor-pointer">
+            <img class="w-6.25" src="images/icons/copy.svg" alt="copy">
+        </div>
+    </div>
+</ng-template>
+
+
+
+@if (showPaymentDialog) {
+    <app-payment-dialog finalBtnText="Schedule Exam" (onClose)="onPaymentDialogClose($event)"></app-payment-dialog>
+}
+
+@if (showExamSchedulingDialog) {
+    <app-exam-date-booking-dialog (onClose)="onDateBookingClose($event)" ></app-exam-date-booking-dialog>
+}
