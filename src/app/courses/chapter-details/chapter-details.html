@@ -15,12 +15,12 @@
       class="chapters-name w-full h-full bg-(--color-card-wrapper) gradient-border gradient-border--light p-3"
     >
       <div class="chapters__buttons flex flex-col justify-between gap-2">
-        <button (click)="currentChapter.set(1)" class="btn btn__glass">Chapter 1: (Theory)</button>
-        <button (click)="currentChapter.set(2)" class="btn btn__glass">Chapter 2: (Vedio)</button>
-        <button (click)="currentChapter.set(3)" class="btn btn__glass">
+        <button (click)="currentChapter.set(1)" class="btn" [class]="currentChapter() === 1 ? 'btn__dark' : 'btn__glass'">Chapter 1: (Theory)</button>
+        <button (click)="currentChapter.set(2)" class="btn" [class]="currentChapter() === 2 ? 'btn__dark' : 'btn__glass'">Chapter 2: (Vedio)</button>
+        <button (click)="currentChapter.set(3)" class="btn" [class]="currentChapter() === 3 ? 'btn__dark' : 'btn__glass'">
           Chapter 3: Interactive Session
         </button>
-        <button (click)="currentChapter.set(4)" class="btn btn__glass">
+        <button (click)="currentChapter.set(4)" class="btn" [class]="currentChapter() === 4 ? 'btn__dark' : 'btn__glass'">
           Chapter 4: VR Simulation
         </button>
       </div>
@@ -28,7 +28,7 @@
   </div>
 
   <!-- Chapter Details -->
-  <div class="chapter-details flex-1 p-1 border overflow-y-auto">
+  <div class="chapter-details flex-1 p-1 overflow-y-auto">
     <!--Chapter Header-->
     <div class="flex justify-between items-center gap-2 pb-2 border-b border-(--color-text)/70">
       <!--Heading -->
@@ -50,7 +50,7 @@
           <img src="images/icons/bookmarkyellow.svg" alt="bookmarkyellow" />Bookmark Chapter
         </button>
         <button
-          class="w-30! btn btn__glass flex flex-row justify-center items-center gap-1 rounded-full!"
+          class="w-max! btn btn__glass flex flex-row justify-center items-center gap-1 rounded-full!"
         >
           <img src="images/icons/takenotes.svg" alt="take notes" />Take Notes
         </button>

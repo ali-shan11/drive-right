@@ -127,7 +127,7 @@
           </div>
         </div>
 
-        <button class="btn btn__light mt-3!">Enroll Now</button>
+        <button class="btn btn__light mt-3!" (click)="showPayment=true">Enroll Now</button>
       </div>
 
       <!--Section 2-->
@@ -250,7 +250,7 @@
       <div class="empty w-full h-px bg-white/50"></div>
       <!--Buttons-->
       <div class="flex flex-row justify-between gap-2! py-2!">
-        <button
+        <button [routerLink]="['/courses/chapter-detail']"
           class="btn btn__light w-40! rounded-full! font-normal text-center text-xs text-(--color-text) tracking-wide"
         >
           Start Learning
@@ -367,3 +367,8 @@
     </div>
   </div>
 </div>
+
+
+@if (showPayment) {
+  <app-payment-dialog (onClose)="showPayment=false" ></app-payment-dialog>
+}

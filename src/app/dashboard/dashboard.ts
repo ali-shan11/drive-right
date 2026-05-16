@@ -4,10 +4,11 @@ import { BannerCard } from '../interfaces/banner-card';
 import { RoundProgressComponent } from 'angular-svg-round-progressbar';
 import { DriveAid } from '../interfaces/drive-aid';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from "@angular/router";
 
 @Component({
   selector: 'app-dashboard',
-  imports: [CommonModule , RoundProgressComponent],
+  imports: [CommonModule, RoundProgressComponent, RouterLink],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.scss',
 })

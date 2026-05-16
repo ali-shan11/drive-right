@@ -1,14 +1,17 @@
 import { Component } from '@angular/core';
 import { Course } from '../../interfaces/course';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from "@angular/router";
+import { PaymentDialog } from "../../shared/components/payment-dialog/payment-dialog";
 
 @Component({
   selector: 'app-course-detail',
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink, PaymentDialog],
   templateUrl: './course-detail.html',
   styleUrl: './course-detail.scss',
 })
 export class CourseDetail {
+  showPayment = false;
   courses: Course[] = [
     {
       id: 1,

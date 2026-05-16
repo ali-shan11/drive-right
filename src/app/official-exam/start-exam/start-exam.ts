@@ -7,5 +7,4 @@ import { Component } from '@angular/core';
   styleUrl: './start-exam.scss',
 })
 export class StartExam {
-
 }

@@ -2,10 +2,11 @@ import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Output } from '@angular/core';
 import { Course } from '../interfaces/course';
 import { BannerCard } from '../interfaces/banner-card';
+import { RouterLink } from "@angular/router";
 
 @Component({
   selector: 'app-courses',
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './courses.html',
   styleUrl: './courses.scss',
 })

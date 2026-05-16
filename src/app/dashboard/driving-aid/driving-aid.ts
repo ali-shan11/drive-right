@@ -2,10 +2,11 @@ import { CommonModule } from '@angular/common';
 import { Component, signal } from '@angular/core';
 import { RoundProgressComponent } from 'angular-svg-round-progressbar';
 import { DriveAid } from '../../interfaces/drive-aid';
+import { RouterLink } from "@angular/router";
 
 @Component({
   selector: 'app-driving-aid',
-  imports: [RoundProgressComponent , CommonModule],
+  imports: [RoundProgressComponent, CommonModule, RouterLink],
   templateUrl: './driving-aid.html',
   styleUrl: './driving-aid.scss',
 })
