@@ -1,0 +1,119 @@
+<p-dialog
+  [(visible)]="visible"
+  [modal]="true"
+  [closable]="true"
+  [draggable]="false"
+  [resizable]="false"
+  styleClass="dialog-box"
+>
+  <div class="modal-box relative custom-modal gradient-border gradient-border--light">
+
+    <!-- Image -->
+    <img
+      src="images/courses/background-modal-design.svg"
+      aria-hidden="true"
+      style="
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        pointer-events: none;
+        z-index: 0;
+        border-radius: inherit;
+      "
+    />
+
+    <!-- HEADER -->
+    <div class="relative flex flex-col items-center gap-1! mb-4!" style="z-index: 1;">
+      <div
+        [ngStyle]="{
+          width: '8rem',
+          height: '8rem',
+          'background-image': stepConfig.image,
+          'background-size': 'contain',
+          'background-repeat': 'no-repeat',
+          'background-position': 'center',
+        }"
+      ></div>
+
+      <h2 class="font-semibold text-center text-base text-(--color-text)">
+        {{ stepConfig.title }}
+      </h2>
+
+      <button
+        type="button"
+        (click)="closeModal()"
+        class="absolute top-6 right-6 w-8 h-8 rounded-full flex items-center justify-center bg-(--color-text)/80 border-none cursor-pointer hover:-translate-y-0.5 transition-all duration-300"
+      >
+        <img class="" src="images/icons/cross.svg" alt="cross" />
+      </button>
+    </div>
+
+    <!-- BODY -->
+    <div class="relative overflow-y-auto flex-1 px-4!" style="z-index: 1;">
+      <div class="heading flex flex-col justify-between gap-1">
+        <h1 class="font-semibold text-center text-2xl text-[(--color-text)]">
+          You've Completed The Lagos Traffic Laws
+        </h1>
+        <span class="font-normal text-center text-sm text-[(--color-text)]"
+          >Lagos Traffic Laws &amp; Highway Code · 4 of 4 Chapters</span
+        >
+      </div>
+
+      <div
+        class="bg-transparent backdrop-blur-sm border border-[rgba(239,241,237,1)] rounded-2xl p-5 my-4 grid grid-cols-3 divide-x divide-white/30"
+      >
+        <div class="px-3">
+          <p class="text-(--color-primary) text-3xl text-center font-extrabold">100%</p>
+          <p class="text-(--color-text) text-xs text-center mt-1">Completed</p>
+        </div>
+        <div class="px-3">
+          <p class="text-(--color-primary) text-3xl text-center font-extrabold">4</p>
+          <p class="text-(--color-text) text-xs text-center mt-1">Chapters Done</p>
+        </div>
+        <div class="px-3">
+          <p class="text-(--color-primary) text-3xl text-center font-extrabold">
+            2.4<span class="text-base font-semibold">hrs</span>
+          </p>
+          <p class="text-(--color-text) text-xs text-center mt-1">Time Spent</p>
+        </div>
+      </div>
+
+      <div
+        class="bg-(--color-card-wrapper) gradient-border gradient-border--light rounded-lg p-5 text-left mb-4"
+      >
+        <div class="flex items-center gap-2 mb-2">
+          <img src="images/icons/certificate-secondary.svg" alt="" />
+          <p class="text-(--color-surface) font-semibold text-sm">
+            Ready to unlock your badge of completion?
+          </p>
+        </div>
+        <p class="text-(--color-text) text-sm mb-4">
+          Pass this timed assessment to officially unlock the Highway Code Master badge and receive
+          your course certificate.
+        </p>
+        <div class="flex flex-wrap gap-3 text-xs text-(--color-surface) mb-5">
+          <span class="flex items-center gap-1 text-(--color-text)"
+            ><img src="images/icons/time-secondary.svg" alt="" /> 45 Minutes</span
+          >
+          <span class="flex items-center gap-1 text-(--color-text)"
+            ><img src="images/icons/questions-secondary.svg" alt="" /> 40 Questions</span
+          >
+          <span class="flex items-center gap-1 text-(--color-text)"
+            ><img src="images/icons/passing-marks-secondary.svg" alt="" /> Pass mark: 75%</span
+          >
+        </div>
+        <button class="w-full btn btn__light">Take Assessment &amp; Unlock Certification</button>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="relative flex flex-col justify-between gap-3! mt-10!" style="z-index: 1;">
+      <div class="buttons flex gap-6!">
+        <button class="h-10! btn btn__glass">Back to the Courses</button>
+        <button class="h-10! btn btn__light">Browse More Courses</button>
+      </div>
+    </div>
+
+  </div>
+</p-dialog>

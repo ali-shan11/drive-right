@@ -14,6 +14,8 @@ import { AttemptDetail } from './official-exam/recent-attempts/attempt-detail/at
 import { ChapterDetails } from './courses/chapter-details/chapter-details';
 import { SimulationStarted } from './courses/chapter-details/simulation-started/simulation-started';
 import { StartExam } from './start-exam/start-exam';
+import { CourseCompleted } from './courses/chapter-details/course-completed/course-completed';
+import { NotesDialog } from './courses/course-detail/notes-dialog/notes-dialog';
 
 export const routes: Routes = [
   {
@@ -51,6 +53,13 @@ export const routes: Routes = [
       { path: 'official-exam', component: OfficialExam },
       { path: 'official-exam/recent-attempts', component: RecentAttempts },
       { path: 'official-exam/recent-attempts/:id', component: AttemptDetail },
+      { path: 'chapter-details', component: ChapterDetails },
+      { path: 'simulation-started', component: SimulationStarted },
+      { path: 'course-completed', component: CourseCompleted },
+      { path: 'notes', component: NotesDialog },
+      { path: 'payment', component: PaymentDialog },
+      { path: 'mock-test', component: MockTest },
+      { path: 'official-exam', component: OfficialExam },
     ],
   },
   { path: 'official-exam/start', component: StartExam },

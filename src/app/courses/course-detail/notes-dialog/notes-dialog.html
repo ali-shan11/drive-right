@@ -1,0 +1,98 @@
+<p-dialog
+  [(visible)]="visible"
+  [modal]="true"
+  [closable]="true"
+  [draggable]="false"
+  [resizable]="false"
+  [position]="'right'"
+  styleClass="dialog-box"
+>
+  <!--Modal Styling-->
+  <div class="relative max-w-130 custom-modal gradient-border gradient-border--light">
+    <!-- HEADER -->
+    <div class="relative flex flex-col items-start gap-1! mb-4! z-1 border-b">
+      @if (currentStep() === 0) {
+        <h2 class="font-semibold text-start text-base text-(--color-text) pt-4">
+          {{ stepConfig.title }}
+        </h2>
+        <span
+          class="bg-[rgba(170,183,191,0.25)] rounded-full font-semibold text-start text-xs text-(--color-text) py-0.5 px-2"
+        >
+          {{ stepConfig.subtitle }}
+        </span>
+        <button (click)="nextStep()" class="btn btn__light my-4">{{ stepConfig.button }}</button>
+      }
+      @if (currentStep() === 1) {
+        <div class="write-note flex flex-col justify-between items-start gap-6 my-2">
+          <button (click)="previousStep()" class="btn btn__glass w-20! flex justify-between items-center gap-1"><img src="images/icons/back-arrow.svg" alt=""> Back</button>
+          <h2 class="font-semibold text-start text-base text-(--color-text) pt-4">
+            Enter Note Title here
+          </h2>
+        </div>
+      }
+      <button
+        type="button"
+        (click)="closeModal()"
+        class="absolute top-4 right-4 w-8 h-8 rounded-full flex items-center justify-center bg-(--color-text)/80 border-none cursor-pointer hover:-translate-y-0.5 transition-all duration-300"
+      >
+        <img class="" src="images/icons/cross.svg" alt="cross" />
+      </button>
+    </div>
+
+    <!-- BODY -->
+    <div class="overflow-y-auto flex-1 px-4!">
+      <ng-container>
+        @if (currentStep() === 0) {
+          <ng-template [ngTemplateOutlet]="stepOne"></ng-template>
+        }
+
+        @if (currentStep() === 1) {
+          <ng-template [ngTemplateOutlet]="stepTwo"></ng-template>
+        }
+      </ng-container>
+    </div>
+
+    @if (currentStep() === 1) {
+      <!-- FOOTER -->
+      <div class="flex flex-col justify-between gap-3! mt-10!">
+        <!--Buttons-->
+        <button class="h-10! btn btn__glass hover:">Save Note</button>
+      </div>
+    }
+  </div>
+</p-dialog>
+
+<!-- STEP TEMPLATES -->
+
+<ng-template #stepOne>
+  <!-- BODY -->
+  <div class="relative overflow-y-auto flex-1 px-4!" style="z-index: 1">
+    @for (note of notes; track note.id) {
+      <div
+        class="bg-[rgba(78,52,46,0.5)] gradient-border gradient-border--light rounded-lg py-2 px-3 text-left mb-4"
+      >
+        <div class="flex flex-col items-start gap-2 mb-2">
+          <h2 class="font-semibold text-start text-lg text-(--color-primary)">
+            {{ note.title }}
+          </h2>
+          <p class="text-(--color-text) font-semibold text-sm">
+            {{ note.description }}
+          </p>
+        </div>
+        <p class="text-(--color-primary) text-sm">
+          {{ note.date }}
+        </p>
+      </div>
+    }
+  </div>
+</ng-template>
+
+<!--Step 2-->
+<ng-template #stepTwo>
+  <div class="h-full">
+    <textarea
+      class="w-full h-full min-h-60 bg-transparent border-none outline-none resize-none placeholder:text-(--color-text) text-sm p-0 m-0 leading-relaxed"
+      placeholder="Enter your Notes here."
+    ></textarea>
+  </div>
+</ng-template>

@@ -115,6 +115,8 @@
   --secondary-color: #4E342E;
 
   --exam-bg: url('/exam-flow/start-exam-green-bg.svg');
+  /*Course complete image*/
+  --course-complete-image : url('/images/courses/course-complete-green.svg');
 }
 
 /* YELLOW THEME */
@@ -229,6 +231,8 @@
   --secondary-color: #4E342E;
 
   --exam-bg: url('/exam-flow/start-exam-yellow-bg.svg');
+  /*Course complete image*/
+  --course-complete-image : url('/images/courses/course-complete-yellow.svg');
 }
 
 [data-theme='blue'] {
@@ -336,6 +340,8 @@
   --secondary-color: #4E342E;
 
   --exam-bg: url('/exam-flow/start-exam-blue-bg.svg');
+  /*Course complete image*/
+  --course-complete-image : url('/images/courses/course-complete-blue.svg');
 }
 
 /* RED THEME */
@@ -445,4 +451,6 @@
   --secondary-color: #4E342E;
 
   --exam-bg: url('/exam-flow/start-exam-red-bg.svg');
+  /*Course complete image*/
+  --course-complete-image : url('/images/courses/course-complete-red.svg');
 }
