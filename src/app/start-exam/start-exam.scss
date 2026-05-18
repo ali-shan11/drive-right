@@ -1,0 +1,18 @@
+.start-exam-wrapper {
+    background-image: var(--exam-bg);
+    width: 100vw;
+    height: 100vh;
+
+    .gradient-border--no-top {
+        border-radius: 0 0 20px 20px;
+
+        &::before {
+            border-radius: 0 0 20px 20px !important;
+            padding: 0 2px 2px 2px;
+            border-radius: inherit;
+        }
+    }
+    .nav-bar {
+        background: var(--color-nav-bg);
+    }
+}

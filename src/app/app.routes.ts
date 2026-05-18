@@ -11,9 +11,9 @@ import { OfficialExam } from './official-exam/official-exam';
 import { PaymentDialog } from './shared/components/payment-dialog/payment-dialog';
 import { RecentAttempts } from './official-exam/recent-attempts/recent-attempts';
 import { AttemptDetail } from './official-exam/recent-attempts/attempt-detail/attempt-detail';
-import { StartExam } from './official-exam/start-exam/start-exam';
 import { ChapterDetails } from './courses/chapter-details/chapter-details';
 import { SimulationStarted } from './courses/chapter-details/simulation-started/simulation-started';
+import { StartExam } from './start-exam/start-exam';
 
 export const routes: Routes = [
   {
@@ -51,8 +51,8 @@ export const routes: Routes = [
       { path: 'official-exam', component: OfficialExam },
       { path: 'official-exam/recent-attempts', component: RecentAttempts },
       { path: 'official-exam/recent-attempts/:id', component: AttemptDetail },
-      { path: 'official-exam/start-exam', component: StartExam },
     ],
   },
+  { path: 'official-exam/start', component: StartExam },
   { path: 'start-assessment', component: StartMockAssessment },
 ];

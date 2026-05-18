@@ -1,0 +1,74 @@
+<p-dialog
+  [(visible)]="visible"
+  [modal]="true"
+  [closable]="true"
+  [draggable]="false"
+  [resizable]="false"
+  styleClass="dialog-box"
+>
+  <!--Modal Styling-->
+  <div class="relative custom-modal gradient-border gradient-border--light">
+    <!-- HEADER -->
+    <div class="flex flex-col items-center gap-1! mb-8!">
+      <!--Image-->
+      <div
+        [ngStyle]="{
+          width: '8rem',
+          height: '8rem',
+          'background-image': stepConfig[currentStep()].image,
+          'background-size': 'contain',
+          'background-repeat': 'no-repeat',
+          'background-position': 'center',
+        }"
+      ></div>
+
+      <h2 class="font-semibold text-center text-2xl text-(--color-text)">
+        Examination Rules & Conduct
+    </h2>
+    <span class="font-normal text-center text-sm text-(--color-text)">
+        You will be asked to confirm these before the exam starts
+    </span>
+
+    <button
+        type="button"
+        (click)="closeModal()"
+        class="absolute top-6 right-6 w-8 h-8 rounded-full flex items-center justify-center bg-(--color-text)/80 border-none cursor-pointer hover:-translate-y-0.5 transition-all duration-300"
+      >
+        <img class="" src="images/icons/cross.svg" alt="cross" />
+      </button>
+    </div>
+
+    <!-- BODY -->
+    <div class="overflow-y-auto flex-1 px-4!">
+      <!-- <ng-container>
+        @if (currentStep() === 0) {
+          <ng-template [ngTemplateOutlet]="stepOne"></ng-template>
+        }
+
+        @if (currentStep() === 1) {
+          <ng-template [ngTemplateOutlet]="stepTwo"></ng-template>
+        }
+
+        @if (currentStep() === 2) {
+          <ng-template [ngTemplateOutlet]="stepThree"></ng-template>
+        }
+        @if (currentStep() === 3) {
+          <ng-template [ngTemplateOutlet]="stepFour"></ng-template>
+        }
+        @if (currentStep() === 4) {
+          <ng-template [ngTemplateOutlet]="stepOne"></ng-template>
+        }
+      </ng-container> -->
+    </div>
+
+    <!-- FOOTER -->
+    <div class="flex flex-col justify-between gap-3! mt-10!">
+      <!--Buttons-->
+      <button class="h-10! btn btn__glass" (click)="startExam()" >Start Examination</button>
+      <!--Footer Line-->
+      <!-- <div class="footer-line flex justify-between items-center gap-1! self-center">
+        <img src="images/icons/paystack-icon.svg" alt="Pay Stack" />
+        <span class="font-normal text-center text-xs text-(--color-text)">Secured By Paystack</span>
+      </div> -->
+    </div>
+</p-dialog>

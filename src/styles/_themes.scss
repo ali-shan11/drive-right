@@ -113,6 +113,8 @@
   --color-card-wrapper : linear-gradient(90.2deg, rgba(24, 163, 94, 0.6) 0.01%, rgba(170, 183, 191, 0.2) 99.99%);
 
   --secondary-color: #4E342E;
+
+  --exam-bg: url('/exam-flow/start-exam-green-bg.svg');
 }
 
 /* YELLOW THEME */
@@ -225,6 +227,8 @@
 
 
   --secondary-color: #4E342E;
+
+  --exam-bg: url('/exam-flow/start-exam-yellow-bg.svg');
 }
 
 [data-theme='blue'] {
@@ -330,6 +334,8 @@
   --bank-icon-image: url('/images/icons/bank-icon-blue.svg');
   --card-icon-image: url('/images/icons/card-blue.svg');
   --secondary-color: #4E342E;
+
+  --exam-bg: url('/exam-flow/start-exam-blue-bg.svg');
 }
 
 /* RED THEME */
@@ -437,4 +443,6 @@
   --color-card-wrapper : linear-gradient(90.2deg, rgba(232, 58, 78, 0.5) 0.01%, rgba(170, 183, 191, 0.2) 99.99%);
 
   --secondary-color: #4E342E;
+
+  --exam-bg: url('/exam-flow/start-exam-red-bg.svg');
 }

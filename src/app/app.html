@@ -1,1 +1,13 @@
 <router-outlet></router-outlet>
+
+<div class="theme-switcher">
+  @for (theme of themes; track theme.name) {
+    <button
+      class="theme-btn"
+      [style.background]="theme.color"
+      [class.active]="activeTheme() === theme.name"
+      (click)="setTheme(theme.name)"
+      [title]="theme.name"
+    ></button>
+  }
+</div>
