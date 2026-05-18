@@ -1,0 +1,183 @@
+<p-dialog
+  [(visible)]="visible"
+  [modal]="true"
+  [closable]="true"
+  [draggable]="false"
+  [resizable]="false"
+  styleClass="dialog-box"
+>
+  <div class="relative custom-modal gradient-border gradient-border--light">
+    <!-- HEADER -->
+    <div class="flex flex-col items-center gap-2! mb-4!">
+      <img src="lasg-logo.png" alt="exam-rules" />
+      <h2 class="font-semibold text-center text-2xl text-(--color-text)">
+        Complete FRSC Simulation Assessment
+      </h2>
+      <span class="font-normal text-center text-sm text-(--color-text)">
+        Before You Begin, please review the examination rules, grant the required permissions, and
+        confirm your agreement before the exam timer starts.
+      </span>
+      <button
+        type="button"
+        (click)="closeModal()"
+        class="absolute top-6 right-6 w-8 h-8 rounded-full flex items-center justify-center bg-(--color-text)/80 border-none cursor-pointer hover:-translate-y-0.5 transition-all duration-300"
+      >
+        <img src="images/icons/cross.svg" alt="cross" />
+      </button>
+    </div>
+
+    <!-- BODY -->
+    <div class="overflow-y-auto flex-1 px-4!">
+      <!-- Header: Timer & Questions -->
+      <div class="flex justify-center items-center gap-4 px-4 py-2">
+        <div class="flex items-center gap-2">
+          <img src="images/icons/timer-yellow.svg" alt="timer" />
+          <span class="text-(--color-primary) text-base font-semibold">30-minute time limit</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <img src="images/icons/questions-yellow.svg" alt="questions" />
+          <span class="text-(--color-primary) text-base font-semibold">30 multiple-choice questions</span>
+        </div>
+      </div>
+
+      <!-- Profile Card -->
+      <div
+        class="my-3 rounded-md px-3 py-2 flex items-center justify-between bg-(--color-card-wrapper) gradient-border gradient-border--light"
+      >
+        <div class="flex items-center gap-4">
+          <!--Profile-->
+          <div class="profile-image w-10 h-10 rounded-full overflow-hidden! p-0!">
+            <img
+              class="w-full! h-full! object-cover! block!"
+              src="images/profile.png"
+              alt="profile"
+            />
+          </div>
+          <!--Name Id-->
+          <div>
+            <p class="text-(--color-text) font-bold text-base leading-tight">Ogunyemi Temidayo</p>
+            <p class="text-(--color-text) text-xs mt-0.5">
+              NIN: … 782 47 · Exam ID: DRL/EXAM/2026/00847
+            </p>
+          </div>
+          <!--Verified badge-->
+        </div>
+        <span
+          class="flex items-center self-start gap-0.5 text-[8px] bg-[rgba(255,255,255,0.22)] text-(--secondary-color) px-2 py-1 rounded-full font-semibold whitespace-nowrap"
+        >
+          <img src="images/icons/verified-secondary.svg" alt="Verified" /> Verified User</span
+        >
+      </div>
+
+      <!-- Permissions Card -->
+      <div class="mx-4 my-4 rounded-xl overflow-hidden" style="background-color: #9a9a35">
+        <!-- Card Header -->
+        <div
+          class="flex items-center justify-between px-4 py-3 border-b"
+          style="border-color: #b0b040"
+        >
+          <p class="text-white font-bold text-base">Required Permissions</p>
+          <button
+            class="text-sm font-semibold px-3 py-1.5 rounded-lg text-white"
+            style="background-color: #5a5a1a"
+          >
+            Grant All
+          </button>
+        </div>
+
+        <!-- Camera -->
+        <div
+          class="flex items-center justify-between px-4 py-3 border-b"
+          style="border-color: #b0b040"
+        >
+          <div class="flex items-center gap-3">
+            <div
+              class="w-8 h-8 rounded-md flex items-center justify-center text-lg"
+              style="background-color: #7a7a28"
+            >
+              📷
+            </div>
+            <div>
+              <div class="flex items-center gap-2">
+                <span class="text-white text-sm font-semibold">Camera Access</span>
+                <span class="text-xs bg-red-500 text-white px-2 py-0.5 rounded-full font-medium"
+                  >Not Granted</span
+                >
+              </div>
+              <p class="text-yellow-100 text-xs mt-0.5">
+                Required for identity verification and live proctoring
+              </p>
+            </div>
+          </div>
+          <input type="checkbox" class="w-4 h-4 accent-yellow-400 shrink-0" />
+        </div>
+
+        <!-- Microphone -->
+        <div
+          class="flex items-center justify-between px-4 py-3 border-b"
+          style="border-color: #b0b040"
+        >
+          <div class="flex items-center gap-3">
+            <div
+              class="w-8 h-8 rounded-md flex items-center justify-center text-lg"
+              style="background-color: #7a7a28"
+            >
+              🎙
+            </div>
+            <div>
+              <div class="flex items-center gap-2">
+                <span class="text-white text-sm font-semibold">Microphone Access</span>
+                <span class="text-xs bg-red-500 text-white px-2 py-0.5 rounded-full font-medium"
+                  >Not Granted</span
+                >
+              </div>
+              <p class="text-yellow-100 text-xs mt-0.5">
+                Required for audio monitoring during the examination
+              </p>
+            </div>
+          </div>
+          <input type="checkbox" class="w-4 h-4 accent-yellow-400 shrink-0" />
+        </div>
+
+        <!-- Screen Share -->
+        <div class="flex items-center justify-between px-4 py-3">
+          <div class="flex items-center gap-3">
+            <div
+              class="w-8 h-8 rounded-md flex items-center justify-center text-lg"
+              style="background-color: #7a7a28"
+            >
+              🖥
+            </div>
+            <div>
+              <div class="flex items-center gap-2">
+                <span class="text-white text-sm font-semibold">Screen Share</span>
+                <span class="text-xs bg-red-500 text-white px-2 py-0.5 rounded-full font-medium"
+                  >Not Granted</span
+                >
+              </div>
+              <p class="text-yellow-100 text-xs mt-0.5">
+                Will activate when you click 'Start Examination' below
+              </p>
+            </div>
+          </div>
+          <input type="checkbox" class="w-4 h-4 accent-yellow-400 shrink-0" />
+        </div>
+      </div>
+
+      <!-- Consent Checkbox -->
+      <div class="mx-4 mb-5 flex items-start gap-2">
+        <input type="checkbox" id="consent" class="mt-1 w-4 h-4 accent-yellow-400 shrink-0" />
+        <label for="consent" class="text-yellow-100 text-xs leading-relaxed">
+          I have read and understood all examination rules. I confirm that I am John Doe, the
+          registered candidate for booking DRL/EXAM/2026/00847, and I agree to be monitored by
+          webcam and audio throughout this examination.
+        </label>
+      </div>
+    </div>
+    <!-- FOOTER -->
+    <div class="flex flex-col justify-between gap-3! mt-10!">
+      <!--Buttons-->
+      <button class="h-10! btn btn__glass">Start Examination</button>
+    </div>
+  </div>
+</p-dialog>

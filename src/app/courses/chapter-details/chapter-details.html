@@ -49,7 +49,7 @@
         >
           <img src="images/icons/bookmarkyellow.svg" alt="bookmarkyellow" />Bookmark Chapter
         </button>
-        <button
+        <button (click)="showNotes=true"
           class="w-max! btn btn__glass flex flex-row justify-center items-center gap-1 rounded-full!"
         >
           <img src="images/icons/takenotes.svg" alt="take notes" />Take Notes
@@ -76,3 +76,7 @@
     </div>
   </div>
 </div>
+
+@if (showNotes) {
+  <app-notes-dialog (onClose)="showNotes=false" ></app-notes-dialog>
+}

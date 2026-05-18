@@ -6,7 +6,6 @@ import { AidList } from './dashboard/aid-list/aid-list';
 import { Courses } from './courses/courses';
 import { CourseDetail } from './courses/course-detail/course-detail';
 import { MockTest } from './mock-test/mock-test';
-import { StartMockAssessment } from './mock-test/start-mock-assessment/start-mock-assessment';
 import { OfficialExam } from './official-exam/official-exam';
 import { PaymentDialog } from './shared/components/payment-dialog/payment-dialog';
 import { RecentAttempts } from './official-exam/recent-attempts/recent-attempts';
@@ -63,5 +62,4 @@ export const routes: Routes = [
     ],
   },
   { path: 'official-exam/start', component: StartExam },
-  { path: 'start-assessment', component: StartMockAssessment },
 ];

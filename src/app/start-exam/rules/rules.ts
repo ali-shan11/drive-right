@@ -15,6 +15,45 @@ export class Rules {
   visible = signal(true);
   @Output() onClose = new EventEmitter<boolean>();
 
+  rules = [
+    {
+      id : '01',
+      title : 'Full-screen Required',
+      description : 'The exam must be taken in full-screen mode. Exiting full-screen pauses the exam and triggers a violation warning.'
+    },{
+      id : '02',
+      title : 'Full-screen Required',
+      description : 'The exam must be taken in full-screen mode. Exiting full-screen pauses the exam and triggers a violation warning.'
+    },{
+      id : '03',
+      title : 'Full-screen Required',
+      description : 'The exam must be taken in full-screen mode. Exiting full-screen pauses the exam and triggers a violation warning.'
+    },{
+      id : '04',
+      title : 'Full-screen Required',
+      description : 'The exam must be taken in full-screen mode. Exiting full-screen pauses the exam and triggers a violation warning.'
+    },
+    {
+      id : '05',
+      title : 'Full-screen Required',
+      description : 'The exam must be taken in full-screen mode. Exiting full-screen pauses the exam and triggers a violation warning.'
+    },
+    {
+      id : '06',
+      title : 'Full-screen Required',
+      description : 'The exam must be taken in full-screen mode. Exiting full-screen pauses the exam and triggers a violation warning.'
+    },
+    {
+      id : '07',
+      title : 'Full-screen Required',
+      description : 'The exam must be taken in full-screen mode. Exiting full-screen pauses the exam and triggers a violation warning.'
+    },
+    {
+      id : '08',
+      title : 'Full-screen Required',
+      description : 'The exam must be taken in full-screen mode. Exiting full-screen pauses the exam and triggers a violation warning.'
+    }
+  ]
   openDialog() {
     this.visible.set(true);
   }
