@@ -61,7 +61,7 @@
   <div class="right-panel">
     @switch (currentStep) {
       @case ('login') {
-        <app-login-form (next)="signIn()" />
+        <app-login-form />
       }
       @case ('face-verification') {
         <app-face-verification (next)="goTo('face-scan')" />

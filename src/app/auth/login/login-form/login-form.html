@@ -10,19 +10,19 @@
   </div>
 
   <form class="form" [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
-    <!-- Email Address -->
+    <!-- Username or Email Address -->
     <div class="field">
-      <label class="field__label" for="email">Email Address</label>
+      <label class="field__label" for="userName">Username or Email Address</label>
       <div class="field__control gradient-border">
         <input
           class="field__input"
-          id="email"
-          type="email"
-          formControlName="email"
-          placeholder="nayomie@gmail.com"
-          autocomplete="email"
+          id="userName"
+          type="text"
+          formControlName="userNameOrEmailAddress"
+          placeholder="Username or Email"
+          autocomplete="username"
         />
-        @if (emailValid) {
+        @if (userNameValid) {
           <span class="field__addon field__addon--ok">
             <!-- green circle-check -->
             <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
@@ -50,7 +50,7 @@
           [type]="showPassword() ? 'text' : 'password'"
           formControlName="password"
           placeholder="••••••••"
-          autocomplete="new-password"
+          autocomplete="current-password"
         />
         <button
           type="button"
@@ -94,7 +94,15 @@
     <!-- ── Buttons ── -->
     <div class="form__actions">
       <div class="gradient-border gradient-border--light w-full">
-        <button (click)="next.emit()" type="submit" class="btn btn__light" [disabled]="form.invalid">
+        <button
+          (click)="onSubmit()"
+          type="button"
+          class="btn btn__light flex items-center justify-center gap-2"
+          [disabled]="form.invalid || isLoading()"
+        >
+          @if (isLoading()) {
+            <div class="spinner"></div>
+          }
           Login
         </button>
       </div>

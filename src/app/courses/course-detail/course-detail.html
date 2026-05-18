@@ -13,6 +13,33 @@
       </li>
     </ol>
   </nav>
+  <!--Chapter Header-->
+    <div class="flex justify-between items-center gap-2 pb-2 border-b border-(--color-text)/70">
+      <!--Heading -->
+      <div class="heading flex flex-row items-center gap-2">
+        <h2 class="text-center text-xl text-(--color-text) font-semibold">Interactive Session</h2>
+        <!--course count-->
+        <div
+          class="flex flex-row justify-between items-center gap-1 py-0.5 px-2 bg-[rgba(170,183,191,0.25)] rounded-full mt-2"
+        >
+          <img src="images/icons/coursecount.svg" alt="coursecount" />
+          <span class="text-center text-xs text-(--color-text) font-normal">12 Exercise</span>
+        </div>
+      </div>
+      <!--Button-->
+      <div class="buttons flex flex-row justify-between items-center gap-4">
+        <button
+          class="w-45! btn btn__glass flex flex-row justify-center items-center gap-1 rounded-full!"
+        >
+          <img src="images/icons/bookmarkyellow.svg" alt="bookmarkyellow" />Bookmark Chapter
+        </button>
+        <button
+          class="w-30! btn btn__glass flex flex-row justify-center items-center gap-1 rounded-full!"
+        >
+          <img src="images/icons/takenotes.svg" alt="take notes" />Take Notes
+        </button>
+      </div>
+    </div>
 
   <!--Image & Price Details-->
   <div
@@ -265,9 +292,9 @@
 
     <!--  CBT Banner  -->
     <div
-      class="w-full flex items-center justify-between gap-4! py-4! px-8! [background:var(--color-card-wrapper)] gradient-border gradient-border--light my-2!"
+      class="w-full flex items-center justify-between gap-4! p-4! [background:var(--color-card-wrapper)] gradient-border gradient-border--light my-2!"
     >
-      <div class="flex flex-col justify-between gap-1!">
+      <div class="flex flex-col justify-between gap-2!">
         <h3 class="font-semibold text-start text-lg text-(--color-text) tracking-wide">
           Take your Drivers license CBT Mock test
         </h3>
@@ -275,14 +302,50 @@
           Sit the official FRSC Computer-Based Mock examination entirely online, on your own
           schedule, and take the exam right here on the platform.
         </p>
-        <button class="w-50! btn btn__glass mt-6! flex items-center">
+        <button class="w-50! btn btn__glass">
           Start Mock CBT Test
-          <img src="images/icons/right-arrow.svg" alt="right arrow">
+          <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
+            <path
+              d="M3 8h10M9 4l4 4-4 4"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
         </button>
       </div>
       <!-- illustration -->
-      <div class="shrink-0">
-        <img class="w-60" src="images/courses/cbt-mock-test.svg" alt="mock-test">
+      <div class="shrink-0 w-25 h-21 rounded-sm flex items-center justify-center relative z-10">
+        <svg width="56" height="56" viewBox="0 0 56 56" fill="none">
+          <rect x="8" y="14" width="32" height="22" rx="3" stroke="#34d399" stroke-width="1.5" />
+          <path d="M20 36v6M16 42h16" stroke="#34d399" stroke-width="1.5" stroke-linecap="round" />
+          <rect
+            x="12"
+            y="18"
+            width="24"
+            height="14"
+            rx="2"
+            fill="rgba(52,211,153,0.1)"
+            stroke="rgba(52,211,153,0.3)"
+            stroke-width="1"
+          />
+          <circle
+            cx="42"
+            cy="16"
+            r="7"
+            fill="rgba(52,211,153,0.12)"
+            stroke="#34d399"
+            stroke-width="1.4"
+          />
+          <path
+            d="M39 16l2 2 4-4"
+            stroke="#34d399"
+            stroke-width="1.4"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
       </div>
     </div>
   </div>
@@ -336,4 +399,3 @@
 @if (showPayment) {
   <app-payment-dialog (onClose)="showPayment=false" ></app-payment-dialog>
 }
-
