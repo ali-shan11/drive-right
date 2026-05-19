@@ -1,0 +1,284 @@
+<div class="grid grid-cols-[350px_1fr] items-stretch gap-3 p-4">
+  <!-- Sidebar -->
+  <div
+    class="side-bar bg-(--color-card-wrapper) gradient-border gradient-border--light p-3 flex flex-col gap-2"
+  >
+    <!--Live Recording-->
+    <div class="relative w-full h-60 border border-dashed border-[rgba(255, 243, 6, 1)] rounded-lg">
+      <img
+        class="leading-0 w-full! h-full! object-cover rounded-lg"
+        ngSrc="/face-scanning.jpg"
+        width="90"
+        height="90"
+        alt="live Recording"
+        priority
+      />
+      <!-- record text -->
+      <div
+        class="absolute top-2 right-2 record-text flex gap-1 items-center bg-[rgba(255,255,255,0.22)] rounded-full py-1 px-2"
+      >
+        <img src="images/icons/live-record-icon.svg" alt="live-record" />
+        <span class="text-xs text-[rgba(239,27,27,1)] font-semibold">Live Monitoring</span>
+      </div>
+    </div>
+
+    <!--Proctoring & questions-->
+    <div
+      class="proctoring-questions flex flex-col justify-between gap-2 bg-(--color-card-wrapper) gradient-border gradient-border--light p-3"
+    >
+      <h2 class="text-lg text-start text-(--color-text) font-semibold">Proctoring Status</h2>
+      <div class="proctoring-status flex flex-col justify-between gap-2">
+        <!--face detected-->
+        <div
+          class="face-detected w-full bg-(--color-card-wrapper) gradient-border gradient-border--light flex items-center gap-2 py-2 px-4"
+        >
+          <img src="images/icons/correct-icon.svg" alt="correct" />
+          <span class="text-xs text-(--color-text) font-semibold">Face Detected</span>
+        </div>
+        <!--Looking Focused-->
+        <div
+          class="face-detected w-full bg-(--color-card-wrapper) gradient-border gradient-border--light flex items-center gap-2 py-2 px-4"
+        >
+          <img src="images/icons/correct-icon.svg" alt="correct" />
+          <span class="text-xs text-(--color-text) font-semibold">Looking Focused</span>
+        </div>
+        <!--No Unusual Sound-->
+        <div
+          class="face-detected w-full bg-(--color-card-wrapper) gradient-border gradient-border--light flex items-center gap-2 py-2 px-4"
+        >
+          <img src="images/icons/correct-icon.svg" alt="correct" />
+          <span class="text-xs text-(--color-text) font-semibold">No Unusual Sound</span>
+        </div>
+        <!--Screen Activity-->
+        <div
+          class="face-detected w-full bg-(--color-card-wrapper) gradient-border gradient-border--light flex items-center gap-2 py-2 px-4"
+        >
+          <img src="images/icons/correct-icon.svg" alt="correct" />
+          <span class="text-xs text-(--color-text) font-semibold">Screen Activity</span>
+        </div>
+        <!--Warning: 1/5-->
+        <div
+          class="face-detected w-full bg-(--color-card-wrapper) gradient-border gradient-border--light flex items-center gap-2 py-2 px-4"
+        >
+          <img src="images/icons/wrong-icon.svg" alt="correct" />
+          <span class="text-xs text-(--color-text) font-semibold">Warning: 1/5</span>
+        </div>
+        <button class="btn btn__glass mt-4">Recenter Camera</button>
+      </div>
+      <!--Questions-->
+      <div
+        class="questions bg-(--color-card-wrapper) gradient-border gradient-border--light flex flex-col gap-2 p-2 my-2"
+      >
+        <!--heading-->
+        <div
+          class="heading flex justify-between items-center py-1 border-b border-[rgba(255,255,255,1)]"
+        >
+          <span class="text-base text-(--color-text) font-normal">Questions</span>
+          <span class="text-base text-(--color-text) font-normal">
+            {{ currentIndex + 1 }}/{{ questions.length }}</span
+          >
+        </div>
+
+        <!--Question Boxes-->
+        <div class="flex flex-wrap gap-2 mt-2">
+          @for (question of questions; track question.id; let i = $index) {
+            <span
+              class="text-sm text-(--color-text) text-center font-medium border py-1.5 px-2 rounded-md cursor-pointer"
+              [ngClass]="{
+                'bg-(--color-primary) border-(--color-primary)': isAnswered(i) && !isFlagged(i),
+                'border-(--color-primary)': !isAnswered(i) && !isFlagged(i),
+                'border-[rgba(239,27,27,1)]': isFlagged(i),
+              }"
+            >
+              {{ question.id }}
+            </span>
+          }
+        </div>
+        
+        <!--Question-types-->
+        <div class="question-types flex flex-col justify-start gap-2 mt-4">
+          <!--Answered-->
+          <div class="flex items-center gap-2">
+            <span
+              class="p-2 bg-(--color-primary) border border-(--color-primary) rounded-sm"
+            ></span>
+            <span class="text-(--color-text) text-sm leading-relaxed"> Answered </span>
+          </div>
+          <!--Un-Answered-->
+          <div class="flex items-center gap-2">
+            <span class="p-2 border border-(--color-primary) rounded-sm"></span>
+            <span class="text-(--color-text) text-sm leading-relaxed"> Unanswered </span>
+          </div>
+          <!--Flagged-->
+          <div class="flex items-center gap-2">
+            <span class="p-2 border border-[rgba(239,27,27,1)] rounded-sm"></span>
+            <span class="text-(--color-text) text-sm leading-relaxed"> Flagged </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--Exam Content-->
+  <div class="exam-content flex flex-col gap-3">
+    <!--header - Progress bar-->
+    <div
+      class="progressbar flex flex-row justify-between items-center bg-(--color-card-wrapper) gradient-border gradient-border--light p-4"
+    >
+      <!--Time-->
+      <div class="timer flex items-center gap-2">
+        <img src="images/icons/timer-white.svg" alt="timer" />
+        <span class="font-semibold text-base text-(--color-text)">00:59:44</span>
+      </div>
+
+      <!--bar-->
+      <div class="flex flex-col items-center gap-2 shrink-0">
+        <div class="question-heading w-full flex justify-between">
+          <span class="text-[0.62rem] text-app-text/45 whitespace-nowrap">
+            Question {{ currentIndex + 1 }}/{{ questions.length }}
+          </span>
+          <!-- Bind percentage dynamically -->
+          <span class="text-[0.62rem] text-app-text/45 whitespace-nowrap">{{ progress }}%</span>
+        </div>
+        <div class="w-70 h-1.5 bg-white/20 rounded-full overflow-hidden">
+          <!-- Bind width to progress -->
+          <div class="h-full bg-(--color-primary) rounded-full" [style.width.%]="progress"></div>
+        </div>
+      </div>
+
+      <!--Profile-->
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-4">
+          <!--Profile-->
+          <div
+            class="profile-image w-11 h-11 rounded-full! gradient-border gradient-border--light overflow-hidden! p-0!"
+          >
+            <img
+              class="w-full! h-full! object-cover! block!"
+              src="images/profile.png"
+              alt="profile"
+            />
+          </div>
+          <!--Name Id-->
+          <div>
+            <p class="text-(--color-text) font-semibold text-base leading-tight">
+              Ogunyemi Temidayo
+            </p>
+            <p class="text-(--color-text) text-xs mt-0.5">
+              NIN: … 782 47 · Exam ID: DRL/EXAM/2026/00847
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--Main Content-->
+    <div class="main-content flex flex-col justify-between gap-3">
+      <!--Vedio-->
+      <div
+        class="relative flex items-center justify-center video h-full w-full gradient-border gradient-border--light aspect-video rounded-md!"
+      >
+        <img class="w-full h-full object-cover rounded-md" src="images/vrsimulation.png" alt="" />
+      </div>
+
+      <!--Language - sound buttons-->
+      <div class="buttons flex items-center gap-3 py-3">
+        <button class="w-34! btn btn__glass flex items-center rounded-full!">
+          <img src="images/icons/sound-yellow.svg" alt="sound" /><span
+            class="font-semibold text-base text-(--color-primary)"
+            >Read Aloud</span
+          >
+        </button>
+        <button class="w-34! btn btn-language flex items-center rounded-full!">
+          <img src="images/icons/language-yellow.svg" alt="sound" /><span
+            class="font-semibold text-base text-(--color-primary)"
+            >English</span
+          >
+        </button>
+      </div>
+
+      <!--Question Number -->
+      <div class="questions-sections flex items-center gap-4 py-1">
+        <div
+          class="bg-[rgba(170,183,191,0.25)] font-medium text-base text-(--color-text) py-1 px-3 rounded-full"
+        >
+          Question {{ currentIndex + 1 }}/{{ questions.length }}
+        </div>
+        <span class="font-medium text-base text-(--color-text)">Section A - Traffic Signals</span>
+      </div>
+
+      <!--Question-->
+      <div class="text-start textlg text-(--color-text) font-semibold py-1">
+        {{ current.question }}
+      </div>
+
+      <!--Question & Mcq's-->
+      <div class="options grid grid-cols-2 gap-4">
+        @for (option of current.options; track i; let i = $index) {
+          <div class="options flex flex-col justify-between gap-1">
+            <div
+              class="gradient-border cursor-pointer"
+              [ngClass]="{
+                'gradient-border--light': isAnswered(i) && selectedIndex === i,
+              }"
+            >
+              <div (click)="select(i)" class="field__input flex items-center gap-3">
+                <span
+                  class="bg-[rgba(170,183,191,0.2)] py-0.5 px-2 rounded-sm"
+                  [ngClass]="{
+                    'bg-[rgba(255,243,6,0.8)]': isAnswered(i) && selectedIndex === i,
+                  }"
+                  >{{ getLabel(i) }}</span
+                >
+                {{ option }}
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+
+      <!--Flag Question Button-->
+      <div class="flag-question py-4">
+        <button (click)="toggleFlagQuestion()" class="w-40! btn btn__glass flex items-center">
+          <img src="images/icons/flag-yellow.svg" alt="sound" /><span
+            class="font-semibold text-base text-(--color-primary)"
+          >
+            {{ isFlagged(currentIndex) ? 'UnFlag' : 'Flag Question' }}</span
+          >
+        </button>
+      </div>
+
+      <!--Footer-->
+      <div class="footer flex flex-row justify-between items-center">
+        <!--Submit button -->
+        <div class="submit-button">
+          <button
+            (click)="submitExam()"
+            class="w-40! btn btn__dark gradient-border gradient-border--light"
+          >
+            Submit Exam
+          </button>
+        </div>
+
+        <!--Next / prev buttons-->
+        <div class="buttons flex items-center gap-3 pt-5">
+          <button (click)="prev()" class="w-34! btn btn__glass flex items-center">
+            <img src="images/icons/previous-arrow.svg" alt="prev" /><span
+              class="font-normal text-center text-sm text-(--color-text)"
+              >Previous</span
+            >
+          </button>
+
+          <button (click)="next()" class="w-34! btn btn-language flex items-center">
+            <span class="font-normal text-center text-sm text-(--color-text)">Next</span
+            ><img src="images/icons/next-arrow.svg" alt="next" />
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+@if (showSubmitExam) {
+  <app-submit-exam></app-submit-exam>
+}

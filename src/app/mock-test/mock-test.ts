@@ -1,15 +1,17 @@
 import { DatePipe, NgClass } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { Router } from '@angular/router';
 import { RoundProgressComponent } from "angular-svg-round-progressbar";
 import { ProgressBarModule } from 'primeng/progressbar';
 
 @Component({
   selector: 'app-mock-test',
-  imports: [DatePipe, NgClass, RoundProgressComponent, ProgressBarModule],
+  imports: [DatePipe, NgClass, RoundProgressComponent, ProgressBarModule ],
   templateUrl: './mock-test.html',
   styleUrl: './mock-test.scss',
 })
 export class MockTest {
+  private router = inject(Router);
   public attemptsArr = [
     {
       name: 'FRSC Official Theory CBT',
@@ -68,4 +70,8 @@ export class MockTest {
       }
     },
   ]
+
+  startExam(){
+    this.router.navigate(['official-exam/start']);
+  }
 }

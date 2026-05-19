@@ -20,7 +20,7 @@
     </button>
 
     <div class="flex gap-3">
-      <button
+      <button (click)="showRules = true"
         class="btn btn__glass max-w-fit p-2 self-start transition-colors duration-150 cursor-pointer shadow-none!"
       >
         <div class="self-center">
@@ -39,9 +39,9 @@
             />
           </svg>
         </div>
-        <div (click)="showRules = true" class="self-center">Rules</div>
+        <div class="self-center">Rules</div>
       </button>
-      <button
+      <button (click)="showFaqs = true"
         class="btn btn__glass max-w-fit p-2 self-start transition-colors duration-150 cursor-pointer shadow-none!"
       >
         <div class="self-center">
@@ -60,11 +60,15 @@
             />
           </svg>
         </div>
-        <div (click)="showFaqs = true" class="self-center">FAQs</div>
+        <div class="self-center">FAQs</div>
       </button>
     </div>
   </div>
 </div>
+
+@if(showAssessment){
+  <app-frsc-assessment></app-frsc-assessment>
+}
 
 @if (showRules) {
   <app-rules></app-rules>

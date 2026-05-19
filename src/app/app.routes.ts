@@ -15,6 +15,7 @@ import { SimulationStarted } from './courses/chapter-details/simulation-started/
 import { StartExam } from './start-exam/start-exam';
 import { CourseCompleted } from './courses/chapter-details/course-completed/course-completed';
 import { NotesDialog } from './courses/course-detail/notes-dialog/notes-dialog';
+import { Exam } from './exam/exam';
 
 export const routes: Routes = [
   {
@@ -62,4 +63,5 @@ export const routes: Routes = [
     ],
   },
   { path: 'official-exam/start', component: StartExam },
+  { path: 'official-theory-exam', component: Exam },
 ];

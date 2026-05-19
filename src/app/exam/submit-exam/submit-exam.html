@@ -1,0 +1,74 @@
+<p-dialog
+  [(visible)]="visible"
+  [modal]="true"
+  [closable]="true"
+  [draggable]="false"
+  [resizable]="false"
+  styleClass="dialog-box"
+>
+  <!--Modal Styling-->
+  <div class="relative custom-modal max-w-150 gradient-border gradient-border--light">
+    <!-- HEADER -->
+    <div class="flex flex-col items-center gap-2! mb-3!">
+      <img src="images/exams/submit-exam-yellow.svg" alt="submit-exam" />
+      <span class="font-normal text-center text-xs text-(--color-text)"> Time Remaining </span>
+      <span class="font-semibold text-base text-(--color-text)">00:59:44</span>
+
+      <button
+        type="button"
+        (click)="closeModal()"
+        class="absolute top-6 right-6 w-8 h-8 rounded-full flex items-center justify-center bg-(--color-text)/80 border-none cursor-pointer hover:-translate-y-0.5 transition-all duration-300"
+      >
+        <img class="" src="images/icons/cross.svg" alt="cross" />
+      </button>
+    </div>
+
+    <!-- BODY -->
+    <div class="overflow-y-auto flex-1 ">
+      <!--title/description-->
+      <div class="title-desc flex flex-col justify-between gap-0.5 pb-4">
+        <h3 class="font-semibold text-center text-lg text-(--color-text)">Submit Assessment?</h3>
+        <span class="font-normal text-center text-xs text-(--color-text)"
+          >Once submitted your answers cannot be changed. Make sure you have reviewed all
+          questions.</span
+        >
+      </div>
+
+      <!--Stats-->
+      <div class="exam-stats flex justify-between items-center">
+        <!--Answered-->
+        <div
+          class="answered w-40 bg-[rgba(17,211,13,0.13)] flex flex-col justify-center items-center border border-[rgba(170,183,191,0.35)] rounded-md gap-0.5 py-1 px-8"
+        >
+          <h3 class="font-semibold text-center text-base text-(--color-text)">20</h3>
+          <span class="font-normal text-center text-xs text-(--color-text)">Answered</span>
+        </div>
+
+        <!--Unanswered-->
+        <div
+          class="unanswered w-40 bg-[rgba(17,211,13,0.13)] flex flex-col justify-center items-center border border-[rgba(170,183,191,0.35)] rounded-md gap-0.5 py-1 px-8"
+        >
+          <h3 class="font-semibold text-center text-base text-(--color-text)">0</h3>
+          <span class="font-normal text-center text-xs text-(--color-text)">Unanswered</span>
+        </div>
+
+        <!--Flagged-->
+        <div
+          class="flagged w-40 bg-[rgba(233,19,19,0.13)] flex flex-col justify-center items-center border border-[rgba(170,183,191,0.35)] rounded-md gap-0.5 py-1 px-8"
+        >
+          <h3 class="font-semibold text-center text-base text-(--color-text)">0</h3>
+          <span class="font-normal text-center text-xs text-(--color-text)">Flagged Question</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="flex justify-between gap-4! mt-10!">
+      <!--Buttons-->
+      <button class="w-1/2! btn btn__glass flex items-center">
+        <img src="images/icons/previous-arrow.svg" alt="back" /> Review Answers
+      </button>
+      <button class="w-1/2! btn btn-submit">Review Answers</button>
+    </div>
+  </div>
+</p-dialog>

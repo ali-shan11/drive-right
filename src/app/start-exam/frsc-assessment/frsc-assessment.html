@@ -6,7 +6,7 @@
   [resizable]="false"
   styleClass="dialog-box"
 >
-  <div class="relative custom-modal gradient-border gradient-border--light">
+  <div class="custom-modal gradient-border gradient-border--light">
     <!-- HEADER -->
     <div class="flex flex-col items-center gap-2! mb-4!">
       <img src="lasg-logo.png" alt="exam-rules" />
@@ -17,13 +17,6 @@
         Before You Begin, please review the examination rules, grant the required permissions, and
         confirm your agreement before the exam timer starts.
       </span>
-      <button
-        type="button"
-        (click)="closeModal()"
-        class="absolute top-6 right-6 w-8 h-8 rounded-full flex items-center justify-center bg-(--color-text)/80 border-none cursor-pointer hover:-translate-y-0.5 transition-all duration-300"
-      >
-        <img src="images/icons/cross.svg" alt="cross" />
-      </button>
     </div>
 
     <!-- BODY -->
@@ -32,11 +25,11 @@
       <div class="flex justify-center items-center gap-4 px-4 py-2">
         <div class="flex items-center gap-2">
           <img src="images/icons/timer-yellow.svg" alt="timer" />
-          <span class="text-(--color-primary) text-base font-semibold">30-minute time limit</span>
+          <span class="text-[rgba(255,243,6,1)] text-base font-semibold">30-minute time limit</span>
         </div>
         <div class="flex items-center gap-2">
           <img src="images/icons/questions-yellow.svg" alt="questions" />
-          <span class="text-(--color-primary) text-base font-semibold">30 multiple-choice questions</span>
+          <span class="text-[rgba(255,243,6,1)] text-base font-semibold">30 multiple-choice questions</span>
         </div>
       </div>
 
@@ -46,7 +39,7 @@
       >
         <div class="flex items-center gap-4">
           <!--Profile-->
-          <div class="profile-image w-10 h-10 rounded-full overflow-hidden! p-0!">
+          <div class="profile-image w-10 h-10 rounded-sm overflow-hidden! p-0!">
             <img
               class="w-full! h-full! object-cover! block!"
               src="images/profile.png"
@@ -70,16 +63,14 @@
       </div>
 
       <!-- Permissions Card -->
-      <div class="mx-4 my-4 rounded-xl overflow-hidden" style="background-color: #9a9a35">
+      <div class="bg-(--color-card-wrapper) gradient-border gradient-border--light my-4 p-4 rounded-xl overflow-hidden">
         <!-- Card Header -->
         <div
-          class="flex items-center justify-between px-4 py-3 border-b"
-          style="border-color: #b0b040"
+          class="flex items-center justify-between py-1 border-b border-[rgba(255,255,255,1)]"
         >
-          <p class="text-white font-bold text-base">Required Permissions</p>
+          <p class="text-(--secondary-color) font-bold text-base">Required Permissions</p>
           <button
-            class="text-sm font-semibold px-3 py-1.5 rounded-lg text-white"
-            style="background-color: #5a5a1a"
+            class="btn btn-grant w-24!"
           >
             Grant All
           </button>
@@ -87,87 +78,84 @@
 
         <!-- Camera -->
         <div
-          class="flex items-center justify-between px-4 py-3 border-b"
-          style="border-color: #b0b040"
+          class="flex items-center justify-between py-3 border-b border-[rgba(255,255,255,1)]"
         >
           <div class="flex items-center gap-3">
             <div
-              class="w-8 h-8 rounded-md flex items-center justify-center text-lg"
-              style="background-color: #7a7a28"
+              class="h-10 w-10 flex justify-center items-center bg-[rgba(78,52,46,0.25)] p-1 rounded-md text-base text-(--color-primary) font-semibold shrink-0"
             >
-              📷
+              <img src="images/icons/camera-yellow.svg" alt="camera">
             </div>
             <div>
               <div class="flex items-center gap-2">
-                <span class="text-white text-sm font-semibold">Camera Access</span>
-                <span class="text-xs bg-red-500 text-white px-2 py-0.5 rounded-full font-medium"
+                <span class="text-(--color-text) text-sm font-semibold">Camera Access</span>
+                <span class="text-xs bg-[rgba(255,237,233,0.5)] text-[rgba(239,27,27,1)] px-2 py-0.5 rounded-full font-medium"
                   >Not Granted</span
                 >
               </div>
-              <p class="text-yellow-100 text-xs mt-0.5">
+              <p class="text-(--color-text) text-xs mt-0.5">
                 Required for identity verification and live proctoring
               </p>
             </div>
           </div>
-          <input type="checkbox" class="w-4 h-4 accent-yellow-400 shrink-0" />
+          <input type="checkbox" class="w-4 h-4 accent-(--color-text) shrink-0" />
         </div>
 
         <!-- Microphone -->
         <div
-          class="flex items-center justify-between px-4 py-3 border-b"
-          style="border-color: #b0b040"
+          class="flex items-center justify-between py-3 border-b border-[rgba(255,255,255,1)]"
         >
           <div class="flex items-center gap-3">
             <div
-              class="w-8 h-8 rounded-md flex items-center justify-center text-lg"
-              style="background-color: #7a7a28"
+              class="h-10 w-10 flex justify-center items-center bg-[rgba(78,52,46,0.25)] p-1 rounded-md text-base text-(--color-primary) font-semibold shrink-0"
             >
-              🎙
+              <img src="images/icons/microphone-yellow.svg" alt="mic">
             </div>
             <div>
               <div class="flex items-center gap-2">
-                <span class="text-white text-sm font-semibold">Microphone Access</span>
-                <span class="text-xs bg-red-500 text-white px-2 py-0.5 rounded-full font-medium"
+                <span class="text-(--color-text) text-sm font-semibold">Microphone Access</span>
+                <span class="text-xs bg-[rgba(255,237,233,0.5)] text-[rgba(21,180,40,1)] px-2 py-0.5 rounded-full font-medium"
                   >Not Granted</span
                 >
               </div>
-              <p class="text-yellow-100 text-xs mt-0.5">
-                Required for audio monitoring during the examination
+              <p class="text-(--color-text) text-xs mt-0.5">
+                Required for identity verification and live proctoring
               </p>
             </div>
           </div>
-          <input type="checkbox" class="w-4 h-4 accent-yellow-400 shrink-0" />
+          <input type="checkbox" class="w-4 h-4 accent-(--color-text) shrink-0" />
         </div>
 
         <!-- Screen Share -->
-        <div class="flex items-center justify-between px-4 py-3">
+        <div
+          class="flex items-center justify-between py-3 "
+        >
           <div class="flex items-center gap-3">
             <div
-              class="w-8 h-8 rounded-md flex items-center justify-center text-lg"
-              style="background-color: #7a7a28"
+              class="h-10 w-10 flex justify-center items-center bg-[rgba(78,52,46,0.25)] p-1 rounded-md text-base text-(--color-primary) font-semibold shrink-0"
             >
-              🖥
+              <img src="images/icons/screen-yellow.svg" alt="screen">
             </div>
             <div>
               <div class="flex items-center gap-2">
-                <span class="text-white text-sm font-semibold">Screen Share</span>
-                <span class="text-xs bg-red-500 text-white px-2 py-0.5 rounded-full font-medium"
+                <span class="text-(--color-text) text-sm font-semibold">Screen Access</span>
+                <span class="text-xs bg-[rgba(255,237,233,0.5)] text-[rgba(239,27,27,1)] px-2 py-0.5 rounded-full font-medium"
                   >Not Granted</span
                 >
               </div>
-              <p class="text-yellow-100 text-xs mt-0.5">
-                Will activate when you click 'Start Examination' below
+              <p class="text-(--color-text) text-xs mt-0.5">
+                Required for identity verification and live proctoring
               </p>
             </div>
           </div>
-          <input type="checkbox" class="w-4 h-4 accent-yellow-400 shrink-0" />
+          <input type="checkbox" class="w-4 h-4 accent-(--color-text) shrink-0" />
         </div>
       </div>
 
       <!-- Consent Checkbox -->
       <div class="mx-4 mb-5 flex items-start gap-2">
-        <input type="checkbox" id="consent" class="mt-1 w-4 h-4 accent-yellow-400 shrink-0" />
-        <label for="consent" class="text-yellow-100 text-xs leading-relaxed">
+        <input type="checkbox" id="consent" class="mt-1 w-4 h-4 accent-(--color-text) shrink-0" />
+        <label for="consent" class="text-(--color-text) text-xs leading-relaxed">
           I have read and understood all examination rules. I confirm that I am John Doe, the
           registered candidate for booking DRL/EXAM/2026/00847, and I agree to be monitored by
           webcam and audio throughout this examination.
@@ -177,7 +165,7 @@
     <!-- FOOTER -->
     <div class="flex flex-col justify-between gap-3! mt-10!">
       <!--Buttons-->
-      <button class="h-10! btn btn__glass">Start Examination</button>
+      <button (click)="startTheoryExam()" class="h-10! btn btn__glass transition-all duration-300">Start Examination</button>
     </div>
   </div>
 </p-dialog>
