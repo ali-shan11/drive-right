@@ -1,0 +1,27 @@
+<div class="tab-container h-100 p-4 mt-2">
+    <div class="tab-wrapper">
+      <!-- MAIN MENUS -->
+        <div class="tab-btns">
+            <div class="nav-item w-fit flex items-center gap-2 px-3! py-1! rounded-lg bg-[rgba(131,131,131,0.11)] text-(--color-text) text-xs font-medium whitespace-nowrap overflow-hidden hover:-translate-y-0.5 transition-all duration-300 cursor-pointer" (click)="selectMainMenu('user')"
+                [class.btn__dark]="selectedMainMenu === 'user'">User Management
+            </div>
+        </div>
+    </div>
+    
+    <div class="tab-wrapper">
+        <!-- SUB MENUS (DYNAMIC) -->
+        @if (subMenus[selectedMainMenu]) {
+            <div class="tab-btns mt-2">
+                <div class="tab gradient-border"
+                  *ngFor="let item of subMenus[selectedMainMenu]"
+                  [routerLink]="item.link"
+                  routerLinkActive="selected">{{ item.label }}
+                </div>
+            </div>
+        }
+    </div>
+
+    <div class="content-wrapper pt-2">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
