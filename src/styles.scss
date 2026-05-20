@@ -70,8 +70,84 @@ body {
   background: transparent !important;
   padding: 0 !important;
   overflow: visible !important;
+  max-height: 90vh !important;
 }
 
 .dialog-box .p-dialog-footer {
   display: none !important;
+}
+
+/* ── SweetAlert2 App Theme ── */
+.swal-app-popup {
+  background-image: var(--color-overlay-gradient-bg), var(--bg-primary) !important;
+  border: none !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  border-radius: 16px !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4) !important;
+}
+
+.swal-app-title {
+  color: var(--color-text) !important;
+  font-size: 17px !important;
+  font-weight: 600 !important;
+  font-family: 'Inter', system-ui, sans-serif !important;
+}
+
+.swal-app-text {
+  color: var(--color-text) !important;
+  opacity: 0.75;
+  font-size: 13px !important;
+  font-family: 'Inter', system-ui, sans-serif !important;
+}
+
+.swal-app-confirm,
+.swal-app-cancel {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  height: 32px !important;
+  padding: 0 24px !important;
+  border-radius: 12px !important;
+  border: none !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  font-family: 'Inter', system-ui, sans-serif !important;
+  cursor: pointer !important;
+  transition: opacity 0.18s ease, transform 0.1s ease !important;
+
+  &:active {
+    transform: translateY(1px) !important;
+  }
+}
+
+.swal-app-confirm {
+  background: var(--color-light-button) !important;
+  box-shadow: var(--light-box-shadow) !important;
+  color: var(--color-text) !important;
+}
+
+.swal-app-cancel {
+  background: var(--color-dark-button) !important;
+  box-shadow: var(--dark-box-shadow) !important;
+  color: var(--color-text) !important;
+}
+
+.swal2-actions{
+  gap: 10px !important;
+}
+
+.p-paginator{
+  --p-paginator-background: transparent !important;
+}
+
+.p-datatable{
+  background: var(--color-card-wrapper) !important;
+  // --p-datatable-header-cell-border: var(--color-input-border) !important;
+  // --p-datatable-row-hover-background: var(--color-table-row-hover) !important;
+}
+
+.p-datatable-thead > tr > th, .p-datatable-tbody > tr{
+  background: transparent !important;
 }

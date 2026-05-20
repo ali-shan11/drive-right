@@ -1,0 +1,220 @@
+<p-dialog
+  [visible]="visible()"
+  [modal]="true"
+  [closable]="false"
+  [draggable]="false"
+  [resizable]="false"
+  styleClass="dialog-box"
+>
+  <div class="relative custom-modal gradient-border gradient-border--light">
+
+    <!-- HEADER (fixed) -->
+    <div class="flex justify-between items-center gap-2 mb-4 flex-shrink-0">
+      <h2 class="font-semibold text-xl text-(--color-text)">
+        {{ isEdit ? 'Edit User: ' + user()?.userName : 'Create New User' }}
+      </h2>
+      <button
+        type="button"
+        (click)="close()"
+        class="w-8 h-8 rounded-full flex items-center justify-center bg-(--color-text)/80 border-none cursor-pointer hover:-translate-y-0.5 transition-all duration-300"
+      >
+        <img src="images/icons/cross.svg" alt="close" />
+      </button>
+    </div>
+
+    <!-- TABS (fixed) -->
+    <div class="flex gap-1 mb-4 border-b border-white/10 flex-shrink-0">
+      <button
+        type="button"
+        class="tab-btn"
+        [class.tab-btn--active]="activeTab() === 'info'"
+        (click)="activeTab.set('info')"
+      >
+        User Information
+      </button>
+      <button
+        type="button"
+        class="tab-btn"
+        [class.tab-btn--active]="activeTab() === 'roles'"
+        (click)="activeTab.set('roles')"
+      >
+        Roles
+        @if (assignedRoleCount() > 0) {
+          <span class="role-count-badge text-black!">{{ assignedRoleCount() }}</span>
+        }
+      </button>
+    </div>
+
+    <!-- FORM (fills remaining height) -->
+    <form [formGroup]="form" (ngSubmit)="save()" novalidate class="modal-form">
+
+      <!-- SCROLLABLE BODY -->
+      <div class="modal-form__body">
+
+        <!-- TAB: USER INFORMATION -->
+        @if (activeTab() === 'info') {
+          <div class="flex flex-col gap-3">
+
+            <!-- Name Row -->
+            <div class="flex gap-3">
+              <div class="field w-full">
+                <label class="field__label" for="um-firstName">First Name *</label>
+                <div class="gradient-border">
+                  <input class="field__input" id="um-firstName" type="text" formControlName="name" placeholder="First name" />
+                </div>
+              </div>
+              <div class="field w-full">
+                <label class="field__label" for="um-surname">Last Name *</label>
+                <div class="gradient-border">
+                  <input class="field__input" id="um-surname" type="text" formControlName="surname" placeholder="Last name" />
+                </div>
+              </div>
+            </div>
+
+            <!-- Email -->
+            <div class="field">
+              <label class="field__label" for="um-email">Email Address *</label>
+              <div class="gradient-border">
+                <input class="field__input" id="um-email" type="email" formControlName="emailAddress" placeholder="email@example.com" />
+              </div>
+            </div>
+
+            <!-- Phone -->
+            <div class="field">
+              <label class="field__label" for="um-phone">Phone Number</label>
+              <div class="gradient-border">
+                <input class="field__input" id="um-phone" type="text" formControlName="phoneNumber" placeholder="+234..." />
+              </div>
+            </div>
+
+            <!-- Username -->
+            <div class="field">
+              <label class="field__label" for="um-username">Username *</label>
+              <div class="gradient-border">
+                <input class="field__input" id="um-username" type="text" formControlName="userName" placeholder="username" />
+              </div>
+            </div>
+
+            <!-- Set Random Password toggle -->
+            <label class="toggle-label">
+              <input type="checkbox" formControlName="setRandomPassword" class="toggle-checkbox" />
+              <span class="toggle-text">Set Random Password</span>
+            </label>
+
+            <!-- Password fields -->
+            @if (!form.getRawValue().setRandomPassword) {
+              <div class="field">
+                <label class="field__label" for="um-password">
+                  {{ isEdit ? 'New Password' : 'Password' }}
+                  @if (!isEdit) { <span>*</span> }
+                </label>
+                <div class="field__control gradient-border">
+                  <input
+                    class="field__input"
+                    id="um-password"
+                    [type]="showPassword() ? 'text' : 'password'"
+                    formControlName="password"
+                    placeholder="••••••••"
+                    autocomplete="new-password"
+                  />
+                  <button type="button" class="field__addon field__addon--btn" (click)="showPassword.set(!showPassword())" tabindex="-1">
+                    @if (showPassword()) {
+                      <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M2 9s2.8-5 7-5 7 5 7 5-2.8 5-7 5-7-5-7-5z" stroke="rgba(241,245,249,0.5)" stroke-width="1.5" stroke-linejoin="round"/><circle cx="9" cy="9" r="2.2" stroke="rgba(241,245,249,0.5)" stroke-width="1.5"/><path d="M2 2l14 14" stroke="rgba(241,245,249,0.5)" stroke-width="1.5" stroke-linecap="round"/></svg>
+                    } @else {
+                      <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M2 9s2.8-5 7-5 7 5 7 5-2.8 5-7 5-7-5-7-5z" stroke="rgba(241,245,249,0.5)" stroke-width="1.5" stroke-linejoin="round"/><circle cx="9" cy="9" r="2.2" stroke="rgba(241,245,249,0.5)" stroke-width="1.5"/></svg>
+                    }
+                  </button>
+                </div>
+              </div>
+
+              <div class="field">
+                <label class="field__label" for="um-confirmPassword">Confirm Password @if (!isEdit) { <span>*</span> }</label>
+                <div class="field__control gradient-border">
+                  <input
+                    class="field__input"
+                    [class.field__input--err]="passwordsMismatch"
+                    id="um-confirmPassword"
+                    [type]="showConfirmPassword() ? 'text' : 'password'"
+                    formControlName="confirmPassword"
+                    placeholder="••••••••"
+                    autocomplete="new-password"
+                  />
+                  @if (passwordsMismatch) {
+                    <span class="field__addon field__addon--err">
+                      <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="9" fill="#ef4444"/><path d="M6 6l6 6M12 6l-6 6" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></svg>
+                    </span>
+                  } @else {
+                    <button type="button" class="field__addon field__addon--btn" (click)="showConfirmPassword.set(!showConfirmPassword())" tabindex="-1">
+                      @if (showConfirmPassword()) {
+                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M2 9s2.8-5 7-5 7 5 7 5-2.8 5-7 5-7-5-7-5z" stroke="rgba(241,245,249,0.5)" stroke-width="1.5" stroke-linejoin="round"/><circle cx="9" cy="9" r="2.2" stroke="rgba(241,245,249,0.5)" stroke-width="1.5"/><path d="M2 2l14 14" stroke="rgba(241,245,249,0.5)" stroke-width="1.5" stroke-linecap="round"/></svg>
+                      } @else {
+                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M2 9s2.8-5 7-5 7 5 7 5-2.8 5-7 5-7-5-7-5z" stroke="rgba(241,245,249,0.5)" stroke-width="1.5" stroke-linejoin="round"/><circle cx="9" cy="9" r="2.2" stroke="rgba(241,245,249,0.5)" stroke-width="1.5"/></svg>
+                      }
+                    </button>
+                  }
+                </div>
+              </div>
+            }
+
+            <!-- Checkboxes -->
+            <div class="flex flex-col gap-2 mt-1">
+              <label class="toggle-label">
+                <input type="checkbox" formControlName="shouldChangePasswordOnNextLogin" class="toggle-checkbox" />
+                <span class="toggle-text">Should Change Password On Next Login</span>
+              </label>
+              <label class="toggle-label">
+                <input type="checkbox" formControlName="sendActivationEmail" class="toggle-checkbox" />
+                <span class="toggle-text">Send Activation Email</span>
+              </label>
+              <label class="toggle-label">
+                <input type="checkbox" formControlName="isActive" class="toggle-checkbox" />
+                <span class="toggle-text">Active</span>
+              </label>
+              <label class="toggle-label">
+                <input type="checkbox" formControlName="isTwoFactorEnabled" class="toggle-checkbox" />
+                <span class="toggle-text">Two Factor Authentication</span>
+              </label>
+              <label class="toggle-label">
+                <input type="checkbox" formControlName="isLockoutEnabled" class="toggle-checkbox" />
+                <span class="toggle-text">Lockout Enabled</span>
+              </label>
+            </div>
+
+          </div>
+        }
+
+        <!-- TAB: ROLES -->
+        @if (activeTab() === 'roles') {
+          <div class="flex flex-col gap-2">
+            @for (role of roles(); track role.name) {
+              <label class="toggle-label">
+                <input
+                  type="checkbox"
+                  class="toggle-checkbox"
+                  [checked]="role.isAssigned"
+                  (change)="toggleRole(role)"
+                />
+                <span class="toggle-text">{{ role.name }}</span>
+              </label>
+            } @empty {
+              <span class="text-(--color-text) opacity-50 text-sm">No roles available.</span>
+            }
+          </div>
+        }
+
+      </div>
+
+      <!-- FOOTER (fixed) -->
+      <div class="modal-form__footer">
+        <button type="button" class="btn btn__glass px-6 max-w-fit" (click)="close()">Cancel</button>
+        <div class="gradient-border gradient-border--light">
+          <button type="submit" class="btn btn__light px-6" [disabled]="saving()">
+            @if (saving()) { Saving... } @else { Save }
+          </button>
+        </div>
+      </div>
+
+    </form>
+
+  </div>
+</p-dialog>

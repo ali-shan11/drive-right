@@ -1,14 +1,16 @@
 import { NgOptimizedImage } from '@angular/common';
-import { Component, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { Auth } from '../../auth';
+import { LoginBody } from '../../../shared/models/auth';
 
 @Component({
   selector: 'app-login-form',
-  imports: [NgOptimizedImage, ReactiveFormsModule],
+  imports: [NgOptimizedImage, ReactiveFormsModule, RouterLink],
   templateUrl: './login-form.html',
   styleUrl: './login-form.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LoginForm {
   private fb = inject(FormBuilder);
@@ -39,14 +41,16 @@ export class LoginForm {
     }
 
     this.isLoading.set(true);
-    const body = {
-      userNameOrEmailAddress: this.form.value.userNameOrEmailAddress,
-      password: this.form.value.password,
+    const body: LoginBody = {
+      userNameOrEmailAddress: this.form.value.userNameOrEmailAddress!,
+      password: this.form.value.password!,
       rememberClient: true,
     };
 
     this.auth.login(body).subscribe({
-      next: (res: any) => {
+      next: (res) => {
+        localStorage.setItem('accessToken', res.result.accessToken);
+        localStorage.setItem('userId', String(res.result.userId));
         this.isLoading.set(false);
         this.router.navigate(['/dashboard']);
       },

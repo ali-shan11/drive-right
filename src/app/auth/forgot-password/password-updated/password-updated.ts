@@ -1,12 +1,12 @@
 import { NgOptimizedImage } from '@angular/common';
-import { Component, EventEmitter, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-password-updated',
-  imports: [NgOptimizedImage],
+  imports: [NgOptimizedImage, RouterLink],
   templateUrl: './password-updated.html',
   styleUrl: './password-updated.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class PasswordUpdated {
-  @Output() next = new EventEmitter;
-}
+export class PasswordUpdated {}

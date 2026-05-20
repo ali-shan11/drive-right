@@ -1,5 +1,15 @@
 <router-outlet></router-outlet>
 
+<ngx-spinner
+  bdColor="rgba(0,0,0,0.55)"
+  size="medium"
+  color="#fff"
+  type="square-jelly-box"
+  [fullScreen]="true"
+>
+  <p class="text-white text-[10px]">Loading...</p>
+</ngx-spinner>
+
 <div class="theme-switcher">
   @for (theme of themes; track theme.name) {
     <button

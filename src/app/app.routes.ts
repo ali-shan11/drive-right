@@ -18,7 +18,7 @@ import { CourseCompleted } from './courses/chapter-details/course-completed/cour
 import { NotesDialog } from './courses/course-detail/notes-dialog/notes-dialog';
 import { Exam } from './exam/exam';
 import { Settings } from './settings/settings';
-import { Users } from './settings/users';
+import { Users } from './settings/users/users';
 
 export const routes: Routes = [
   {

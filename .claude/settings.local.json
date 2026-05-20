@@ -13,7 +13,17 @@
       "Bash(curl -sL \"https://www.figma.com/api/oembed?url=https://www.figma.com/design/G4LLUF7vuUdyye32yvLtrG/Untitled?node-id=2-19\")",
       "Bash(python3 -m json.tool)",
       "Bash(curl -sL 'https://api-cdn.figma.com/resize/thumbnails/d6189ab0-a320-4197-adb7-b0cd032b006b?expiration=1778457600&signature=28f6e940d1b176619ec52a9323e1c3a18e2e081023985c3a15c63de57dbb5346&height=450&bucket=figma-alpha' -o /home/alishan/Downloads/figma-design.png)",
-      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); styles=d['projects'][list\\(d['projects'].keys\\(\\)\\)[0]]['architect']['build']['options']; print\\(json.dumps\\(styles, indent=2\\)\\)\")"
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); styles=d['projects'][list\\(d['projects'].keys\\(\\)\\)[0]]['architect']['build']['options']; print\\(json.dumps\\(styles, indent=2\\)\\)\")",
+      "Bash(npx ng *)",
+      "Bash(sed -n '31,80p' /mnt/4de621a3-de50-4b00-9557-6188eb845671/TechnoVerse/DriveRight_Lagos-Web-App/src/styles/_global.scss)",
+      "Bash(sed -n '1,30p' /mnt/4de621a3-de50-4b00-9557-6188eb845671/TechnoVerse/DriveRight_Lagos-Web-App/src/styles.scss)",
+      "Bash(sed -i \"s|import Swal from 'sweetalert2';|import { AppSwal as Swal } from '../../../shared/utils/swal';|g\" /mnt/4de621a3-de50-4b00-9557-6188eb845671/TechnoVerse/DriveRight_Lagos-Web-App/src/app/auth/sign-up/signup-form/signup-form.ts)",
+      "Bash(sed -i \"s|import Swal from 'sweetalert2';|import { AppSwal as Swal } from '../../shared/utils/swal';|g\" /mnt/4de621a3-de50-4b00-9557-6188eb845671/TechnoVerse/DriveRight_Lagos-Web-App/src/app/auth/sign-up/sign-up.ts)",
+      "Bash(sed -i \"s|import Swal from 'sweetalert2';|import { AppSwal as Swal } from '../../../shared/utils/swal';|g\" /mnt/4de621a3-de50-4b00-9557-6188eb845671/TechnoVerse/DriveRight_Lagos-Web-App/src/app/auth/sign-up/verify-email/verify-email.ts)",
+      "Bash(sed -i \"s|import Swal from 'sweetalert2';|import { AppSwal as Swal } from '../../../shared/utils/swal';|g\" /mnt/4de621a3-de50-4b00-9557-6188eb845671/TechnoVerse/DriveRight_Lagos-Web-App/src/app/auth/sign-up/complete-profile/complete-profile.ts)",
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); print\\(json.dumps\\(d['projects']['DriveRight-Lagos-Web-App']['architect']['build']['options'].get\\('styles', []\\), indent=2\\)\\)\")",
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); keys=list\\(d['projects'].keys\\(\\)\\); print\\(keys\\)\")",
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); print\\(json.dumps\\(d['projects']['driveRight']['architect']['build']['options'].get\\('styles', []\\), indent=2\\)\\)\")"
     ]
   }
 }

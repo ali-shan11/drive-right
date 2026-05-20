@@ -1,22 +1,22 @@
 import { NgOptimizedImage } from '@angular/common';
-import { Component, EventEmitter, inject, Output, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, output } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { AppSwal as Swal } from '../../../shared/utils/swal';
 
 @Component({
   selector: 'app-forgot-password-form',
-  imports: [ReactiveFormsModule , NgOptimizedImage],
+  imports: [ReactiveFormsModule, NgOptimizedImage],
   templateUrl: './forgot-password-form.html',
   styleUrl: './forgot-password-form.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ForgotPasswordForm {
-  @Output() next = new EventEmitter;
-  @Output() back = new EventEmitter;
+  next = output<string>();
+  back = output<void>();
 
   private fb = inject(FormBuilder);
 
-  protected showPassword = signal(false);
-
-  protected form = this.fb.group({
+  protected form = this.fb.nonNullable.group({
     email: ['', [Validators.required, Validators.email]],
   });
 
@@ -25,14 +25,12 @@ export class ForgotPasswordForm {
     return !!(c?.valid && c.dirty);
   }
 
-
   protected onSubmit(): void {
     if (this.form.invalid) {
       this.form.markAllAsTouched();
+      Swal.fire({ icon: 'warning', title: 'Missing Fields', text: 'Please enter a valid email address.' });
       return;
     }
-    console.log('forgot password payload:', this.form.value);
-
-    this.next.emit();
+    this.next.emit(this.form.getRawValue().email);
   }
 }

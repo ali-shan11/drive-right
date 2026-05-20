@@ -41,11 +41,11 @@
       <div
         class="w-28 h-28 rounded-full [background:var(--color-user-icon)] border-2 border-gray-300 overflow-hidden flex items-center justify-center transition-opacity group-hover:opacity-80"
       >
-        @if (!previewUrl) {
+        @if (!previewUrl()) {
           <img ngSrc="/authimages/user-icon.svg" width="64" height="64" alt="user-icon" priority />
         }
-        @if (previewUrl) {
-          <img [src]="previewUrl" class="w-full h-full object-cover" alt="Profile photo" />
+        @if (previewUrl()) {
+          <img [src]="previewUrl()" class="w-full h-full object-cover" alt="Profile photo" />
         }
       </div>
 
@@ -402,8 +402,8 @@
       </div>
 
       <!-- Submit Button -->
-      <div (click)="next.emit()" class="gradient-border gradient-border--light w-full mt-2">
-        <button class="btn btn__light" type="submit">Submit</button>
+      <div class="gradient-border gradient-border--light w-full mt-2">
+        <button class="btn btn__light" type="submit" [disabled]="loading()">Submit</button>
       </div>
     </form>
   </div>

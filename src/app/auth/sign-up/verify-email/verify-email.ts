@@ -1,42 +1,62 @@
 import { NgOptimizedImage } from '@angular/common';
-import { Component, EventEmitter, Output, output, signal } from '@angular/core';
-import { NgOtpInputComponent } from 'ng-otp-input';
+import { ChangeDetectionStrategy, Component, inject, input, output, signal } from '@angular/core';
 import { Otp } from '../../../shared/components/otp/otp';
+import { Auth } from '../../auth';
+import { AppSwal as Swal } from '../../../shared/utils/swal';
 
 @Component({
   selector: 'app-verify-email',
-  imports: [NgOptimizedImage , Otp],
+  imports: [NgOptimizedImage, Otp],
   templateUrl: './verify-email.html',
   styleUrl: './verify-email.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class VerifyEmail {
-  // verify-email.ts
-@Output() next = new EventEmitter<void>();
-@Output() back = new EventEmitter<void>();
+  next = output<void>();
+  back = output<void>();
+
+  userId = input<number | null>(null);
+  email = input('');
+
+  private auth = inject(Auth);
 
   otp = signal('');
   error = signal(false);
   loading = signal(false);
-  success = signal(false);
 
-  // called on every keystroke
   onOtpChange(value: string): void {
     this.otp.set(value);
-    this.error.set(false); // clear error as user retypes
+    this.error.set(false);
   }
 
-  // called automatically when all boxes are filled
   onOtpComplete(value: string): void {
-    this.loading.set(true);
+    const uid = this.userId();
+    if (uid === null) {
+      this.error.set(true);
+      return;
+    }
 
-    // replace with your real API call
-    setTimeout(() => {
-      this.loading.set(false);
-      if (value === '123456') {
-        this.success.set(true);
-      } else {
-        this.error.set(true); // turns boxes red
-      }
-    }, 1500);
+    this.loading.set(true);
+    this.auth.activateEmail({ userId: uid, confirmationCode: value }).subscribe({
+      next: () => {
+        this.loading.set(false);
+        Swal.fire({
+          icon: 'success',
+          title: 'Email Verified',
+          text: 'Your email has been verified successfully.',
+          timer: 1500,
+          showConfirmButton: false,
+        }).then(() => this.next.emit());
+      },
+      error: (err) => {
+        this.loading.set(false);
+        this.error.set(true);
+        Swal.fire({
+          icon: 'error',
+          title: 'Verification Failed',
+          text: err?.error?.error?.message ?? 'Invalid or expired verification code. Please try again.',
+        });
+      },
+    });
   }
 }

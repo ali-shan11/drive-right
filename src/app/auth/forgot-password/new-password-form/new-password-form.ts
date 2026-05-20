@@ -1,24 +1,31 @@
 import { NgOptimizedImage } from '@angular/common';
-import { Component, EventEmitter, inject, Output, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, input, output, signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Auth } from '../../auth';
+import { AppSwal as Swal } from '../../../shared/utils/swal';
 
 @Component({
   selector: 'app-new-password-form',
   imports: [NgOptimizedImage, ReactiveFormsModule],
   templateUrl: './new-password-form.html',
   styleUrl: './new-password-form.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NewPasswordForm {
-  @Output() next = new EventEmitter<void>();
-  @Output() back = new EventEmitter<void>();
+  next = output<void>();
+  back = output<void>();
+
+  resetCode = input('');
 
   private fb = inject(FormBuilder);
+  private auth = inject(Auth);
 
+  protected loading = signal(false);
   protected showPassword = signal(false);
   protected showConfirmPassword = signal(false);
 
-  protected form = this.fb.group({
-    password: ['', [Validators.required, Validators.minLength(8)]],
+  protected form = this.fb.nonNullable.group({
+    password: ['', Validators.required],
     confirmPassword: ['', Validators.required],
   });
 
@@ -37,9 +44,39 @@ export class NewPasswordForm {
   }
 
   protected onSubmit(): void {
-    if (this.form.valid) {
-      console.log(this.form.value);
+    if (this.passwordsMismatch) {
+      Swal.fire({ icon: 'error', title: 'Passwords Do Not Match', text: 'Please make sure both passwords are the same.' });
+      return;
     }
-    this.next.emit();
+
+    if (this.form.invalid) {
+      this.form.markAllAsTouched();
+      Swal.fire({ icon: 'warning', title: 'Missing Fields', text: 'Please fill in all required fields.' });
+      return;
+    }
+
+    const { password } = this.form.getRawValue();
+    this.loading.set(true);
+
+    this.auth.resetPassword({ resetCode: this.resetCode(), password, returnUrl: '' }).subscribe({
+      next: () => {
+        this.loading.set(false);
+        Swal.fire({
+          icon: 'success',
+          title: 'Password Updated',
+          text: 'Your password has been reset successfully.',
+          timer: 1500,
+          showConfirmButton: false,
+        }).then(() => this.next.emit());
+      },
+      error: (err) => {
+        this.loading.set(false);
+        Swal.fire({
+          icon: 'error',
+          title: 'Reset Failed',
+          text: err?.error?.error?.message ?? 'Failed to reset password. Please try again.',
+        });
+      },
+    });
   }
 }

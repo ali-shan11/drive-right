@@ -1,3 +1,4 @@
 export const LocalStorageKey = {
-    token: 'token',
+  token: 'accessToken',
+  userId: 'userId',
 }

@@ -39,12 +39,16 @@
 
     <!--Buttons-->
     <div class="buttons w-full flex flex-col justify-between items-center gap-4">
-      <div (click)="next.emit()" class="gradient-border gradient-border--light w-full">
-        <button class="btn btn__light">Confirm</button>
+      <div class="gradient-border gradient-border--light w-full">
+        <button
+          class="btn btn__light"
+          [disabled]="otp().length < 6 || loading()"
+          (click)="onOtpComplete(otp())"
+        >Confirm</button>
       </div>
 
-      <div (click)="back.emit()" class="gradient-border gradient-border--dark w-full">
-        <button class="btn btn__dark">Back</button>
+      <div class="gradient-border gradient-border--dark w-full">
+        <button class="btn btn__dark" [disabled]="loading()" (click)="back.emit()">Back</button>
       </div>
     </div>
   </div>

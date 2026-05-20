@@ -61,10 +61,15 @@
   <div class="right-panel">
     @switch (currentStep) {
       @case ('create-account') {
-        <app-signup-form (next)="goTo('verify-email')" />
+        <app-signup-form (next)="onRegister($event)" />
       }
       @case ('verify-email') {
-        <app-verify-email (next)="goTo('complete-profile')" (back)="('create-account')" />
+        <app-verify-email
+          [userId]="registeredUserId()"
+          [email]="registeredEmail()"
+          (next)="goTo('complete-profile')"
+          (back)="goTo('create-account')"
+        />
       }
       @case ('complete-profile') {
         <app-complete-profile (next)="goTo('face-verification')" />
