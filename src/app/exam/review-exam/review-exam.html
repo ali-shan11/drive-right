@@ -1,0 +1,146 @@
+<div class="review-exam-wrapper">
+
+  <!--Nav-->
+  <nav class="nav-bar flex flex-row justify-between items-center py-2 px-10 rounded-b-3xl! gradient-border gradient-border--light gradient-border--no-top shadow-xl!">
+    <div class="logo-bar-warapper flex flex-row justify-between items-center gap-4">
+      <div class="logo">
+        <img ngSrc="/lasg-logo.png" width="52" height="52" alt="Lagos State Government" priority />
+      </div>
+      <div class="assessment-bar flex flex-col justify-between gap-1">
+        <h2 class="text-base text-start text-(--color-text) font-semibold">
+          Complete FRSC Simulation Assessment
+        </h2>
+        <div class="flex flex-col items-center gap-1 shrink-0">
+          <div class="question-heading w-full flex justify-between">
+            <span class="text-[0.62rem] text-app-text/45 whitespace-nowrap">
+              Question {{ currentIndex + 1 }}/{{ questions.length }}
+            </span>
+            <span class="text-[0.62rem] text-app-text/45 whitespace-nowrap">{{ progress }}%</span>
+          </div>
+          <div class="w-70 h-1.5 bg-white/20 rounded-full overflow-hidden">
+            <div class="h-full bg-(--color-primary) rounded-full" [style.width.%]="progress"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="button">
+      <button (click)="exitReview()" class="w-30! btn btn-exit">Exit Review</button>
+    </div>
+  </nav>
+
+  <!--Sidebar and main content-->
+  <div class="grid grid-cols-[350px_1fr] items-stretch gap-3 p-4">
+
+    <!--Sidebar-->
+    <div class="side-bar bg-(--color-card-wrapper) gradient-border gradient-border--light p-3 flex flex-col gap-2">
+
+      <!--Question Number-->
+      <div class="questions-sections flex items-center gap-4 py-1">
+        <div class="bg-[rgba(170,183,191,0.25)] font-medium text-base text-(--color-text) py-0.5 px-2 rounded-full">
+          Question {{ currentIndex + 1 }}/{{ questions.length }}
+        </div>
+        <span class="font-medium text-base text-(--color-text)">Section A - Traffic Signals</span>
+      </div>
+
+      <!--Language - sound buttons-->
+      <div class="buttons flex items-center gap-3 py-1">
+        <button class="w-34! btn btn__glass flex items-center rounded-full!">
+          <img src="images/icons/sound-yellow.svg" alt="sound" />
+          <span class="font-semibold text-base text-(--color-primary)">Read Aloud</span>
+        </button>
+        <button class="w-34! btn btn-language flex items-center rounded-full!">
+          <img src="images/icons/language-yellow.svg" alt="language" />
+          <span class="font-semibold text-base text-(--color-primary)">English</span>
+        </button>
+      </div>
+
+      <!--Question-->
+      <div class="text-start text-xl text-(--color-text) font-semibold py-1">
+        {{ current.question }}
+      </div>
+
+      <!--MCQ Options — READ ONLY, no click handler-->
+      <div class="options grid grid-cols-1 gap-4">
+        @for (option of current.options; track i; let i = $index) {
+          <div class="flex flex-col justify-between gap-1">
+            <div
+              class="gradient-border"
+              [ngClass]="{
+                'gradient-border--light': isAnswered(currentIndex) && selectedIndex === i
+              }"
+            >
+              <!-- REMOVED: (click)="select(i)" — review is read only -->
+              <div class="field__input flex items-center gap-3">
+                <span
+                  class="bg-[rgba(170,183,191,0.2)] py-0.5 px-2 rounded-sm"
+                  [ngClass]="{
+                    'bg-[rgba(255,243,6,0.8)]': isAnswered(currentIndex) && selectedIndex === i
+                  }"
+                >{{ getLabel(i) }}</span>
+                {{ option }}
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+
+    <!--Main Content-->
+    <div class="main-content flex flex-col justify-between gap-3 min-w-0"> <!-- ADDED: min-w-0 fix -->
+
+      <!--Video-->
+      <div class="relative flex items-center justify-center video h-full w-full gradient-border gradient-border--light aspect-video rounded-md! overflow-hidden">
+        <img class="w-full h-full object-cover rounded-md" src="images/vrsimulation.png" alt="" />
+      </div>
+
+      <!--Question Navigator-->
+      <div class="w-full questions bg-(--color-card-wrapper) gradient-border gradient-border--light flex flex-col gap-2 px-2 py-3">
+
+        <!--Heading & Legend-->
+        <div class="question-types flex justify-between items-center gap-2 mt-2 px-2">
+          <h3 class="text-(--color-text) text-base font-semibold leading-relaxed">Question Navigator</h3>
+          <div class="flex items-center gap-8">
+            <div class="flex items-center gap-2">
+              <span class="p-2 bg-(--color-primary) border border-(--color-primary) rounded-sm"></span>
+              <span class="text-(--color-text) text-sm leading-relaxed">Answered</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="p-2 border border-(--color-primary) rounded-sm"></span>
+              <span class="text-(--color-text) text-sm leading-relaxed">Unanswered</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="p-2 border border-[rgba(239,27,27,1)] rounded-sm"></span>
+              <span class="text-(--color-text) text-sm leading-relaxed">Flagged</span>
+            </div>
+          </div>
+        </div>
+
+        <!--Question Boxes-->
+        <div class="flex flex-wrap gap-2 mt-2 p-1">
+          @for (question of questions; track question.id; let i = $index) {
+            <span
+              class="text-sm text-(--color-text) text-center font-medium border py-1.5 px-2 rounded-md cursor-pointer"
+              [ngClass]="{
+                'bg-(--color-primary) border-(--color-primary)': isAnswered(i) && !isFlagged(i),
+                'border-(--color-primary)': !isAnswered(i) && !isFlagged(i),
+                'border-[rgba(239,27,27,1)]': isFlagged(i)
+              }"
+            >{{ question.id }}</span>
+          }
+        </div>
+
+        <!--Footer buttons-->
+        <div class="buttons flex justify-end items-center gap-3 pt-6">
+          <button (click)="prev()" class="w-34! btn btn__glass flex items-center">
+            <img src="images/icons/previous-arrow.svg" alt="prev" />
+            <span class="font-normal text-center text-sm text-(--color-text)">Previous</span>
+          </button>
+          <button (click)="next()" class="w-34! btn btn-language flex items-center">
+            <span class="font-normal text-center text-sm text-(--color-text)">Done</span>
+            <img src="images/icons/next-arrow.svg" alt="next" />
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

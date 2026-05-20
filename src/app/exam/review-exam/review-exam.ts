@@ -1,21 +1,19 @@
 import { NgClass, NgOptimizedImage } from '@angular/common';
 import { Component, inject } from '@angular/core';
-import { Router } from '@angular/router'; 
-import { SubmitExam } from './submit-exam/submit-exam';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-exam',
-  imports: [NgOptimizedImage, NgClass, SubmitExam],
-  templateUrl: './exam.html',
-  styleUrl: './exam.scss',
+  selector: 'app-review-exam',
+  imports: [NgOptimizedImage , NgClass],
+  templateUrl: './review-exam.html',
+  styleUrl: './review-exam.scss',
 })
-export class Exam {
+export class ReviewExam {
   currentIndex = 0;
+  // from router state on init
   answers: Record<number, number> = {};
   flaggedQuestion = new Set<number>();
-  showSubmitExam = false;
-
- private router = inject(Router);
+  private router = inject(Router);
 
   questions = [
     {
@@ -48,98 +46,57 @@ export class Exam {
     },
   ];
 
-  //Get current index
+  // reads answers and flagged data passed from Exam
+  ngOnInit(): void {
+    const state = history.state;
+    this.answers = state.answers ?? {};
+    this.flaggedQuestion = new Set<number>(state.flagged ?? []);
+  }
+
   get current() {
     return this.questions[this.currentIndex];
   }
 
-  //Get selected index
   get selectedIndex(): number | null {
     return this.answers[this.currentIndex] ?? null;
   }
 
-  //Checking the answered or not
   isAnswered(questionIdx: number): boolean {
     return this.answers[questionIdx] !== undefined;
   }
 
-  //First index
   get isFirst() {
     return this.currentIndex === 0;
   }
 
-  //Last index
   get isLast() {
     return this.currentIndex === this.questions.length - 1;
   }
 
-  //label ABCD
   getLabel(i: number): string {
     return String.fromCharCode(65 + i);
   }
 
-  //Select the option
-  select(index: number): void {
-    if (this.isAnswered(this.currentIndex)) return;
-    this.answers[this.currentIndex] = index;
-  }
-
-  //Go to prev
   prev(): void {
     if (this.isFirst) return;
     this.currentIndex--;
   }
 
-  //go to next
   next(): void {
     if (this.isLast) return;
     this.currentIndex++;
   }
 
-  //Progress acc to questions
   get progress(): number {
     const answeredCount = Object.keys(this.answers).length;
     return Math.round((answeredCount / this.questions.length) * 100);
   }
 
-  //flag / unflag
-  toggleFlagQuestion(): void {
-    if (this.flaggedQuestion.has(this.currentIndex)) {
-      this.flaggedQuestion.delete(this.currentIndex);
-    } else {
-      this.flaggedQuestion.add(this.currentIndex);
-    }
-  }
-
-  //checking the flag
   isFlagged(i: number): boolean {
     return this.flaggedQuestion.has(i);
   }
 
-  // getter to convert Set to Array for @Input passing to submit-exam
-  get flaggedArray(): number[] {
-    return Array.from(this.flaggedQuestion);
-  }
-
-  // showSubmitExam  opens modal
-  submitExam(): void {
-    this.showSubmitExam = true;
-  }
-
-  // when user confirms submit inside modal
-  onSubmitConfirmed(): void {
-    this.showSubmitExam = false;
-    this.router.navigate(['/official-exam/recent-attempts/:id']);
-  }
-
-  // called when user clicks Review inside modal 
-  onReviewClicked(): void {
-    this.showSubmitExam = false;
-    this.router.navigate(['/review-exam'], {
-      state: {
-        answers: this.answers,
-        flagged: this.flaggedArray,
-      },
-    });
+  exitReview(){
+    this.router.navigate(['/official-theory-exam'])
   }
 }

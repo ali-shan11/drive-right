@@ -219,14 +219,14 @@
             <div
               class="gradient-border cursor-pointer"
               [ngClass]="{
-                'gradient-border--light': isAnswered(i) && selectedIndex === i,
+                'gradient-border--light': isAnswered(currentIndex) && selectedIndex === i,
               }"
             >
               <div (click)="select(i)" class="field__input flex items-center gap-3">
                 <span
                   class="bg-[rgba(170,183,191,0.2)] py-0.5 px-2 rounded-sm"
                   [ngClass]="{
-                    'bg-[rgba(255,243,6,0.8)]': isAnswered(i) && selectedIndex === i,
+                    'bg-[rgba(255,243,6,0.8)]': isAnswered(currentIndex) && selectedIndex === i,
                   }"
                   >{{ getLabel(i) }}</span
                 >
@@ -280,5 +280,11 @@
 </div>
 
 @if (showSubmitExam) {
-  <app-submit-exam></app-submit-exam>
+  <app-submit-exam
+    [answers]="answers"
+    [flagged]="flaggedArray"
+    [totalCount]="questions.length"
+    (submitConfirmed)="onSubmitConfirmed()"
+    (reviewClicked)="onReviewClicked()"
+  ></app-submit-exam>
 }

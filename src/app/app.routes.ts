@@ -19,6 +19,9 @@ import { NotesDialog } from './courses/course-detail/notes-dialog/notes-dialog';
 import { Exam } from './exam/exam';
 import { Settings } from './settings/settings';
 import { Users } from './settings/users/users';
+import { SubmitExam } from './exam/submit-exam/submit-exam';
+import { ReviewExam } from './exam/review-exam/review-exam';
+import { Credentials } from './credentials/credentials';
 
 export const routes: Routes = [
   {
@@ -67,9 +70,12 @@ export const routes: Routes = [
       { path: 'setting', component: Settings, children:[
         { path: 'users', component: Users },
       ]},
+      { path : 'credentials' , component : Credentials}
     ],
   },
   { path: 'official-exam/start', component: StartExam },
   { path: 'official-theory-exam', component: Exam },
   { path: 'start-assessment', component: StartMockAssessment },
+  { path: 'submit-exam', component: SubmitExam },
+  { path: 'review-exam', component: ReviewExam },
 ];
